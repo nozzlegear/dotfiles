@@ -59,6 +59,7 @@ choco install nugetpackageexplorer -y
 choco install cshell -y
 choco install 7zip -y
 choco install vlc -y
+choco install jq -y
 # choco install microsoft-teams
 # choco install vcxsrv
 
