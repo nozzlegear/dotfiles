@@ -1,6 +1,7 @@
 # Description: Boxstarter Script
-# Author: Jess Frazelle <jess@linux.com>
-# Last Updated: 2017-09-11
+# Author: Joshua Harms <joshua@nozzlegear.com>
+# Based off Boxstarter script by: Jess Frazelle <jess@linux.com>
+# Last Updated: 2017-09-30
 #
 # Install boxstarter:
 # 	. { iwr -useb http://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
@@ -8,6 +9,8 @@
 # You might need to set: Set-ExecutionPolicy RemoteSigned
 #
 # Run this boxstarter by calling the following from an **elevated** command-prompt:
+#   ./boxstarter.ps1
+# OR
 # 	start http://boxstarter.org/package/nr/url?<URL-TO-RAW-GIST>
 # OR
 # 	Install-BoxstarterPackage -PackageName <URL-TO-RAW-GIST> -DisableReboots
@@ -104,6 +107,8 @@ if (which docker 2> $null) {
 } else {
 	Write-Error "Could not find Docker command. Most likely it hasn't started yet."
 }
+
+# TODO: Figure out how we can tell if Powerline fonts are installed, then install them if they aren't (clone Powerline repo and run install.ps1)
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
@@ -230,7 +235,6 @@ Set-ItemProperty -Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
 #--- Restore Temporary Settings ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate -acceptEula
 
 #--- Rename the Computer ---
 # Requires restart, or add the -Restart flag
