@@ -62,6 +62,7 @@ choco install vlc -y
 choco install jq -y
 choco install deluge -y
 choco install rufus -y
+choco install autohotkey -y
 # choco install microsoft-teams
 # choco install vcxsrv
 
