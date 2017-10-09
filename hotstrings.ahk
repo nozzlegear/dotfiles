@@ -6,3 +6,4 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 :::shrug::🤷
 :::hourglass::⌛
+:::eyes::👀
