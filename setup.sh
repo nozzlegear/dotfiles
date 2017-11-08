@@ -45,8 +45,8 @@ command -v foo >/dev/null 2>&1 || {
 ### end Yarn
 
 ### Powershell
-# https://github.com/PowerShell/PowerShell/blob/master/docs/installation/linux.md
-bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/download.sh)
+# https://github.com/PowerShell/PowerShell/blob/fe3e44f3055ccd57e19ce1d29a5320e2f3891705/tools/install-powershell-readme.md
+bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/fe3e44f3055ccd57e19ce1d29a5320e2f3891705/tools/install-powershell.sh)
 ### end Powershell
 
 # Install apt files
