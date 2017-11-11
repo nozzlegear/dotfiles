@@ -28,8 +28,8 @@ choco install inconsolata -y
 Disable-GameBarTips
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
-Set-TaskbarOptions -Dock Bottom -Combine Full -Lock
-Set-TaskbarOptions -Dock Bottom -Combine Full -AlwaysShowIconsOn
+# Set-TaskbarOptions -Dock Bottom -Combine Full -Lock
+# Set-TaskbarOptions -Dock Bottom -Combine Full -AlwaysShowIconsOn
 
 #--- Windows Subsystems/Features ---
 choco install Microsoft-Hyper-V-All -source windowsFeatures
@@ -66,53 +66,25 @@ choco install autohotkey -y
 # choco install microsoft-teams
 # choco install vcxsrv
 
+# TODO: Figure out how we can tell if Powerline fonts are installed, then install them if they aren't (clone Powerline repo and run install.ps1)
+
 # Refresh environment variables
 refreshenv
 
-function DockerImageExists ($imageName) {
-	$exists = $(docker images | grep "$imageName");
+# Install windows-build-tools from NPM, which includes python (needed for node-gyp), and node-gyp itself
+npm i -g --production windows-build-tools
+npm i -g node-gyp
 
-	return !!$exists
-}
+#--- Environment Variables
 
-function DockerContainerExists ($containerName) {
-	$exists = $(docker ps -a | grep "$containerName")
+# Python, installed by npm windows-build-tools and used by node-gyp
+setx PYTHON "$($env:HOME)/.windows-build-tools/python27/python.exe"
 
-	return !!$exists
-}
+# F#, installed by Visual Studio (not included in this build script)
+setx PATH "$($env:PATH);C:\Program Files (x86)\Microsoft SDKs\F#\4.1\Framework\v4.0;"
 
-if (which docker 2> $null) {
-	$couchImage = "klaemo/couchdb"
-	$couchContainer = "couchy"
-	$pgImage = "postgres"
-	$pgContainer = "posty"
-	
-	# Pull in Docker packages if they don't exist
-	if (DockerImageExists "$couchImage") {
-		echo "Docker image \"$couchImage\" already exists."
-	} else {
-		docker pull $couchImage
-	}
-
-	if (DockerImageExists "$pgImage") {
-		echo "Docker image \"$pgImage\" already exists."
-	} else {
-		docker pull $pgImage
-	}
-
-	# Create containers
-	if ($(DockerImageExists "$couchImage") -and -not $(DockerContainerExists "$couchContainer")) {
-		docker run --name "$couchContainer" --restart unless-stopped -d -p 5984:5984 "$couchImage"
-	}
-
-	if ($(DockerImageExists "$pgImage") -and -not $(DockerContainerExists "$pgContainer")) {
-		docker run --name "$pgContainer" --restart unless-stopped -d -p 0.0.0.0:5432:5432 -e POSTGRES_PASSWORD=dev_password -e POSTGRES_USER=pg "$pgImage"
-	}
-} else {
-	Write-Error "Could not find Docker command. Most likely it hasn't started yet."
-}
-
-# TODO: Figure out how we can tell if Powerline fonts are installed, then install them if they aren't (clone Powerline repo and run install.ps1)
+# Refresh envs again
+refreshenv
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
@@ -129,7 +101,7 @@ Get-AppxPackage *Autodesk* | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingFinance | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingSports | Remove-AppxPackage
-Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage
+# Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage
 
 # BubbleWitch
 Get-AppxPackage *BubbleWitch* | Remove-AppxPackage
@@ -150,7 +122,7 @@ Get-AppxPackage *Dropbox* | Remove-AppxPackage
 Get-AppxPackage *Facebook* | Remove-AppxPackage
 
 # Feedback Hub
-Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage
+# Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage
 
 # Get Started
 Get-AppxPackage Microsoft.Getstarted | Remove-AppxPackage
@@ -197,10 +169,10 @@ Get-AppxPackage Microsoft.SkypeApp | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage
 
 # Solitaire
-Get-AppxPackage *Solitaire* | Remove-AppxPackage
+# Get-AppxPackage *Solitaire* | Remove-AppxPackage
 
 # Sticky Notes
-Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
+# Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
 
 # Sway
 Get-AppxPackage Microsoft.Office.Sway | Remove-AppxPackage
@@ -212,7 +184,7 @@ Get-AppxPackage *Twitter* | Remove-AppxPackage
 # Some from: @NickCraver's gist https://gist.github.com/NickCraver/7ebf9efbfd0c3eab72e9
 
 # Change Explorer home screen back to "This PC"
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
 # Change it back to "Quick Access" (Windows 10 default)
 # Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 2
 
@@ -223,7 +195,7 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 
 # These make "Quick Access" behave much closer to the old "Favorites"
 # Disable Quick Access: Recent Files
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowRecent -Type DWord -Value 0
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowRecent -Type DWord -Value 0
 # Disable Quick Access: Frequent Folders
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowFrequent -Type DWord -Value 0
 # To Restore:
