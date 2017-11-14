@@ -400,6 +400,36 @@ function PowerLS {
 # Set PowerLS as the default ls Command
 Set-Alias -Name ls -Value PowerLS -Option AllScope
 
+# Paket Init
+function BootstrapPaket {
+	# Create a .paket folder, download the paket.bootstrapper.exe to it, verify the MD5 hash, run the bootstrapper, run paket.exe init
+
+	$paketFolder = join-path $pwd ".paket"
+	$bootstrapperFile = join-path $paketFolder "paket.bootstrapper.exe"
+	$paketFile = join-path $paketFolder "paket.exe"
+	$bootstrapperUrl = "https://github.com/fsprojects/Paket/releases/download/5.122.1/paket.bootstrapper.exe"
+	$expectedHash = "C4239B4D7E8A0CEA0DDDD57E93076ACF"
+
+	if (!(Test-Path "$paketFolder")) {
+	    mkdir "$paketFolder" | out-null
+	}
+
+	Invoke-WebRequest -Uri $bootstrapperUrl -OutFile $bootstrapperFile
+
+	$fileHash = Get-FileHash $bootstrapperFile -Algorithm "MD5" | select -ExpandProperty "Hash"
+
+	if ($fileHash -ne $expectedHash) {
+	    Write-Error -Message "File hash `"$fileHash`" did not match expected hash `"$expectedHash`". File may have been tampered with. Refusing to execute."
+	    throw
+	}
+
+	# Run the bootstrapper and paket.exe
+	& $bootstrapperFile
+	& $paketFile "init"
+}
+
+Set-Alias -Name Paket-BootStrap -Value BootstrapPaket -Option AllScope
+
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
 Set-Alias -Name bogpaddle -Value "$source\powershell-utils\bogpaddle.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils namegen.ps1 script.
