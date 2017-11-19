@@ -9,6 +9,9 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 :::eyes::👀
 :::eye_roll::🙄
 :::eye roll::🙄
+:::roll_eyes::🙄
+:::eyeroll::🙄
+:::rolleyes::🙄
 :::thinking::🤔
 :::think::🤔
 :::huff::🤧
