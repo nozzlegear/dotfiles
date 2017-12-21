@@ -35,7 +35,7 @@ fi
 if [ ! -d "$zshextras/zsh-syntax-highlighting" ]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting "$zshextras/zsh-syntax-highlighting"
 else
-	echo "It looks like zsh-users/zsh-syntax-highligting already exists in $zshextras. Skipping repo clone."
+	echo "It looks like zsh-users/zsh-syntax-highlighting already exists in $zshextras. Skipping repo clone."
 fi
 
 if [ ! -e "$promptFile" ]; then

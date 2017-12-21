@@ -93,4 +93,4 @@ ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure promp
 fpath=( "$HOME/.zshfunctions" $fpath )
 autoload -U promptinit; promptinit
 prompt pure
-source "/home/nozzlegear/.zshfunctions/zsh-syntax-highlighting.zsh" #This plugin must be the last thing sourced in your .zshrc file
+source "/home/nozzlegear/.zshfunctions/zsh-syntax-highlighting" #This plugin must be the last thing sourced in your .zshrc file
