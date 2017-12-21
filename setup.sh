@@ -69,12 +69,5 @@ docker run --name posty -e POSTGRES_PASSWORD=dev -e POSTGRES_DB=postgres -e POST
 
 ### Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh setup-pure-zsh.sh
 ### end Oh-my-zsh
-
-### Pure ZSH
-# https://github.com/sindresorhus/pure
-git clone https://github.com/sindresorhus/pure ~/.pure-zsh
-ln -s ~/.pure-zsh/pure.zsh /usr/local/share/zsh/site-functions/prompt_pure_setup
-ln -s ~/.pure-zsh/async.zsh /usr/local/share/zsh/site-functions/async
-### end Pure ZSH
-
