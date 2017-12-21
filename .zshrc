@@ -3,7 +3,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/nozzlegear/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,7 +52,7 @@
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, zsh-syntax-highlighting)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,38 +85,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Load Z autojump script	
-# source ~/bin/z/z.sh
-
-# NVM
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Always start a command on an empty line
-#PS1="${PS1%?}
-# $ "
-
-# Autojump
-# source ~/bin/autojump/bin/autojump.zsh
-
-# Add an arrow to the end of the prompt.
-# export prompt="${prompt}=> ";
-
 source ~/.env
-
-# Dracula Dircolors
-# eval "$(dircolors -b ~/.dir_colors/dracula.dircolors)"
-
-# Alias to list file sizes in MB
 alias lsmb="ls -l --block-size=M"
-
-# Alias yarn, otherwise shell will pull it from the Windows version
 alias yarn="/usr/bin/yarn"
 
-# Use pure prompt (github.com/sindresorhus/pure)
-# fpath+=($fpath '/usr/lib/node_modules/pure-prompt/functions')
-autoload -U promptinit; promptinit;
-prompt pure;
-
-# Load zsh syntax highlighting. Must be last script.
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
+fpath=( "$HOME/.zshfunctions" $fpath )
+autoload -U promptinit; promptinit
+prompt pure
+source "/home/nozzlegear/.zshfunctions/zsh-syntax-highlighting.zsh" #This plugin must be the last thing sourced in your .zshrc file
