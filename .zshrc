@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.env
 alias lsmb="ls -l --block-size=M"
 alias yarn="/usr/bin/yarn"
+alias faas="faas-cli"
 
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
 fpath=( "$HOME/.zshfunctions" $fpath )
