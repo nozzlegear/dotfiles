@@ -89,6 +89,7 @@ source ~/.env
 alias lsmb="ls -l --block-size=M"
 alias yarn="/usr/bin/yarn"
 alias faas="faas-cli"
+alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
 
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
 fpath=( "$HOME/.zshfunctions" $fpath )
