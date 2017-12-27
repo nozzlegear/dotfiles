@@ -91,6 +91,9 @@ alias yarn="/usr/bin/yarn"
 alias faas="faas-cli"
 alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
 
+# Add dartlang binaries to path
+export PATH=/usr/lib/dart/bin:$PATH
+
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
 fpath=( "$HOME/.zshfunctions" $fpath )
 autoload -U promptinit; promptinit
