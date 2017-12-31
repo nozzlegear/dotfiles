@@ -89,7 +89,7 @@ source ~/.env
 alias ps="powershell.exe -noprofile -c"
 alias lsmb="ls -l --block-size=M"
 alias faas="faas-cli"
-alias ii="explorer.exe ."
+alias ii="explorer.exe"
 alias yarn="/usr/bin/yarn"
 alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
 
