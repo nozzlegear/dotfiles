@@ -100,6 +100,7 @@ alias pub="ps pub"
 alias dartanalyzer="ps dartanalyzer"
 alias dart2js="ps dart2js"
 alias dartdevc="ps dartdevc"
+alias stagehand="ps stagehand"
 
 # Add dartlang binaries to path
 export PATH=/usr/lib/dart/bin:$PATH
