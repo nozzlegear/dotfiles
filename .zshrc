@@ -86,10 +86,20 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.env
+alias ps="powershell.exe -noprofile -c"
 alias lsmb="ls -l --block-size=M"
-alias yarn="/usr/bin/yarn"
 alias faas="faas-cli"
+alias ii="explorer.exe ."
+alias yarn="/usr/bin/yarn"
 alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
+
+# Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
+alias dotnet="dotnet.exe"
+alias dart="dart.exe"
+alias pub="ps pub"
+alias dartanalyzer="ps dartanalyzer"
+alias dart2js="ps dart2js"
+alias dartdevc="ps dartdevc"
 
 # Add dartlang binaries to path
 export PATH=/usr/lib/dart/bin:$PATH
