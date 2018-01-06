@@ -429,6 +429,8 @@ function BootstrapPaket {
 }
 
 Set-Alias -Name Paket-BootStrap -Value BootstrapPaket -Option AllScope
+# Alias rm.exe from Gow to rm. This lets us do rm -rf which does not work by default in Powershell
+Set-Alias -Name rm -Value "${env:ProgramFiles(x86)}/Gow/rm.exe" -Option AllScope
 
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
 Set-Alias -Name bogpaddle -Value "$source\powershell-utils\bogpaddle.ps1" -Option AllScope
