@@ -63,8 +63,8 @@ service docker start
 systemctl enable docker
 docker pull klaemo/couchdb
 docker pull postgres
-docker run --name couchdb -p 5984:5984 -d klaemo/couchdb
-docker run --name posty -e POSTGRES_PASSWORD=dev -e POSTGRES_DB=postgres -e POSTGRES_USER=pg -t -p 0.0.0.0:5432:5432 -d postgres
+docker run --restart unless-stopped --name couchdb -p 5984:5984 -d klaemo/couchdb
+docker run --restart unless-stopped --name posty -e POSTGRES_PASSWORD=dev -e POSTGRES_DB=postgres -e POSTGRES_USER=pg -t -p 0.0.0.0:5432:5432 -d postgres
 ### end Docker config
 
 ### Oh-my-zsh
