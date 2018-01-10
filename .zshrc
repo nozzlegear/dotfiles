@@ -94,16 +94,13 @@ alias yarn="/usr/bin/yarn"
 alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
 
 # Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
-alias dotnet="dotnet.exe"
-alias dart="dart.exe"
-alias pub="ps pub"
-alias dartanalyzer="ps dartanalyzer"
-alias dart2js="ps dart2js"
-alias dartdevc="ps dartdevc"
-alias stagehand="ps stagehand"
-
-# Add dartlang binaries to path
-export PATH=/usr/lib/dart/bin:$PATH
+#alias dotnet="dotnet.exe"
+#alias dart="dart.exe"
+#alias pub="ps pub"
+#alias dartanalyzer="ps dartanalyzer"
+#alias dart2js="ps dart2js"
+#alias dartdevc="ps dartdevc"
+#alias stagehand="ps stagehand"
 
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
 fpath=( "$HOME/.zshfunctions" $fpath )
