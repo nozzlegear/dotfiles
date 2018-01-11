@@ -313,14 +313,10 @@ function Out-Diff {
     }
 }
 
-# Set module Get-ChildItemColor | Format-Wide as the default ls Command, and Get-ChildItemColor as the l command.
-# Because of how PowerShell's coloring works, grep won't work when using Get-ChildItemColor | Format-Wide. We need
+# Set module Get-ChildItemColorFormatWide as the default ls Command, and Get-ChildItemColor as the l command.
+# Because of how PowerShell's coloring works, grep won't work when using Get-ChildItemColorFormatWide. We need
 # to use Get-ChildItemColor for that instead.
-function LsFormatted
-{
-	Get-ChildItemColor @args | Format-Wide -Column 4
-}
-Set-Alias -Name ls -Value LsFormatted -Option AllScope
+Set-Alias -Name ls -Value Get-ChildItemColorFormatWide -Option AllScope
 Set-Alias -Name l -Value Get-ChildItemColor -Option AllScope
 
 # Paket Init
