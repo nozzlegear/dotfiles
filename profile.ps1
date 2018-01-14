@@ -348,10 +348,15 @@ function BootstrapPaket {
 }
 
 Set-Alias -Name Paket-BootStrap -Value BootstrapPaket -Option AllScope
+
+# Alias a better git log to git lol
+git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+
 # Alias rm.exe from Gow to rm. This lets us do rm -rf which does not work by default in Powershell
 Set-Alias -Name rm -Value "${env:ProgramFiles(x86)}/Gow/bin/rm.exe" -Option AllScope
 # Alias curl.exe from Gow to curl. This lets us do curl localhost:5984 without specifying the host and other silly restrictions found in PowerShell's curl
 Set-Alias -Name curl -Value "${env:ProgramFiles(x86)}/Gow/bin/curl.exe" -Option AllScope
+
 
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
 Set-Alias -Name bogpaddle -Value "$source\powershell-utils\bogpaddle.ps1" -Option AllScope

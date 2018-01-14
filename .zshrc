@@ -85,6 +85,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Alias git log to a better and more useful git lol
+git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+
 source ~/.env
 alias ps="powershell.exe -noprofile -c"
 alias lsmb="ls -l --block-size=M"
