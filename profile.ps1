@@ -313,6 +313,11 @@ function Out-Diff {
     }
 }
 
+function Secret { 
+	# Pass everything to the git secret bash tool
+	bash -c "git secret $args"
+}
+
 # Set module Get-ChildItemColorFormatWide as the default ls Command, and Get-ChildItemColor as the l command.
 # Because of how PowerShell's coloring works, grep won't work when using Get-ChildItemColorFormatWide. We need
 # to use Get-ChildItemColor for that instead.
