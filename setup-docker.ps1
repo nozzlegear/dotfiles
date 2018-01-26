@@ -1,5 +1,3 @@
-#requires -RunAsAdministrator
-
 function DockerImageExists ($imageName) {
 	$exists = $(docker images | grep "$imageName");
 
