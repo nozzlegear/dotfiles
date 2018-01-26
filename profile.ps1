@@ -356,6 +356,8 @@ git config --global --add alias.lol "log --graph --decorate --pretty=oneline --a
 Set-Alias -Name rm -Value "${env:ProgramFiles(x86)}/Gow/bin/rm.exe" -Option AllScope
 # Alias curl.exe from Gow to curl. This lets us do curl localhost:5984 without specifying the host and other silly restrictions found in PowerShell's curl
 Set-Alias -Name curl -Value "${env:ProgramFiles(x86)}/Gow/bin/curl.exe" -Option AllScope
+# Alias vim to the chocolatey version because the gow one is garbo
+Set-Alias -Name vim -Value "C:\Program Files (x86)\vim\vim80\vim.exe" -Option AllScope
 
 
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
