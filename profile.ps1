@@ -45,12 +45,12 @@ function prompt {
         # function, including write-vcsstatus, echo twice.
         # https://github.com/PowerShell/PowerShell/issues/1897
         # https://github.com/lzybkr/PSReadLine/issues/468
-        "$folderName => ";
+        "$folderName -> ";
     }
     else {
         write-host "$folderName" -nonewline -foregroundcolor green;
         Write-VcsStatus;
-        " => ";
+        " -> ";
     }
 
     # Yarn and msbuild have a habit of corrupting console colors when ctrl+c-ing them. Reset colors on each prompt.
