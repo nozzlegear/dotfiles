@@ -60,11 +60,21 @@ function prompt {
 }
 
 # Load the psenv file
-$psenv = "$(Split-Path $profile)/psenv.ps1";
+if ($isWindows) {
+    # On Windows the profile may be in the onedrive/documents folder, so we'll move the psenv to AppData/Local/PowerShell to prevent it from being synced in OneDrive
+    $psenv = "$env:APPDATA/../Local/PowerShell/psenv.ps1"
+} else {
+    # We put the psenv file right next to the profile
+    $psenv = "$(split-path $profile)/psenv.ps1"
+}
 
-if (! (Test-Path $psenv)) {
-    # Create the env file and swallow the output
-    New-Item $psenv | out-null;
+if ((Test-Path $psenv) -eq $false) {
+    if ((Test-Path $(split-path $psenv)) -eq $false) {
+	New-Item $(split-path $psenv) -type directory | out-null
+    }
+
+    # Create the file
+    New-Item $psenv | out-null
 }
 
 . $psenv;
