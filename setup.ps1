@@ -70,4 +70,7 @@ powershell.exe -Command "./setup-powershell.ps1"
 # Run the git setup command
 powershell.exe -Command "./setup-git.ps1"
 
+# Run the vim setup command
+./setup-vim.ps1
+
 echo "Finished setup. Note that Docker has been installed but this script does not configure it. You must run the setup-docker.ps1 file to finish Docker setup. This requires starting Docker from the Start menu, which the script is unable to do."
