@@ -69,6 +69,11 @@ if (! (Test-Path $psenv)) {
 
 . $psenv;
 
+# Alias ssh-agent and ssh-add to the git versions, then start the ssh agent with them. This lets us skip entering our password for every single git operation.
+Set-Alias ssh-agent "$env:ProgramFiles\git\usr\bin\ssh-agent.exe"
+Set-Alias ssh-add "$env:ProgramFiles\git\usr\bin\ssh-add.exe"
+Start-SshAgent -Quiet #This will ask for the SSH keyfile password if it finds one, but it only asks once.
+
 function findFolder($folderName) {
     $basicDrive = $null;
 
