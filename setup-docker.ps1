@@ -11,8 +11,9 @@ function DockerContainerExists ($containerName) {
 }
 
 if (which docker 2> $null) {
-	$couchImage = "klaemo/couchdb"
+	$couchImage = "apache/couchdb"
 	$couchContainer = "couchy"
+    $couchDataDir = "$home/couchdb_data"
 	$pgImage = "postgres"
 	$pgContainer = "posty"
 	
@@ -31,7 +32,11 @@ if (which docker 2> $null) {
 
 	# Create containers
 	if ($(DockerImageExists "$couchImage") -and -not $(DockerContainerExists "$couchContainer")) {
-		docker run --name "$couchContainer" --restart unless-stopped -d -p 5984:5984 "$couchImage"
+        if (!(Test-Path $couchDataDir)) {
+            mkdir $couchDataDir
+        }
+
+		docker run --name "$couchContainer" -v "$couchDataDir`:/opt/couchdb/data" --restart unless-stopped -d -p 5984:5984 "$couchImage"
 	}
 
 	if ($(DockerImageExists "$pgImage") -and -not $(DockerContainerExists "$pgContainer")) {
