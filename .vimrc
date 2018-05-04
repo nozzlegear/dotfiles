@@ -13,3 +13,5 @@ set expandtab       " Expand TABs to spaces
 set number          " Shows line numbers
 
 set cursorline      " Highlights the currently selected line
+
+syntax on           " Turns on syntax highlighting
