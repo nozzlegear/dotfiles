@@ -346,8 +346,8 @@ function BootstrapPaket {
 	$paketFolder = join-path $pwd ".paket"
 	$bootstrapperFile = join-path $paketFolder "paket.bootstrapper.exe"
 	$paketFile = join-path $paketFolder "paket.exe"
-	$bootstrapperUrl = "https://github.com/fsprojects/Paket/releases/download/5.122.1/paket.bootstrapper.exe"
-	$expectedHash = "C4239B4D7E8A0CEA0DDDD57E93076ACF"
+	$bootstrapperUrl = "https://github.com/fsprojects/Paket/releases/download/5.161.3/paket.bootstrapper.exe"
+	$expectedHash = "863C10A484A62FBC9B211914545A3F76"
 
 	if (!(Test-Path "$paketFolder")) {
 	    mkdir "$paketFolder" | out-null
