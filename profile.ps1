@@ -333,6 +333,10 @@ function Secret {
 	bash -c "git secret $args"
 }
 
+function Tag ([parameter(Mandatory=$true)] $tag) {
+    bash -c "git tag -s -m '$tag' '$tag'"
+}
+
 # Set module Get-ChildItemColorFormatWide as the default ls Command, and Get-ChildItemColor as the l command.
 # Because of how PowerShell's coloring works, grep won't work when using Get-ChildItemColorFormatWide. We need
 # to use Get-ChildItemColor for that instead.
