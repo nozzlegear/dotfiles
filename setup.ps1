@@ -1,7 +1,8 @@
 ﻿#requires -RunAsAdministrator
 
 $packages = 
-	"powershell-core",
+	"git",
+    "powershell-core",
 	"poshgit",
 	"sysinternals",
 	"vim",
@@ -38,6 +39,18 @@ $packages | ForEach-Object { choco install "$_" -y }
 
 # Refresh environment variables
 refreshenv
+
+# Ensure powershell knows where to find git 
+function gitExists(){ return ([string]::IsNullOrEmpty($(get-command git -erroraction silentlycontinue))) -eq $false}
+
+if (gitExists -eq $false) {
+    $env:PATH = "$($env:PATH);C:\Program Files\Git\cmd\git.exe"
+    
+    if (gitExists -eq $false) {
+        throw "Could not locate git command after installing from Chocolatey. Please close this terminal instance and start another to get git's location."
+        exit 1
+    }
+}
 
 # Run the node setup script which installs node build tools, node-gyp and other npm packages.
 # This command is run in another instance of powershell so it gets the npm and node exes loaded
