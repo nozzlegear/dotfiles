@@ -19,6 +19,7 @@ $packages =
 	"dotnetcore",
 	"dotnetcore-sdk",
 	"visualfsharptools",
+    "vcredist140",
 	"nuget.commandline",
 	"paket.powershell",
 	"nugetpackageexplorer",
