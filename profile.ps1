@@ -63,14 +63,15 @@ function prompt {
 if ($isWindows) {
     # On Windows the profile may be in the onedrive/documents folder, so we'll move the psenv to AppData/Local/PowerShell to prevent it from being synced in OneDrive
     $psenv = "$env:APPDATA/../Local/PowerShell/psenv.ps1"
-} else {
+}
+else {
     # We put the psenv file right next to the profile
     $psenv = "$(split-path $profile)/psenv.ps1"
 }
 
 if ((Test-Path $psenv) -eq $false) {
     if ((Test-Path $(split-path $psenv)) -eq $false) {
-	New-Item $(split-path $psenv) -type directory | out-null
+        New-Item $(split-path $psenv) -type directory | out-null
     }
 
     # Create the file
@@ -329,11 +330,11 @@ function Out-Diff {
 }
 
 function Secret { 
-	# Pass everything to the git secret bash tool
-	bash -c "git secret $args"
+    # Pass everything to the git secret bash tool
+    bash -c "git secret $args"
 }
 
-function Tag ([parameter(Mandatory=$true)] $tag) {
+function Tag ([parameter(Mandatory = $true)] $tag) {
     bash -c "git tag -s -m '$tag' '$tag'"
 }
 
@@ -343,32 +344,41 @@ function Tag ([parameter(Mandatory=$true)] $tag) {
 Set-Alias -Name ls -Value Get-ChildItemColorFormatWide -Option AllScope
 Set-Alias -Name l -Value Get-ChildItemColor -Option AllScope
 
+# A tiny function that downloads audio using youtube-dl, since I can never remember the command 
+function Download-Audio($url) {
+    # m4a downloads the best quality m4a audio file, since "bestaudio" may actually download a webm
+    # https://askubuntu.com/a/423510
+    youtube-dl "$url" -f "m4a"
+}
+
+Set-Alias -Name audio -value Download-Audio -Option AllScope
+
 # Paket Init
 function BootstrapPaket {
-	# Create a .paket folder, download the paket.bootstrapper.exe to it, verify the MD5 hash, run the bootstrapper, run paket.exe init
+    # Create a .paket folder, download the paket.bootstrapper.exe to it, verify the MD5 hash, run the bootstrapper, run paket.exe init
 
-	$paketFolder = join-path $pwd ".paket"
-	$bootstrapperFile = join-path $paketFolder "paket.bootstrapper.exe"
-	$paketFile = join-path $paketFolder "paket.exe"
-	$bootstrapperUrl = "https://github.com/fsprojects/Paket/releases/download/5.161.3/paket.bootstrapper.exe"
-	$expectedHash = "863C10A484A62FBC9B211914545A3F76"
+    $paketFolder = join-path $pwd ".paket"
+    $bootstrapperFile = join-path $paketFolder "paket.bootstrapper.exe"
+    $paketFile = join-path $paketFolder "paket.exe"
+    $bootstrapperUrl = "https://github.com/fsprojects/Paket/releases/download/5.161.3/paket.bootstrapper.exe"
+    $expectedHash = "863C10A484A62FBC9B211914545A3F76"
 
-	if (!(Test-Path "$paketFolder")) {
-	    mkdir "$paketFolder" | out-null
-	}
+    if (!(Test-Path "$paketFolder")) {
+        mkdir "$paketFolder" | out-null
+    }
 
-	Invoke-WebRequest -Uri $bootstrapperUrl -OutFile $bootstrapperFile
+    Invoke-WebRequest -Uri $bootstrapperUrl -OutFile $bootstrapperFile
 
-	$fileHash = Get-FileHash $bootstrapperFile -Algorithm "MD5" | select -ExpandProperty "Hash"
+    $fileHash = Get-FileHash $bootstrapperFile -Algorithm "MD5" | select -ExpandProperty "Hash"
 
-	if ($fileHash -ne $expectedHash) {
-	    Write-Error -Message "File hash `"$fileHash`" did not match expected hash `"$expectedHash`". File may have been tampered with. Refusing to execute."
-	    throw
-	}
+    if ($fileHash -ne $expectedHash) {
+        Write-Error -Message "File hash `"$fileHash`" did not match expected hash `"$expectedHash`". File may have been tampered with. Refusing to execute."
+        throw
+    }
 
-	# Run the bootstrapper and paket.exe
-	& $bootstrapperFile
-	& $paketFile "init"
+    # Run the bootstrapper and paket.exe
+    & $bootstrapperFile
+    & $paketFile "init"
 }
 
 Set-Alias -Name Paket-BootStrap -Value BootstrapPaket -Option AllScope
@@ -382,8 +392,6 @@ Set-Alias -Name rm -Value "${env:ProgramFiles(x86)}/Gow/bin/rm.exe" -Option AllS
 Set-Alias -Name curl -Value "${env:ProgramFiles(x86)}/Gow/bin/curl.exe" -Option AllScope
 # Alias vim to the chocolatey version because the gow one is garbo
 Set-Alias -Name vim -Value "C:\Program Files (x86)\vim\vim80\vim.exe" -Option AllScope
-
-
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
 Set-Alias -Name bogpaddle -Value "$source\powershell-utils\bogpaddle.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils namegen.ps1 script.
@@ -391,7 +399,7 @@ Set-Alias -Name namegen -Value "$source\powershell-utils\namegen.ps1" -Option Al
 # Add an alias for the Powershell-Utils kmsignalr.ps1 script.
 Set-Alias -Name kmsignalr -Value "$source\powershell-utils\kmsignalr.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils download-video.ps1 script.
-Set-Alias -Name download-video -Value "$source\powershell-utils\download-video.ps1" -Option AllScope
+Set-Alias -Name video -Value "$source\powershell-utils\download-video.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils guid.ps1 script.
 Set-Alias -Name guid -Value "$source\powershell-utils\guid.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils bcrypt.ps1 script.
