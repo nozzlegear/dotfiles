@@ -53,6 +53,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/PowerShell/PowerShell/fe3e44
 apt update
 apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-runtime-2.0.0" "dotnet-sdk-2.0.0" nodejs yarn zsh zip unzip unrar p7zip-full mono-complete gtk-sharp3 zsh-syntax-highlighting kpcli -y
 
+# Install Node globals
+bash ./setup-node-global.sh
+
 # GUI programs. Comment out on Windows
 # apt install code gnome-shell docker.io firefox-dev chromium-browser redshift devilspie2 vlc konsole deluge -y
 # sudo snap install keepassxc
