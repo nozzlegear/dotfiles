@@ -1,7 +1,8 @@
-# Running under WSL (Windows Subsystem for Linux)?
-if cat /proc/version | grep Microsoft; then
+if grep -q Microsoft /proc/version; then
+    echo "Ubuntu on Windows"
     WSL_running=true
 else
+    echo "native Linux"
     WSL_running=false
 fi
 
@@ -69,9 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
