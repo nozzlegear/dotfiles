@@ -8,6 +8,15 @@ case $- in
       *) return;;
 esac
 
+# https://stackoverflow.com/a/38859331
+if grep -q Microsoft /proc/version; then
+    echo "Ubuntu on Windows"
+    WSL_running=true
+else
+    echo "native Linux"
+    WSL_running=false
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
