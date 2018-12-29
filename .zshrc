@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Alias git log to a better and more useful git lol
--git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
 if [[ $WSL_running == true ]]; then
     alias ps="pwsh.exe -noprofile -c"
