@@ -1,3 +1,4 @@
+# https://stackoverflow.com/a/38859331
 if grep -q Microsoft /proc/version; then
     echo "Ubuntu on Windows"
     WSL_running=true
