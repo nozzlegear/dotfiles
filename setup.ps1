@@ -1,54 +1,26 @@
-﻿#requires -RunAsAdministrator
-
-$packages = 
-	"git",
-    "powershell-core",
-	"poshgit",
-	"sysinternals",
-	"vim",
-	"googlechrome",
-	"docker-for-windows",
-	"firefox",
-	"fiddler4",
-	"cmder",
-	"visualstudiocode",
-	"openssh",
-	"gow",
-	"nodejs",
-	"yarn",
-	"dotnetcore",
-	"dotnetcore-sdk",
-	"visualfsharptools",
-    "vcredist140",
-	"nuget.commandline",
-	"paket.powershell",
-	"nugetpackageexplorer",
-	"cshell",
-	"7zip",
-	"vlc",
-	"jq",
-	"deluge",
-	"rufus",
-	"autohotkey",
-	"notepadplusplus",
-	"youtube-dl"
-
-# Install packages 
-$packages | ForEach-Object { choco install "$_" -y }
-	
-# TODO: Figure out how we can tell if Powerline fonts are installed, then install them if they aren't (clone Powerline repo and run install.ps1)
-
-# Refresh environment variables
-refreshenv
+﻿#! /bin/bash
+#requires -RunAsAdministrator
 
 # Ensure powershell knows where to find git 
 function gitExists(){ return ([string]::IsNullOrEmpty($(get-command git -erroraction silentlycontinue))) -eq $false}
 
-if (gitExists -eq $false) {
-    $env:PATH = "$($env:PATH);C:\Program Files\Git\cmd\git.exe"
+if ($(gitExists) -eq $false) {
+    $env:PATH = "$($env:PATH);C:\Program Files\Git\cmd"
     
-    if (gitExists -eq $false) {
-        throw "Could not locate git command after installing from Chocolatey. Please close this terminal instance and start another to get git's location."
+    if ($(gitExists) -eq $false) {
+        throw "Could not locate npm command. Please update the environment PATH, then close this terminal instance and start another."
+        exit 1
+    }
+}
+
+# Ensure powershell knows where to find npm
+function npmExists(){ return ([string]::IsNullOrEmpty($(get-command npm -erroraction silentlycontinue))) -eq $false} 
+
+if ($(npmExists) -eq $false) {
+    $env:PATH = "$($env:PATH);C:\Program Files\nodejs"
+
+    if ($(npmExists) -eq $false) {
+        throw "Could not locate npm command. Please update the environment PATH, then close this terminal instance and start another."
         exit 1
     }
 }
