@@ -1,4 +1,4 @@
-﻿#! /bin/bash
+﻿#! /bin/pwsh
 #requires -RunAsAdministrator
 
 # Ensure powershell knows where to find git 
