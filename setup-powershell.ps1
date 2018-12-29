@@ -1,6 +1,12 @@
+#! /bin/pwsh
 #requires -RunAsAdministrator
 
 $mods = "posh-git","powershellget","psreadline","Get-ChildItemColor"
+
+echo "Copying ssh-agent-utils.ps1 to profile scripts folder."
+
+cp ssh-agent-utils.ps1 "$(split-path $profile)/Scripts"
+. "$(split-path $profile)/Scripts/ssh-agent-utils.ps1"
 
 echo "Copying profile.ps1 to $profile."
 

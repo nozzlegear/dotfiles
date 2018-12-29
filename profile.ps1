@@ -83,6 +83,8 @@ if ((Test-Path $psenv) -eq $false) {
 # Alias ssh-agent and ssh-add to the git versions, then start the ssh agent with them. This lets us skip entering our password for every single git operation.
 Set-Alias ssh-agent "$env:ProgramFiles\git\usr\bin\ssh-agent.exe"
 Set-Alias ssh-add "$env:ProgramFiles\git\usr\bin\ssh-add.exe"
+# Load the ssh-agent-utils script, which contains Start-SshAgent function
+. "$(split-path $profile)/Scripts/ssh-agent-utils.ps1"
 Start-SshAgent -Quiet #This will ask for the SSH keyfile password if it finds one, but it only asks once.
 
 function findFolder($folderName) {
@@ -383,6 +385,9 @@ function BootstrapPaket {
 
 Set-Alias -Name Paket-BootStrap -Value BootstrapPaket -Option AllScope
 
+# Use vim from WSL, which doesn't leave behind temporary files, has a functioning backspace, etc
+function vim { bash -c "vim $args" }
+
 # Alias a better git log to git lol
 git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
@@ -390,8 +395,6 @@ git config --global --add alias.lol "log --graph --decorate --pretty=oneline --a
 Set-Alias -Name rm -Value "${env:ProgramFiles(x86)}/Gow/bin/rm.exe" -Option AllScope
 # Alias curl.exe from Gow to curl. This lets us do curl localhost:5984 without specifying the host and other silly restrictions found in PowerShell's curl
 Set-Alias -Name curl -Value "${env:ProgramFiles(x86)}/Gow/bin/curl.exe" -Option AllScope
-# Alias vim to the chocolatey version because the gow one is garbo
-Set-Alias -Name vim -Value "C:\Program Files (x86)\vim\vim80\vim.exe" -Option AllScope
 # Add an alias for the Powershell-Utils bogpaddle.ps1 script.
 Set-Alias -Name bogpaddle -Value "$source\powershell-utils\bogpaddle.ps1" -Option AllScope
 # Add an alias for the Powershell-Utils namegen.ps1 script.
