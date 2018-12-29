@@ -1,2 +1,5 @@
-# Just copy the .vimrc file to ~/.vimrc
-cp .vimrc ~/.vimrc
+#! /bin/pwsh
+
+# Copy the .vimrc file to ~/.vimrc in bash
+echo "Copying vimrc file to wsl home directory."
+bash -c "cp .vimrc ~/vimrc"
