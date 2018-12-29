@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # https://stackoverflow.com/a/38859331
 if grep -q Microsoft /proc/version; then
     echo "Ubuntu on Windows"
@@ -13,7 +15,7 @@ cp .bashrc ~/
 cp .gitconfig ~/
 
 # Get Microsoft's Ubuntu 18.04 keys and repository
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+wget -q "https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb"
 dpkg -i packages-microsoft-prod.deb
 add-apt-repository universe -y
 rm packages-microsoft-prod.deb

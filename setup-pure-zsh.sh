@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Create a ~/.zshfunctions folder
 # Create a ~/.zshextras folder
 # Clone sindresorhus/pure into the extras folder
