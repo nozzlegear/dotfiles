@@ -113,7 +113,7 @@ if [[ $WSL_running == true ]]; then
     alias faas="faas-cli"
     alias ii="explorer.exe"
     alias yarn="/usr/bin/yarn"
-    alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
+    #alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
     # Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
     #alias dotnet="dotnet.exe"
     #alias dart="dart.exe"
@@ -144,6 +144,17 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # Pure zsh theme
+if [[ $WSL_running == true ]]; then
+
+    # Windows terminals/shells (including cmder/conemu) do not currently support unicode symbols or emoji, but support is coming
+    # https://blogs.msdn.microsoft.com/commandline/2018/11/15/windows-command-line-unicode-and-utf-8-output-text-buffer/
+    # In the mean time, set the Pure prompt symbols to something that will show on Windows
+    PURE_PROMPT_SYMBOL=ᐅ
+    PURE_GIT_DOWN_ARROW=ᐁ
+    PURE_GIT_UP_ARROW=ᐃ
+
+fi
+
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
 fpath=( "$HOME/.zshfunctions" $fpath )
 autoload -U promptinit; promptinit
