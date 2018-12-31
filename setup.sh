@@ -21,7 +21,7 @@ cp .gitconfig ~/
 
 # Get Microsoft's Ubuntu 18.04 keys and repository
 wget -q "https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb"
-dpkg -i packages-microsoft-prod.deb
+dpkg --purge packages-microsoft-prod && dpkg -i packages-microsoft-prod.deb
 add-apt-repository universe -y
 rm packages-microsoft-prod.deb
 
