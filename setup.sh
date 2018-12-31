@@ -37,7 +37,7 @@ apt update
 apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-sdk-2.2" nodejs yarn zsh zip unzip unrar p7zip-full mono-complete zsh-syntax-highlighting kpcli powershell -y
 
 # Install Node globals
-bash ./setup-node-global.sh
+bash ./setup-node-globals.sh
 
 # GUI programs
 if [[ $WSL_running == false ]]; then
