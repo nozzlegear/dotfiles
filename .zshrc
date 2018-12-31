@@ -104,9 +104,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Alias git log to a better and more useful git lol
-git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
-
 if [[ $WSL_running == true ]]; then
     alias ps="pwsh.exe -noprofile -c"
     alias lsmb="ls -l --block-size=M"
@@ -123,10 +120,10 @@ if [[ $WSL_running == true ]]; then
     #alias dart2js="ps dart2js"
     #alias dartdevc="ps dartdevc"
     #alias stagehand="ps stagehand"  
-else
-    # Adjust the PATH to point to things like yarn, dotnet, dart, etc.
-    PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin"
 fi
+
+# Adjust the PATH to point to things like yarn, dotnet, dart, etc.
+PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin"
 
 # Clipboard alias
 if [[ $WSL_running == true  ]]; then
