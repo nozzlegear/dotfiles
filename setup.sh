@@ -29,6 +29,9 @@ rm packages-microsoft-prod.deb
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+# Remove 'cmdtest' package which has a 'yarn' alias and may be used by accident
+apt remove cmdtest -y
+
 # Install apt files
 apt update
 apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-sdk-2.2" nodejs yarn zsh zip unzip unrar p7zip-full mono-complete zsh-syntax-highlighting kpcli powershell -y
