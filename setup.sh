@@ -18,6 +18,7 @@ fi
 cp .zshrc ~/
 cp .bashrc ~/
 cp .gitconfig ~/
+cp .vimrc ~/
 
 # Get Microsoft's Ubuntu 18.04 keys and repository
 wget -q "https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb"
