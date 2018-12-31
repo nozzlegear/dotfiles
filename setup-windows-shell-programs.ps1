@@ -21,3 +21,6 @@ choco install azure-cli -y
 choco install curl -y
 choco install docker -y
 choco install docker-compose -y
+choco install dotnet4.5 -y
+choco install dotnet4.6 -y
+choco install dotnet4.7 -y
