@@ -1,5 +1,10 @@
 #! /bin/bash
 
+if [ "$(whoami)" != "root" ]; then
+    echo "You must run this script as root. Try \`sudo ./setup.sh\`."
+    exit 1
+fi
+
 # https://stackoverflow.com/a/38859331
 if grep -q Microsoft /proc/version; then
     echo "Ubuntu on Windows"
@@ -19,6 +24,10 @@ wget -q "https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-p
 dpkg -i packages-microsoft-prod.deb
 add-apt-repository universe -y
 rm packages-microsoft-prod.deb
+
+# Add yarn's apt repository
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 # Install apt files
 apt update
