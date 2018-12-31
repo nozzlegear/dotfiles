@@ -1,5 +1,10 @@
 #! /bin/bash
 
+if [ "$(whoami)" != "root" ]; then
+    echo "You must run this script as root. Try \`sudo ./setup-pure-zsh.sh\`."
+    exit 1
+fi
+
 # Create a ~/.zshfunctions folder
 # Create a ~/.zshextras folder
 # Clone sindresorhus/pure into the extras folder
@@ -58,22 +63,11 @@ else
 	echo "$syntaxFile already exists. Skipping symlink."
 fi
 
-# Ask if we should append the configuration to the .zshrc file
-read -p "Would you like to append the necessary configuration to your .zshrc file? This may not be necessary if you're using the .zshrc file from nozzlegear/dotfiles. y/n: " -n 1 -r
 echo # New line
-if [[ $REPLY =~ ^[Yy]$ ]]; then 
-	echo $line1 >> "$HOME/.zshrc"
-	echo $line2 >> "$HOME/.zshrc"
-	echo $line3 >> "$HOME/.zshrc"
-	echo $line4 >> "$HOME/.zshrc"
-	echo $line5 >> "$HOME/.zshrc"
-	echo "Done! Pure Prompt has been setup. Restart your zsh session to begin using it."
-else
-	echo "To manually add the configuration for Pure Prompt, append the following to your .zshrc file:"
-	echo
-	echo $line1
-	echo $line2
-	echo $line3
-	echo $line4
-	echo $line5
-fi
+echo "To manually add the configuration for Pure Prompt, append the following to your .zshrc file:"
+echo
+echo $line1
+echo $line2
+echo $line3
+echo $line4
+echo $line5
