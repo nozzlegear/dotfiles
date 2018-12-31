@@ -110,7 +110,7 @@ if [[ $WSL_running == true ]]; then
     alias faas="faas-cli"
     alias ii="explorer.exe"
     alias yarn="/usr/bin/yarn"
-    alias code="/mnt/c/Program Files/Microsoft VS Code/bin/code.cmd"
+    alias code="/mnt/c/Program Files/Microsoft VS Code/bin/code"
     #alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
     # Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
     #alias dotnet="dotnet.exe"
