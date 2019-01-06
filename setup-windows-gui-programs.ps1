@@ -31,3 +31,4 @@ choco install nimbletext -y
 choco install ant-renamer -y
 choco install azure-data-studio -y
 choco install keepassx -y
+choco install hyper -y
