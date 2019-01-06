@@ -40,14 +40,14 @@ apt remove cmdtest -y
 
 # Install apt files
 apt update
-apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-sdk-2.2" nodejs yarn zsh zip unzip unrar p7zip-full mono-complete zsh-syntax-highlighting kpcli powershell git-secret -y
+apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-sdk-2.2" nodejs yarn zsh zip unzip unrar p7zip-full mono-complete zsh-syntax-highlighting kpcli powershell git-secret docker.io -y
 
 # Install Node globals
 bash ./setup-node-globals.sh
 
 # GUI programs
 if [[ $WSL_running == false ]]; then
-    apt install code gnome-shell docker.io firefox-dev chromium-browser redshift devilspie2 vlc konsole deluge -y
+    apt install code gnome-shell firefox-dev chromium-browser redshift devilspie2 vlc konsole deluge -y
     snap install keepassxc vscode --classic
 fi
 
