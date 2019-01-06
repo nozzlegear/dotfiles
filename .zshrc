@@ -110,7 +110,8 @@ if [[ $WSL_running == true ]]; then
     alias faas="faas-cli"
     alias ii="explorer.exe"
     alias yarn="/usr/bin/yarn"
-    alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"
+    alias npm="/usr/bin/npm"
+    #alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"
     #alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
     # Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
     #alias dotnet="dotnet.exe"
@@ -151,6 +152,11 @@ if [[ $WSL_running == true ]]; then
     PURE_GIT_DOWN_ARROW=ᐁ
     PURE_GIT_UP_ARROW=ᐃ
 
+fi
+
+# Docker port stuff
+if [[ $WSL_running == true ]]; then 
+    export DOCKER_HOST=tcp://localhost:2375
 fi
 
 ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
