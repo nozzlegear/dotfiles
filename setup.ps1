@@ -50,6 +50,9 @@ if ($pathChanged -eq $true) {
 	setx PATH "$finalPath"
 }
 
+# Copy Hyper's config
+cp .hyper.js ~/.hyper.js
+
 # Run the powershell setup script which copies over the profile.ps1 file and installs missing modules 
 powershell.exe -Command "./setup-powershell.ps1" 
 
