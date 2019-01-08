@@ -163,5 +163,8 @@ ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure promp
 fpath=( "$HOME/.zshfunctions" $fpath )
 autoload -U promptinit; promptinit
 prompt pure
-source "$HOME/.zshfunctions/zsh-syntax-highlighting" #This plugin must be the last thing sourced in your .zshrc file
 
+if [[ $WSL_running == false ]]; then
+    # Syntax highlighting plugins do not currently work with zsh in cmder on wsl -- they will make long text overwrite the previous line instead of moving to a new line.
+    source "$HOME/.zshfunctions/zsh-syntax-highlighting" #This plugin must be the last thing sourced in your .zshrc file
+fi
