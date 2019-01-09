@@ -41,6 +41,8 @@ fi
 
 if [ ! -d "$zshextras/zsh-syntax-highlighting" ]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting "$zshextras/zsh-syntax-highlighting"
+    # Fix https://github.com/robbyrussell/oh-my-zsh/issues/6835
+    chmod 755 "$zshextras/zsh-syntax-highlighting"
 else
 	echo "It looks like zsh-users/zsh-syntax-highlighting already exists in $zshextras. Skipping repo clone."
 fi
