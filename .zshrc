@@ -71,7 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,18 +109,20 @@ if [[ $WSL_running == true ]]; then
     alias lsmb="ls -l --block-size=M"
     alias faas="faas-cli"
     alias ii="explorer.exe"
-    alias yarn="/usr/bin/yarn"
-    alias npm="/usr/bin/npm"
-    #alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"
-    #alias bogpaddle="echo 'Loading bogpaddle...' && powershell.exe bogpaddle"
-    # Alias things like dotnet and dart because using the WSL versions of them causes blue screens right now.
-    #alias dotnet="dotnet.exe"
-    #alias dart="dart.exe"
+    alias bogpaddle="cmd.exe /c bogpaddle.cmd"
     #alias pub="ps pub"
     #alias dartanalyzer="ps dartanalyzer"
     #alias dart2js="ps dart2js"
     #alias dartdevc="ps dartdevc"
     #alias stagehand="ps stagehand"  
+
+    # Alias things like dotnet and yarn to the Windows exe version, which ensures VS Code will load the proper Windows versions of packages.
+    # If VS Code tries to load the Linux version of packages, it will show a bunch of errors because it doesn't know how to use them.
+    alias dotnet="dotnet.exe"
+    alias dart="dart.exe"
+    alias yarn="cmd.exe /c yarn.cmd"
+    alias npm="cmd.exe /c npm.cmd"
+    alias node="node.exe"
 fi
 
 # Adjust the PATH to point to things like yarn, dotnet, dart, etc.
