@@ -1,3 +1,6 @@
 [user]
 	email = joshua@nozzlegear.com
 	name = Joshua Harms
+[alias]
+	last = log --decorate --pretty=oneline --abbrev-commit -3
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
