@@ -4,3 +4,5 @@
 [alias]
 	last = log --decorate --pretty=oneline --abbrev-commit -3
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[push]
+	default = simple
