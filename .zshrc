@@ -106,7 +106,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 if [[ $WSL_running == true ]]; then
     alias ps="pwsh.exe -noprofile -c"
-    alias lsmb="ls -l --block-size=M"
     alias faas="faas-cli"
     alias ii="explorer.exe"
     alias bogpaddle="cmd.exe /c bogpaddle.cmd"
@@ -124,6 +123,9 @@ if [[ $WSL_running == true ]]; then
     alias npm="cmd.exe /c npm.cmd"
     alias node="node.exe"
 fi
+
+alias lsmb="ls -l --block-size=M"
+alias s="git status"
 
 # Adjust the PATH to point to things like yarn, dotnet, dart, etc.
 PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin"
