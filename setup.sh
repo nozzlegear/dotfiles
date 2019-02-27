@@ -45,6 +45,11 @@ apt install apt-transport-https ca-certificates fsharp dos2unix jq "dotnet-sdk-2
 # Install Node globals
 bash ./setup-node-globals.sh
 
+# Install fd, a file finding utility
+curl -sOL "https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64.deb"
+dpkg -i "./fd_7.3.0_amd64.deb"
+rm "./fd_7.3.0_amd64.deb"
+
 # GUI programs
 if [[ $WSL_running == false ]]; then
     apt install code gnome-shell firefox-dev chromium-browser redshift devilspie2 vlc konsole deluge -y
