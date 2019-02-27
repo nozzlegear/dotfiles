@@ -127,6 +127,7 @@ fi
 
 alias lsmb="ls -l --block-size=M"
 alias s="git status"
+alias find="fd"
 
 # Adjust the PATH to point to things like yarn, dotnet, dart, etc.
 PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin"
