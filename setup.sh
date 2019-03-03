@@ -52,6 +52,9 @@ rm "./fd_7.3.0_amd64.deb"
 
 # Install notes (https://github.com/pimterry/notes)
 curl -L https://rawgit.com/pimterry/notes/latest-release/install.sh | bash
+# Get notes autocompletion for zsh
+curl -L https://rawgit.com/pimterry/notes/latest-release/_notes > _notes
+mv _notes /usr/local/share/zsh/site-functions/_notes
 
 # GUI programs
 if [[ $WSL_running == false ]]; then
