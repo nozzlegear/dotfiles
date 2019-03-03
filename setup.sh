@@ -50,6 +50,9 @@ curl -sOL "https://github.com/sharkdp/fd/releases/download/v7.3.0/fd_7.3.0_amd64
 dpkg -i "./fd_7.3.0_amd64.deb"
 rm "./fd_7.3.0_amd64.deb"
 
+# Install notes (https://github.com/pimterry/notes)
+curl -L https://rawgit.com/pimterry/notes/latest-release/install.sh | bash
+
 # GUI programs
 if [[ $WSL_running == false ]]; then
     apt install code gnome-shell firefox-dev chromium-browser redshift devilspie2 vlc konsole deluge -y
