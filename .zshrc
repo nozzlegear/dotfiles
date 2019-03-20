@@ -108,6 +108,7 @@ if [[ $WSL_running == true ]]; then
     alias ps="pwsh.exe -noprofile -c"
     alias faas="faas-cli"
     alias ii="explorer.exe"
+    alias fman="fman.exe"
     alias bogpaddle="cmd.exe /c bogpaddle.cmd"
     #alias pub="ps pub"
     #alias dartanalyzer="ps dartanalyzer"
@@ -118,6 +119,7 @@ if [[ $WSL_running == true ]]; then
     # Alias things like dotnet and yarn to the Windows exe version, which ensures VS Code will load the proper Windows versions of packages.
     # If VS Code tries to load the Linux version of packages, it will show a bunch of errors because it doesn't know how to use them.
     alias dotnet="dotnet.exe"
+    alias paket="paket.exe"
     alias dart="dart.exe"
     alias yarn="cmd.exe /c yarn.cmd"
     alias npm="cmd.exe /c npm.cmd"
