@@ -12,6 +12,12 @@ set expandtab       " Expand TABs to spaces
 
 set number          " Shows line numbers
 
-"set cursorline      " Highlights the currently selected line
+set cursorline      " Highlights the currently selected line
 
 syntax on           " Turns on syntax highlighting
+
+" Set the terminal's title to the title of the file being edited
+set title
+
+" Remap jk to escape. Tried to remap f13 to escape but can't seem to get it to work
+imap jk <esc>
