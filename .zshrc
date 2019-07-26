@@ -118,12 +118,12 @@ if [[ $WSL_running == true ]]; then
 
     # Alias things like dotnet and yarn to the Windows exe version, which ensures VS Code will load the proper Windows versions of packages.
     # If VS Code tries to load the Linux version of packages, it will show a bunch of errors because it doesn't know how to use them.
-    alias dotnet="dotnet.exe"
-    alias paket="paket.exe"
-    alias dart="dart.exe"
-    alias yarn="cmd.exe /c yarn.cmd"
-    alias npm="cmd.exe /c npm.cmd"
-    alias node="node.exe"
+    #alias dotnet="dotnet.exe"
+    #alias paket="paket.exe"
+    # alias dart="dart.exe"
+    # alias yarn="cmd.exe /c yarn.cmd"
+    # alias npm="cmd.exe /c npm.cmd"
+    # alias node="node.exe"
     export r="/mnt/c/Users/nozzlegear/repos"
 fi
 
@@ -132,7 +132,7 @@ alias s="git status"
 alias find="fd"
 
 # Adjust the PATH to point to things like yarn, dotnet, dart, etc.
-PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin"
+PATH="$PATH:$HOME/.yarn/bin:$HOME/.dotnet/tools:$HOME/.local/bin:/usr/lib/dart/bin:$HOME/.cargo/bin"
 
 # Clipboard alias
 if [[ $WSL_running == true  ]]; then
@@ -149,6 +149,10 @@ fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
+
+# Fix gpg stuff
+# https://github.com/microsoft/WSL/issues/4029
+export GPG_TTY=$(tty)
 
 # Pure zsh theme
 if [[ $WSL_running == true ]]; then
