@@ -107,7 +107,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 if [[ $WSL_running == true ]]; then
     alias ps="pwsh.exe -noprofile -c"
     alias faas="faas-cli"
-    alias ii="explorer.exe"
+    alias ii="pwsh.exe -noprofile -c invoke-item "
     alias fman="fman.exe"
     alias bogpaddle="cmd.exe /c bogpaddle.cmd"
     #alias pub="ps pub"
@@ -171,12 +171,14 @@ if [[ $WSL_running == true ]]; then
     export DOCKER_HOST=tcp://localhost:2375
 fi
 
-ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
-fpath=( "$HOME/.zshfunctions" $fpath )
-autoload -U promptinit; promptinit
-prompt pure
+#ZSH_THEME="" #No zsh theme should be selected when using sindresorhus/pure prompt.
+#fpath=( "$HOME/.zshfunctions" $fpath )
+#autoload -U promptinit; promptinit
+#prompt pure
 
 if [[ $WSL_running == false ]]; then
     # Syntax highlighting plugins do not currently work with zsh in cmder on wsl -- they will make long text overwrite the previous line instead of moving to a new line.
     source "$HOME/.zshfunctions/zsh-syntax-highlighting" #This plugin must be the last thing sourced in your .zshrc file
 fi
+
+eval "$(starship init zsh)"
