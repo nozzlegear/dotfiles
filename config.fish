@@ -26,6 +26,12 @@ if test "$WSL_running" = true
     set -gx DOCKER_HOST 'tcp://localhost:2375'
 end
 
+# Set preferred text editor
+set -gx EDITOR nvim
+
+# Fix gpg stuff
+set -gx GPG_TTY (tty)
+
 # Use starship prompt
 # https://starship.rs
 eval (starship init fish)
