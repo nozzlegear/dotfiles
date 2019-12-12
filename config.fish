@@ -15,7 +15,12 @@ end
 
 # Custom aliases and functions
 alias s 'git status'
-set -x r '/mnt/c/Users/nozzlegear/repos'
+
+if test "$WSL_running" = true
+	set -x r '/mnt/c/Users/nozzlegear/repos'
+else 
+	set -x r ~/repos
+end
 
 # Set path to include things like dotnet tools
 # https://github.com/fish-shell/fish-shell/issues/527
