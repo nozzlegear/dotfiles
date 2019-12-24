@@ -17,7 +17,8 @@ end
 alias s 'git status'
 
 if test "$WSL_running" = true
-	set -x r '/mnt/c/Users/nozzlegear/repos'
+    # This assumes that wsl.conf has been edited to make WSL mount at /c instead of /mnt/c
+	set -x r '/c/Users/nozzlegear/repos'
 else 
 	set -x r ~/repos
 end

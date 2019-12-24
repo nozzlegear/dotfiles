@@ -124,7 +124,8 @@ if [[ $WSL_running == true ]]; then
     # alias yarn="cmd.exe /c yarn.cmd"
     # alias npm="cmd.exe /c npm.cmd"
     # alias node="node.exe"
-    export r="/mnt/c/Users/nozzlegear/repos"
+    # This assumes that wsl.conf has been edited to make WSL mount at /c instead of /mnt/c
+    export r="/c/Users/nozzlegear/repos"
 fi
 
 alias lsmb="ls -l --block-size=M"
