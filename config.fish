@@ -27,10 +27,22 @@ end
 # Custom aliases and functions
 alias s 'git status'
 
+function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
+    if test -z "$tagValue"
+        set_color yellow
+        echo "No tag value specified. Usage: `tag 1.2.3`"
+        set_color normal
+        return 
+    end
+    git tag -s "$tagValue" -m "$tagValue"
+end
+
 if test "$WSL_running" = true
 	set -x r '/mnt/c/Users/nozzlegear/repos'
+    alias clip 'clip.exe'
 else 
 	set -x r ~/repos
+    alias clip 'xsel --clipboard'
 end
 
 # Set path to include things like dotnet tools
