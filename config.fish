@@ -8,6 +8,9 @@ set -l WSL_running
 if grep -q Microsoft /proc/version
     echo "WSL on Windows"
     set WSL_running true 
+else if grep -q microsoft-standard-WSL /proc/version
+    echo "WSL2 on Windows"
+    set WSL_running true 
 else
     echo "Native Linux"
     set WSL_running false
@@ -26,6 +29,11 @@ end
 
 # Custom aliases and functions
 alias s 'git status'
+alias gd 'git diff'
+alias gdc 'git diff --cached'
+# rot13 cipher; usage: echo "hello world" | rot13
+alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+set -x r ~/repos
 
 function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
     if test -z "$tagValue"
@@ -38,10 +46,10 @@ function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
 end
 
 if test "$WSL_running" = true
-	set -x r '/mnt/c/Users/nozzlegear/repos'
+#	set -x r '/mnt/c/Users/nozzlegear/repos'
+    set -x u '/mnt/c/Users/nozzl'
     alias clip 'clip.exe'
 else 
-	set -x r ~/repos
     alias clip 'xsel --clipboard'
 end
 
@@ -55,6 +63,7 @@ if test "$WSL_running" = true
 end
 
 # env variables
+. ~/.config/fish/env.fish
 set -gx ASPNETCORE_ENVIRONMENT "Development"
 # Point CurseBreaker to the wow retail directory
 # https://github.com/AcidWeb/CurseBreaker
@@ -85,6 +94,12 @@ set -gx GPG_TTY (tty)
 #  read -ei "$1" newfilename
 #  command mv -v -- "$1" "$newfilename"
 #}
+#
+
+# Attempting to make x11 server work in WSL
+if test "$WSL_running" = true
+    set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+end
 
 # Use starship prompt
 # https://starship.rs
