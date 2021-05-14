@@ -42,8 +42,8 @@ function Copy() range
 endfunction   
 
 " This adds the :Copy and :Clip shortcuts, meaning you don't need to do :call Copy()
-com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
-com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
+"com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
+"com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
 " Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -62,6 +62,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'leafgarland/typescript-vim'
 " Plug 'ianks/vim-tsx'
 Plug 'peitalin/vim-jsx-typescript'
+" Language client (requirement for ionide-vim)
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+" Ionide-vim
+Plug 'ionide/Ionide-vim', {
+      \ 'do':  'make fsautocomplete',
+      \}
 
 " Initialize plugin system
 call plug#end()

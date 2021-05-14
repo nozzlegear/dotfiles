@@ -39,3 +39,21 @@ set title
 
 " Remap jk to escape. Tried to remap f13 to escape but can't seem to get it to work
 imap jk <esc>
+
+" Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip. 
+" https://stackoverflow.com/a/2585673
+function Copy() range 
+    echo system('echo '.shellescape(join(getline(a:firstline, a:listline), "\n")).'| xclip -selection clipboard')
+endfunction
+" This version works on windows. TODO: figure out how to combine these two
+" functions so they're portable
+function Copy() range
+      echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| clip.exe')
+endfunction   
+" This adds the :copy shortcut, meaning you don't need to do :call Copy()
+com -range=% -nargs=0 copy :<line1>,<line2>call Copy()
+
+function Test() range
+  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip -selection clipboard')
+endfunction
+com -range=% -nargs=0 Test :<line1>,<line2>call Test()
