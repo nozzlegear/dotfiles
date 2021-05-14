@@ -1,4 +1,2 @@
-# This file should be placed at ~/.config/starship.toml
-
 [git_branch]
-symbol = "🌱 "
+symbol = "🌳 "
