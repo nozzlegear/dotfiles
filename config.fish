@@ -46,8 +46,8 @@ function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
 end
 
 if test "$WSL_running" = true
-#	set -x r '/mnt/c/Users/nozzlegear/repos'
-    set -x u '/mnt/c/Users/nozzl'
+    set -x u '/mnt/c/Users/nozzlegear'
+    set -x r ~/repos
     alias clip 'clip.exe'
 
     function numlock -d "Toggles numlock on Windows via PowerShell"
