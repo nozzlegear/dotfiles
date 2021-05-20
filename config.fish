@@ -71,7 +71,10 @@ if test "$WSL_running" = true
 end
 
 # env variables
-. ~/.config/fish/env.fish
+if not test -f ~/.config/fish/env.fish
+    touch ~/.config/fish/env.fish
+end
+source ~/.config/fish/env.fish
 set -gx ASPNETCORE_ENVIRONMENT "Development"
 # Point CurseBreaker to the wow retail directory
 # https://github.com/AcidWeb/CurseBreaker
