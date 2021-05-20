@@ -63,7 +63,7 @@ end
 
 # Set path to include things like dotnet tools
 # https://github.com/fish-shell/fish-shell/issues/527
-set -gx PATH ~/.dotnet/tools ~/.local/bin ~/.yarn/bin $PATH
+set -gx PATH ~/.dotnet ~/.dotnet/tools ~/.local/bin ~/.yarn/bin $PATH
 
 # Docker port stuff
 if test "$WSL_running" = true
