@@ -49,6 +49,14 @@ if test "$WSL_running" = true
 #	set -x r '/mnt/c/Users/nozzlegear/repos'
     set -x u '/mnt/c/Users/nozzl'
     alias clip 'clip.exe'
+
+    function numlock -d "Toggles numlock on Windows via PowerShell"
+        powershell.exe -C "\$wsh = New-Object -ComObject WScript.Shell; \$wsh.SendKeys('{NUMLOCK}')"
+    end
+
+    function capslock -d "Toggles capslock on Windows via PowerShell"
+        powershell.exe -C "\$wsh = New-Object -ComObject WScript.Shell; \$wsh.SendKeys('{CAPSLOCK}')"
+    end
 else 
     alias clip 'xsel --clipboard'
 end
