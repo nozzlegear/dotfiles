@@ -31,6 +31,8 @@ end
 alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
+# Abbreviation for finding the size of a file. When used, expands to du -h
+abbr size du -hs
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 set -x r ~/repos
@@ -47,7 +49,7 @@ end
 
 if test "$WSL_running" = true
     set -x u '/mnt/c/Users/nozzlegear'
-    set -x r ~/repos
+	set -x r ~/repos
     alias clip 'clip.exe'
 
     function numlock -d "Toggles numlock on Windows via PowerShell"
