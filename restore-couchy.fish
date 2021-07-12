@@ -28,4 +28,4 @@ set volumeLocation "$HOME/docker/custom-volumes/couchy/data"
 echo "Restoring Couchy database with apache/couchdb:3 on port $port. Using '$username' as admin username, and '$volumeLocation' as the data volume location."
 echo ""
 
-docker run --restart "unless-stopped" --name "couchy" --volume "$volumeLocation:/opt/couchdb/data" -d -e "COUCHDB_USER=$username" -e "COUCHDB_PASSWORD=$password" -p "$port:5984" apache/couchdb
+sudo docker run --restart "unless-stopped" --name "couchy" --volume "$volumeLocation:/opt/couchdb/data" -d -e "COUCHDB_USER=$username" -e "COUCHDB_PASSWORD=$password" -p "$port:5984" apache/couchdb
