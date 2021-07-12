@@ -47,6 +47,11 @@ function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
     git tag -s "$tagValue" -m "$tagValue"
 end
 
+# A function to check the expiration date of an SSL certificate
+function ssl_expiry -a "domain" -d "Gets the SSL certificate expiration date for the given website"
+    echo | openssl s_client -connect "$domain:443" 2>/dev/null | openssl x509 -noout -enddate
+end
+
 if test "$WSL_running" = true
     set -x u '/mnt/c/Users/nozzlegear'
 	set -x r ~/repos
