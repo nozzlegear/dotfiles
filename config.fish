@@ -33,6 +33,8 @@ alias gd 'git diff'
 alias gdc 'git diff --cached'
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr size du -hs
+# Abbreviation for downloading just audio from a URL with youtube-dl
+abbr audio youtube-dl --extract-audio --audio-format "m4a" 
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 set -x r ~/repos
@@ -92,6 +94,9 @@ set -gx EDITOR nvim
 
 # Fix gpg stuff
 set -gx GPG_TTY (tty)
+
+# Set fuzzyfinder (:FZF in vim) to use ripgrep and ignore any files in .gitignore file
+set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
 
 # Put this function to your .bashrc file.
 # Usage: mv oldfilename
