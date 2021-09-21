@@ -24,6 +24,7 @@ sudo tar -zcpv \
     --exclude "repos/**/*/bin" \
     --exclude "repos/**/*/obj" \
     --exclude "snap" \
+    --exclude "*-backup-*.tar.gz" \
     -f "/tmp/$fileName" \
     ~/
 
