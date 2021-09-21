@@ -24,10 +24,58 @@ set number          " Shows line numbers
 
 set cursorline      " Highlights the currently selected line
 
+set cmdheight=2     " Sets the bottom command bar to 2 line height. Prevents Ionide's function signatures from showing a 'Press Enter to Continue' command bar
+
 syntax on           " Turns on syntax highlighting
 
 " Remap jk to escape. Tried to remap f13 to escape but can't seem to get it to work
 imap jk <esc>
+
+" Keybind ctrl-p to open fuzzyfinder (:FZF command)
+nnoremap <C-p> :FZF <enter>
+
+" Keybind -- to open the current directory
+nnoremap -- :Ex <enter>
+
+function ControlEll() 
+    if &filetype == "typescript.tsx" || &filetype == "typescript" 
+        echo "You pressed the shortcut in a typescript file, calling TSU stuff"
+    elseif &filetype == "cs"
+        echo "You pressed the shortcut in a C# file, that's wild. Calling omnisharp stuff."
+    elseif &filetype == "fs" || &filetype == "fsharp"
+        echo "You pressed the shortcut in an F# file, that's also wild. Calling ionide stuff."
+    else
+        echo "You pressed the ctrl-l shortcut in an unknown file type: " . &filetype "file"
+    endif
+endfunction
+
+function OpenTypePreview()
+    if &filetype == "cs"
+        echo "Opening type preview for C# file"
+        :OmniSharpPreviewDefinition
+    elseif &filetype == "typescript.tsx" || &filetype == "typescript"
+        echo "Opening type definition for TS file"
+        :TsuDefinition
+    else
+        echo "Unhandled file type \"" . &filetype . "\""
+    endif
+endfunction
+
+function OpenTypeDefinition()
+    if &filetype == "cs"
+        echo "Opening type definition for C# file"
+        :OmniSharpGotoDefinition
+    elseif &filetype == "typescript.tsx" || &filetype == "typescript"
+        echo "Opening type definition for TS file"
+        :TsuDefinition
+    else
+        echo "Unhandled file type \"" . &filetype . "\""
+    endif
+endfunction
+
+nnoremap <C-l> :call ControlEll() <enter>
+nnoremap <F12> :call OpenTypePreview() <enter>
+nnoremap <F12><F12> :call OpenTypeDefinition() <enter>
 
 " Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip. 
 " https://stackoverflow.com/a/2585673
@@ -45,11 +93,12 @@ endfunction
 "com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
 "com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
-" Plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" Plug plugin manager
+" https://github.com/junegunn/vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Specify a directory for plugins
@@ -69,10 +118,26 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
+" Autocomplete plugin
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 " Ionide-vim
 Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
+" Omnisharp-vim
+Plug 'OmniSharp/omnisharp-vim'
+" Mint
+Plug 'IrenejMarc/vim-mint'
+" Typescript
+Plug 'Quramy/tsuquyomi'
+" More automcomplete stuff
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " Initialize plugin system
 call plug#end()
