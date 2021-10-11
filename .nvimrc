@@ -53,7 +53,7 @@ function OpenTypePreview()
     if &filetype == "cs"
         echo "Opening type preview for C# file"
         :OmniSharpPreviewDefinition
-    elseif &filetype == "typescript.tsx" || &filetype == "typescript"
+    elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
         echo "Opening type definition for TS file"
         :TsuDefinition
     else
@@ -65,7 +65,7 @@ function OpenTypeDefinition()
     if &filetype == "cs"
         echo "Opening type definition for C# file"
         :OmniSharpGotoDefinition
-    elseif &filetype == "typescript.tsx" || &filetype == "typescript"
+    elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
         echo "Opening type definition for TS file"
         :TsuDefinition
     else
@@ -108,7 +108,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugins here
 " Make sure you use single quotes
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 " Plug 'ianks/vim-tsx'
 Plug 'peitalin/vim-jsx-typescript'
 " Language client (requirement for ionide-vim)
@@ -138,10 +138,17 @@ Plug 'IrenejMarc/vim-mint'
 Plug 'Quramy/tsuquyomi'
 " More automcomplete stuff
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Stylus syntax
+Plug 'iloginow/vim-stylus'
 
 " Initialize plugin system
 call plug#end()
 
 " Set the filetype of all *.tsx files to typescript.tsx; required for the
 " typescript syntax highlighting plugins
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+" autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
