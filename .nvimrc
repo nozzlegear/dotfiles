@@ -93,6 +93,11 @@ endfunction
 "com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
 "com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
+" Tell FuzzyFinder to use ripgrep, which will ignore files in .gitignore by
+" default. Also tell it to ignore files in the .git folder so a search for
+" e.g. 'hooks' doesn't show files in the .git/hooks folder. 
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-vcs --hidden -g "!.git"'
+
 " Plug plugin manager
 " https://github.com/junegunn/vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
