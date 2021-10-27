@@ -89,6 +89,9 @@ set -gx ASPNETCORE_ENVIRONMENT "Development"
 # https://github.com/AcidWeb/CurseBreaker
 set -gx CURSEBREAKER_PATH "/home/nozzlegear/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_"
 
+# Prevent dotnet watch from opening browser windows
+set -gx DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
+
 # Set preferred text editor
 set -gx EDITOR nvim
 
