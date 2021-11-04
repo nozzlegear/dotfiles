@@ -8,7 +8,7 @@
 	signingkey = 678CB5B8
 [core]
 	ignorecase = false
-	autocrlf = true
+	autocrlf = input
 [gpg]
 	program = gpg2
 [core]
