@@ -59,6 +59,12 @@ alias gdc 'git diff --cached'
 abbr size du -hs
 # Abbreviation for downloading just audio from a URL with youtube-dl
 abbr audio youtube-dl --extract-audio --audio-format "m4a" 
+# Abbreviation for installing software based on the operating system
+if isMac
+    abbr i brew install
+else
+    abbr i sudo apt install -y
+end
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 set -x r ~/repos
