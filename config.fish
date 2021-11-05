@@ -2,18 +2,42 @@
 # Note: Fish variables are block scoped. If you want to set one conditionally, you must first declare it outside the block it's being set in.
 # https://stackoverflow.com/a/53685510
 
-# Check if running on WSL or native Linux
+# Check if running on WSL, Linux or Mac
 # https://stackoverflow.com/a/38859331
-set -l WSL_running
-if grep -q Microsoft /proc/version
-    echo "WSL on Windows"
+function isWindows
+    if test -f /proc/version
+        switch (cat /proc/version)
+            case "*Microsoft*" "*microsoft-standard-WSL*"
+                return 0
+        end
+    end
+    return 1
+end
+
+function isMac
+    if test (uname -s) = "Darwin"
+        return 0
+    end
+    return 1
+end
+
+function welcome -a os
+    echo ""
+    set_color "yellow"
+    echo -n "❯ "
+    set_color normal
+    echo "🐟 Fish on $os" 
+end
+
+if isWindows
+    welcome "WSL"
     set WSL_running true 
-else if grep -q microsoft-standard-WSL /proc/version
-    echo "WSL2 on Windows"
-    set WSL_running true 
+else if isMac
+    welcome "macOS"
+    set WSL_running false 
 else
-    echo "Native Linux"
-    set WSL_running false
+    welcome "Linux"
+    set WSL_running false 
 end
 
 # Install fish package manager if it doesn't exist
