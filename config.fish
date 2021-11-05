@@ -109,9 +109,16 @@ if not test -f ~/.config/fish/env.fish
 end
 source ~/.config/fish/env.fish
 set -gx ASPNETCORE_ENVIRONMENT "Development"
+
 # Point CurseBreaker to the wow retail directory
 # https://github.com/AcidWeb/CurseBreaker
-set -gx CURSEBREAKER_PATH "/home/nozzlegear/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_"
+if isWindows
+    set -gx CURSEBREAKER_PATH "/mnt/c/Program Files (x86)/World of Warcraft/_retail_"
+else if isMac
+    set -gx CURSEBREAKER_PATH "/Applications/World of Warcraft/_retail_"
+else
+    set -gx CURSEBREAKER_PATH "/home/nozzlegear/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_"
+end
 
 # Prevent dotnet watch from opening browser windows
 set -gx DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
