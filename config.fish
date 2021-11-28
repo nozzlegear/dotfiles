@@ -2,6 +2,12 @@
 # Note: Fish variables are block scoped. If you want to set one conditionally, you must first declare it outside the block it's being set in.
 # https://stackoverflow.com/a/53685510
 
+# Check if this shell is interactive and should echo (e.g. user controlled) or if it's a script that invoked fish and shouldn't echo.
+# https://unix.stackexchange.com/a/278650
+function shouldEcho -d "Checks if this script should echo, i.e. it's running as part of the user's shell and not as another script."
+    return (status --is-interactive)
+end
+
 # Check if running on WSL, Linux or Mac
 # https://stackoverflow.com/a/38859331
 function isWindows
@@ -22,11 +28,13 @@ function isMac
 end
 
 function welcome -a os
-    echo ""
-    set_color "yellow"
-    echo -n "❯ "
-    set_color normal
-    echo "🐟 Fish on $os" 
+    if shouldEcho
+        echo ""
+        set_color "yellow"
+        echo -n "❯ "
+        set_color normal
+        echo "🐟 Fish on $os" 
+    end
 end
 
 if isWindows
