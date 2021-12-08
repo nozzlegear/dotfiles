@@ -59,6 +59,9 @@ function OpenTypePreview()
     elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
         echo "Opening type definition for TS file"
         :TsuDefinition
+    elseif &filetype == "f#" || &filetype == "fsharp"
+        echo "Type previews are unsupported for F# files. Opening full type definition"
+        :call g:LanguageClient#textDocument_definition() 
     else
         echo "Unhandled file type \"" . &filetype . "\""
     endif
@@ -71,6 +74,9 @@ function OpenTypeDefinition()
     elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
         echo "Opening type definition for TS file"
         :TsuDefinition
+    elseif &filetype == "f#" || &filetype == "fsharp"
+        echo "Opening type definition for F# file"
+        :call g:LanguageClient#textDocument_definition() 
     else
         echo "Unhandled file type \"" . &filetype . "\""
     endif
