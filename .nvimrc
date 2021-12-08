@@ -99,8 +99,8 @@ function Copy() range
 endfunction   
 
 " This adds the :Copy and :Clip shortcuts, meaning you don't need to do :call Copy()
-"com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
-"com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
+com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
+com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
 " Tell FuzzyFinder to use ripgrep, which will ignore files in .gitignore by
 " default. Also tell it to ignore files in the .git folder so a search for
