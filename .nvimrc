@@ -37,6 +37,9 @@ nnoremap <C-p> :FZF <enter>
 " Keybind -- to open the current directory
 nnoremap -- :Ex <enter>
 
+" Keybind \ to swap to the previous file
+nnoremap \ :e# <enter>
+
 function ControlEll() 
     if &filetype == "typescript.tsx" || &filetype == "typescript" 
         echo "You pressed the shortcut in a typescript file, calling TSU stuff"
