@@ -63,6 +63,8 @@ end
 alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
+alias ls 'exa -hFa --group-directories-first'
+alias ll 'exa -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr size du -hs
 # Abbreviation for downloading just audio from a URL with youtube-dl
