@@ -59,25 +59,28 @@ if not functions -q fisher
     fisher add jorgebucaran/fish-getopts
 end
 
-# Custom aliases and functions
+# Custom aliases, functions and abbreviations
+set -x r ~/repos
 alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
 alias ls 'exa -hFa --group-directories-first'
 alias ll 'exa -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
+# rot13 cipher; usage: echo "hello world" | rot13
+alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr size du -hs
 # Abbreviation for downloading just audio from a URL with youtube-dl
 abbr audio youtube-dl --extract-audio --audio-format "m4a" 
+# Abbreviation for using fdfind, improved find utility
+abbr find fdfind --hidden
 # Abbreviation for installing software based on the operating system
 if isMac
     abbr i brew install
 else
     abbr i sudo apt install -y
 end
-# rot13 cipher; usage: echo "hello world" | rot13
-alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
-set -x r ~/repos
 
 function tag -a "tagValue" -d "Runs `git tag -s` on the current directory"
     if test -z "$tagValue"
