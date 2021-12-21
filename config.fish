@@ -171,27 +171,6 @@ set -gx GPG_TTY (tty)
 # Set fuzzyfinder (:FZF in vim) to use ripgrep and ignore any files in .gitignore file
 set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
 
-# Put this function to your .bashrc file.
-# Usage: mv oldfilename
-# If you call mv without the second parameter it will prompt you to edit the filename on command line.
-# Original mv is called when it's called with more than one argument.
-# It's useful when you want to change just a few letters in a long name.
-#
-# Also see:
-# - imv from renameutils
-# - Ctrl-W Ctrl-Y Ctrl-Y (cut last word, paste, paste)
-
-#function mv() {
-#  if [ "$#" -ne 1 ] || [ ! -f "$1" ]; then
-#    command mv "$@"
-#    return
-#  fi
-#
-#  read -ei "$1" newfilename
-#  command mv -v -- "$1" "$newfilename"
-#}
-#
-
 # Attempting to make x11 server work in WSL
 if test "$WSL_running" = true
     set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
