@@ -108,9 +108,6 @@ function ctag -a "tagValue" -d "Commits and tags the current directory"
         return 1
     end
 
-    echo "would commit and tag here"
-    return 0
-
     git commit -m "$tagValue";
     and tag "$tagValue";
 end
