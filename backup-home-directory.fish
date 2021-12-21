@@ -3,20 +3,20 @@
 set fileName "$USER-backup-"(date --iso-8601=minutes)".tar.gz"
 
 sudo tar -zcpv \
-	--exclude "node_modules" \
-	--exclude "packages" \
-	--exclude "paket-files" \
-	--exclude ".rustup" \
-	--exclude ".local/share/Nuget/Cache" \
-	--exclude "*irtualBox VMs" \
-	--exclude "lutris" \
-	--exclude "Games" \
-	--exclude "Steam" \
+    --exclude "node_modules" \
+    --exclude "packages" \
+    --exclude "paket-files" \
+    --exclude ".rustup" \
+    --exclude ".local/share/Nuget/Cache" \
+    --exclude "*irtualBox VMs" \
+    --exclude "lutris" \
+    --exclude "Games" \
+    --exclude "Steam" \
     --exclude ".steam" \
-	--exclude "NuGet/v3-cache" \
-	--exclude ".vscode-server" \
-	--exclude ".mozilla" \
-	--exclude ".cache" \
+    --exclude "NuGet/v3-cache" \
+    --exclude ".vscode-server" \
+    --exclude ".mozilla" \
+    --exclude ".cache" \
     --exclude ".config/discord/Cache" \
     --exclude ".npm/*cache" \
     --exclude "Trash" \
