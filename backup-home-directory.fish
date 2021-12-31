@@ -33,6 +33,8 @@ sudo tar -zcpv \
     --exclude "*.udeb" \
     --exclude "*.exe" \
     -f "/tmp/$fileName" \
+    /etc/ssh/ssh_config \
+    /etc/ssh/sshd_config \
     ~/
 
 set_color green
