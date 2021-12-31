@@ -8,6 +8,7 @@ sudo tar -zcpv \
     --exclude "paket-files" \
     --exclude ".rustup" \
     --exclude ".local/share/Nuget/Cache" \
+    --exclude ".local/share/flatpak" \
     --exclude "*irtualBox VMs" \
     --exclude "lutris" \
     --exclude "Games" \
@@ -18,6 +19,8 @@ sudo tar -zcpv \
     --exclude ".mozilla" \
     --exclude ".cache" \
     --exclude ".config/discord/Cache" \
+    --exclude "com.discordapp.Discord" \
+    --exclude ".dbus" \
     --exclude ".npm/*cache" \
     --exclude "Trash" \
     --exclude "repos/AUR" \
@@ -25,6 +28,10 @@ sudo tar -zcpv \
     --exclude "repos/**/*/obj" \
     --exclude "snap" \
     --exclude "*-backup-*.tar.gz" \
+    --exclude "*.iso" \
+    --exclude "*.deb" \
+    --exclude "*.udeb" \
+    --exclude "*.exe" \
     -f "/tmp/$fileName" \
     ~/
 
