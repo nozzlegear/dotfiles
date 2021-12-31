@@ -27,6 +27,9 @@ sudo tar -zcpv \
     --exclude "repos/**/*/bin" \
     --exclude "repos/**/*/obj" \
     --exclude "snap" \
+    --exclude "Downloads/*.tar.gz" \
+    --exclude "Downloads/*.tgz" \
+    --exclude "Downloads/*.tar" \
     --exclude "*-backup-*.tar.gz" \
     --exclude "*.iso" \
     --exclude "*.deb" \
