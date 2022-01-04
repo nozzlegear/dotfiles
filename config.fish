@@ -179,6 +179,11 @@ if test "$WSL_running" = true
     set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 end
 
+# Solarized dircolors from the Dracula theme for gnome terminal
+if test -f ~/repos/gnome-terminal/dircolors
+    eval (dircolors ~/repos/gnome-terminal/dircolors | head -n 1 | sed 's/^LS_COLORS=/set -x LS_COLORS /;s/;$//')
+end
+
 # Use starship prompt
 # https://starship.rs
 eval (starship init fish)
