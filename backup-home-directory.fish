@@ -11,6 +11,7 @@ sudo tar -zcpv \
     --exclude ".local/share/flatpak" \
     --exclude "*irtualBox VMs" \
     --exclude "lutris" \
+    --exclude "Dropbox" \
     --exclude "Games" \
     --exclude "Steam" \
     --exclude ".steam" \
