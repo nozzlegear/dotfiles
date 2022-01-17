@@ -12,6 +12,7 @@ sudo tar -zcpv \
     --exclude "*irtualBox VMs" \
     --exclude "lutris" \
     --exclude "Dropbox" \
+    --exclude ".dropbox" \
     --exclude "Games" \
     --exclude "Steam" \
     --exclude ".steam" \
