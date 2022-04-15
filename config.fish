@@ -185,7 +185,8 @@ if test "$WSL_running" = true
 end
 
 # Solarized dircolors from the Dracula theme for gnome terminal
-if test -f ~/repos/gnome-terminal/dircolors
+if command -q dircolors
+    and test -f ~/repos/gnome-terminal/dircolors
     eval (dircolors ~/repos/gnome-terminal/dircolors | head -n 1 | sed 's/^LS_COLORS=/set -x LS_COLORS /;s/;$//')
 end
 
