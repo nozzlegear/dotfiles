@@ -33,6 +33,7 @@ sudo tar -zcpv \
     --exclude "Downloads/*.tgz" \
     --exclude "Downloads/*.tar" \
     --exclude "*-backup-*.tar.gz" \
+    --exclude "Videos" \
     --exclude "*.iso" \
     --exclude "*.deb" \
     --exclude "*.udeb" \
