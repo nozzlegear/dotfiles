@@ -140,6 +140,11 @@ end
 # https://github.com/fish-shell/fish-shell/issues/527
 set -gx PATH ~/.dotnet ~/.dotnet/tools ~/.local/bin ~/.yarn/bin $PATH ~/.cargo/bin
 
+# Add homebrew shellenv on mac
+if isMac
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
 # Docker port stuff
 if test "$WSL_running" = true
     set -gx DOCKER_HOST 'tcp://localhost:2375'
