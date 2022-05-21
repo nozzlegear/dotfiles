@@ -22,8 +22,9 @@ function print_help
 end
 
 function error
+    set TIMESTAMP (date '+%Y-%m-%d %H:%M:%S')
     set_color red
-    echo "$argv"
+    echo "[$TIMESTAMP] $argv"
     set_color normal
 end
 
