@@ -6,8 +6,8 @@
 # 
 # Note: this script only needs to be used when the container does not already have a volume. If it does have a volume, you can just back up the volume location with tarsnap and skip the container file copying entirely.
 
-set USE_PODMAN
-set USE_SUDO_FOR_DOCKER
+set USE_PODMAN 0
+set USE_SUDO_FOR_DOCKER 0
 
 function log
     set TIMESTAMP (date '+%Y-%m-%d %H:%M:%S')
