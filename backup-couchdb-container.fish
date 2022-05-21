@@ -76,13 +76,19 @@ if test -z "$argv[2]"
     set EXPORT_DIR (mktemp -d -t "backup-$CONTAINER_NAME")
     log "No export directory given, using temp directory at $EXPORT_DIR"
 else
-    set EXPORT_DIR "$argv[2]"
+    set EXPORT_DIR "$argv[2]/backup"
     log "Using export directory at $EXPORT_DIR"
 
     if test ! -d "$EXPORT_DIR"
         mkdir -p "$EXPORT_DIR"
         or exit 1
     end
+end
+
+# Make sure the export directory is empty because it will be deleted later
+if test (count (command ls -A "$EXPORT_DIR")) -ne 0
+    error "Export directory $EXPORT_DIR is not empty. This script will delete the export directory once it is finished, therefore refusing to export data into it."
+    exit 1
 end
 
 # Copy the files out of the container into the backups folder
@@ -96,4 +102,10 @@ tarsnap -c -f "$ARCHIVE_NAME" "$EXPORT_DIR"
 or exit 1
 
 log "Created tarsnap archive $ARCHIVE_NAME."
+
+# Delete the export directory
+log "Deleting export directory $EXPORT_DIR"
+rm -r "$EXPORT_DIR"
+or exit 1
+
 log "Done!"
