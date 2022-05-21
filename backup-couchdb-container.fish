@@ -67,7 +67,7 @@ else
 end
 
 set CONTAINER_NAME "$argv[1]"
-set ARCHIVE_NAME "$CONTAINER_NAME"(date "+%Y-%m-%d_%H-%M-%S")
+set ARCHIVE_NAME (uname -n)"-$CONTAINER_NAME-"(date "+%Y-%m-%d_%H-%M-%S")
 
 log "Backing up container $CONTAINER_NAME."
 
