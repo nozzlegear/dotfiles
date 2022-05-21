@@ -32,7 +32,7 @@ function pod
     # Run either podman, docker or sudo docker
     if test $USE_PODMAN -eq 1
         podman $argv
-    else if $USE_SUDO_FOR_DOCKER -eq 1
+    else if test $USE_SUDO_FOR_DOCKER -eq 1
         sudo docker $argv
     else
         docker $argv
