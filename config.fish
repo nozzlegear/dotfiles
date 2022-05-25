@@ -61,6 +61,7 @@ end
 
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
+alias cat 'bat'
 alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
@@ -73,8 +74,8 @@ alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 abbr size du -hs
 # Abbreviation for downloading just audio from a URL with youtube-dl
 abbr audio youtube-dl --extract-audio --audio-format "m4a" 
-# Abbreviation for using fdfind, improved find utility
-abbr find fdfind --hidden
+# Abbreviation for using fd, improved find utility
+abbr find fd --hidden
 # Abbreviation for installing software based on the operating system
 if isMac
     abbr i brew install
