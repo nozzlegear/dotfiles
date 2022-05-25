@@ -122,7 +122,10 @@ if test "$WSL_running" = true
     function capslock -d "Toggles capslock on Windows via PowerShell"
         powershell.exe -C "\$wsh = New-Object -ComObject WScript.Shell; \$wsh.SendKeys('{CAPSLOCK}')"
     end
-else 
+else if isMac
+    alias clip 'pbcopy'
+    alias paste 'pbpaste'
+else
     alias clip 'xsel --clipboard'
 end
 
