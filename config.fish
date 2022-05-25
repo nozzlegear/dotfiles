@@ -48,17 +48,6 @@ else
     set WSL_running false 
 end
 
-# Install fish package manager if it doesn't exist
-# https://github.com/jorgebucaran/fisher
-if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    set fisherUrl "https://raw.githubusercontent.com/jorgebucaran/fisher/c142f61e51db3e456ce71180fd541bcfd328fb7b/fisher.fish"
-    curl "$fisherUrl" --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-    # Add fish-getopts for script argument parsing
-    fisher add jorgebucaran/fish-getopts
-end
-
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
 alias cat 'bat'
