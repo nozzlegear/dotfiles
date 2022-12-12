@@ -127,6 +127,8 @@ if test "$WSL_running" = true
 else if isMac
     alias clip 'pbcopy'
     alias paste 'pbpaste'
+    # Set $i to the iCloud directory
+    set -x i "$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 else
     alias clip 'xsel --clipboard'
 end
