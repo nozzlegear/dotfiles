@@ -135,11 +135,14 @@ end
 
 # Set path to include things like dotnet tools
 # https://github.com/fish-shell/fish-shell/issues/527
-set -gx PATH ~/.dotnet ~/.dotnet/tools ~/.local/bin ~/.yarn/bin $PATH ~/.cargo/bin
+#set -gx PATH ~/.dotnet ~/.dotnet/tools ~/.local/bin ~/.yarn/bin $PATH ~/.cargo/bin
+set -gx PATH ~/.local/bin ~/.yarn/bin $PATH ~/.cargo/bin ~/.dotnet/tools
 
 # Add homebrew shellenv on mac
 if isMac
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    # Add the homebrew version of Ruby to path, so it comes before the default macos version
+    fish_add_path /opt/homebrew/opt/ruby/bin
 end
 
 # Docker port stuff
