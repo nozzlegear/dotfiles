@@ -12,6 +12,10 @@
 	ignorecase = false
 	autocrlf = input
 [gpg]
-	program = gpg2
+	program = gpg
 [core]
     pager = "diff-so-fancy | less --tabs=4 -RFX"
+[commit]
+	gpgsign = true
+[merge]
+    conflictstyle = diff3
