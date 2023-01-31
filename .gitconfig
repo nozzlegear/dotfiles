@@ -8,9 +8,12 @@
 	email = joshua@nozzlegear.com
 	name = Joshua Harms
 	signingkey = 678CB5B8
+[credential]
+    helper = osxkeychain
 [core]
 	ignorecase = false
 	autocrlf = input
+    editor = nvim
 [gpg]
 	program = gpg
 [core]
