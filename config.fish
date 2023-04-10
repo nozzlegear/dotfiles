@@ -58,11 +58,13 @@ alias ls 'exa -hFa --group-directories-first'
 alias ll 'exa -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+alias yt yt-dlp
 
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr size du -hs
 # Abbreviation for downloading just audio from a URL with youtube-dl
-abbr audio youtube-dl --extract-audio --audio-format "m4a" 
+abbr audio yt --extract-audio --audio-format "m4a" 
+abbr video yt --format "best"
 # Abbreviation for using fd, improved find utility
 abbr find fd --hidden 
 # Abbrevation for sd -- a sed replacement
@@ -143,6 +145,22 @@ if isMac
     eval "$(/opt/homebrew/bin/brew shellenv)"
     # Add the homebrew version of Ruby to path, so it comes before the default macos version
     fish_add_path /opt/homebrew/opt/ruby/bin
+end
+
+# yt-dlp should be used instead of youtube-dl
+if command -q youtube-dl
+   and shouldEcho
+    set_color yellow
+    echo "It looks like youtube-dl is installed, which is frequently out of date compared to other projects that wrap it. You should install yt-dlp instead:"
+    set_color normal
+    echo "https://github.com/Homebrew/homebrew-core/pull/126066"
+else
+    function youtube-dl -d "A no-op function which reminds the user that youtube-dl is not installed."
+        set_color red
+        echo "You do not have youtube-dl installed. You are most likely using yt-dlp, which is aliased to `yt`."
+        set_color normal
+        return 1
+    end
 end
 
 # Docker port stuff
