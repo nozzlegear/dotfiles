@@ -129,6 +129,7 @@ if test "$WSL_running" = true
 else if isMac
     alias clip 'pbcopy'
     alias paste 'pbpaste'
+    alias vlc "/Applications/VLC.app/Contents/MacOS/VLC"
     # Set $i to the iCloud directory
     set -x i "$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 else
