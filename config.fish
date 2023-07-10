@@ -54,6 +54,7 @@ alias cat 'bat'
 alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
+alias gap 'git add -p'
 alias ls 'exa -hFa --group-directories-first'
 alias ll 'exa -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
 # rot13 cipher; usage: echo "hello world" | rot13
