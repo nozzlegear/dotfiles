@@ -80,16 +80,11 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plugins here
-" Make sure you use single quotes
-"Plug 'leafgarland/typescript-vim'
-" Plug 'ianks/vim-tsx'
-Plug 'peitalin/vim-jsx-typescript'
 " Language client (requirement for ionide-vim)
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
 " Autocomplete plugin
@@ -100,25 +95,64 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-" Ionide-vim
-Plug 'ionide/Ionide-vim', {
-      \ 'do':  'make fsautocomplete',
-      \}
-" Omnisharp-vim
-Plug 'OmniSharp/omnisharp-vim'
+
+" Automatically turn off search highlighting after you're finished searching
+Plug 'romainl/vim-cool'
+
+" Neovim language server/config
+Plug 'neovim/nvim-lspconfig'
+
+" nvim-cmp provides autocompletion + utilities
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+" vsnip is required for nvim-cmp
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+" Line indent guides
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+" Coc.nvim
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" C# support with omnisharp-vim
+"Plug 'OmniSharp/omnisharp-vim'
 " Mint
 Plug 'IrenejMarc/vim-mint'
 " Typescript
-Plug 'Quramy/tsuquyomi'
-" More automcomplete stuff
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Coc.nvim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'Quramy/tsuquyomi'
+" JSX syntax
+Plug 'peitalin/vim-jsx-typescript'
+" F# syntax
+Plug 'adelarsq/neofsharp.vim'
 " Stylus syntax
 Plug 'iloginow/vim-stylus'
+" Fish syntax
+Plug 'khaveesh/vim-fish-syntax'
+" Commenting functions
+Plug 'preservim/nerdcommenter'
+" Applescript utilities
+Plug 'mityu/vim-applescript'
+" Nvim lua support for coc
+"Plug 'rafcamlet/coc-nvim-lua'
+" Neovim statusline
+"Plug 'adelarsq/neoline.vim'
+" More automcomplete stuff
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " Initialize plugin system
 call plug#end()
+
+" Configure commenting function to add a space before each comment
+let g:NERDSpaceDelims = 1
+
+" Let omnisharp use net6.0
+"let g:OmniSharp_server_use_net6 = 1
 
 " Set the filetype of all *.tsx files to typescript.tsx; required for the
 " typescript syntax highlighting plugins
