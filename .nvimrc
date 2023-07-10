@@ -55,7 +55,7 @@ set showmode
 " This version works on windows. TODO: figure out how to combine these two
 " functions so they're portable
 function Copy() range
-      echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip.exe')
+      echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip')
 endfunction   
 
 " This adds the :Copy and :Clip shortcuts, meaning you don't need to do :call Copy()
