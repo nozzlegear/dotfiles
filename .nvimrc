@@ -40,51 +40,6 @@ nnoremap -- :Ex <enter>
 " Keybind \ to swap to the previous file
 nnoremap \ :e# <enter>
 
-function ControlEll() 
-    if &filetype == "typescript.tsx" || &filetype == "typescript" 
-        echo "You pressed the shortcut in a typescript file, calling TSU stuff"
-    elseif &filetype == "cs"
-        echo "You pressed the shortcut in a C# file, that's wild. Calling omnisharp stuff."
-    elseif &filetype == "fs" || &filetype == "fsharp"
-        echo "You pressed the shortcut in an F# file, that's also wild. Calling ionide stuff."
-    else
-        echo "You pressed the ctrl-l shortcut in an unknown file type: " . &filetype "file"
-    endif
-endfunction
-
-function OpenTypePreview()
-    if &filetype == "cs"
-        echo "Opening type preview for C# file"
-        :OmniSharpPreviewDefinition
-    elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
-        echo "Opening type definition for TS file"
-        :TsuDefinition
-    elseif &filetype == "f#" || &filetype == "fsharp"
-        echo "Type previews are unsupported for F# files. Opening full type definition"
-        :call g:LanguageClient#textDocument_definition() 
-    else
-        echo "Unhandled file type \"" . &filetype . "\""
-    endif
-endfunction
-
-function OpenTypeDefinition()
-    if &filetype == "cs"
-        echo "Opening type definition for C# file"
-        :OmniSharpGotoDefinition
-    elseif &filetype == "typescript.tsx" || &filetype == "typescript" || &filetype == "typescriptreact"
-        echo "Opening type definition for TS file"
-        :TsuDefinition
-    elseif &filetype == "f#" || &filetype == "fsharp"
-        echo "Opening type definition for F# file"
-        :call g:LanguageClient#textDocument_definition() 
-    else
-        echo "Unhandled file type \"" . &filetype . "\""
-    endif
-endfunction
-
-nnoremap <C-l> :call ControlEll() <enter>
-nnoremap <F12> :call OpenTypePreview() <enter>
-nnoremap <F12><F12> :call OpenTypeDefinition() <enter>
 
 " Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip. 
 " https://stackoverflow.com/a/2585673
