@@ -154,12 +154,18 @@ let g:NERDSpaceDelims = 1
 " Let omnisharp use net6.0
 "let g:OmniSharp_server_use_net6 = 1
 
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Set the filetype of all *.tsx files to typescript.tsx; required for the
 " typescript syntax highlighting plugins
 " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+set completeopt=menu,menuone,noselect
 
 " Configure language servers
 
