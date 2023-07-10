@@ -40,6 +40,11 @@ nnoremap -- :Ex <enter>
 " Keybind \ to swap to the previous file
 nnoremap \ :e# <enter>
 
+" Set the PasteToggle command to F2 to toggle paste indent on/off
+" https://breezewiki.esmailelbob.xyz/vim/wiki/Toggle_auto-indenting_for_code_paste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 " Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip. 
 " https://stackoverflow.com/a/2585673
