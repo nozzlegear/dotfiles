@@ -360,4 +360,8 @@ require'lspconfig'.csharp_ls.setup{
 require'lspconfig'.tsserver.setup{
     on_attach = attachBindings
 }
+
+require'lspconfig'.zls.setup{
+    on_attach = attachBindings
+}
 EOF
