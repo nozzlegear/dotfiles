@@ -323,14 +323,16 @@ local attachBindings = function(client, bufnr)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<M-i>', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<M-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<M-r>', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<Esc-space>', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'g<space>', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<M-r>r', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<Leader>rr', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<Enter><Enter>', vim.lsp.buf.code_action, bufopts)
     -- go next error
     vim.keymap.set('n', 'gne',  vim.diagnostic.goto_next, bufopts)
     -- go previous error
     vim.keymap.set('n', 'gpe', vim.diagnostic.goto_prev, bufopts)
+
+    -- Toggle completions in insert mode
+    vim.keymap.set('i', '<M-space>', vim.lsp.buf.completion, bufopts)
 end
 
 -- ###
