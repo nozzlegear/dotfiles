@@ -58,6 +58,67 @@ function Copy() range
       echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip')
 endfunction   
 
+function! ChangeIndent(line_number, num_spaces)
+    let current_indent = repeat(' ', a:num_spaces)
+    let line_content = substitute(getline(a:line_number), '^\s*', '', '')
+    call setline(a:line_number, current_indent . line_content)
+endfunction
+
+function! SplitFunctionArguments(delimiter) abort
+    let l:enter = "\<CR>"
+    let l:esc = "\<Esc>"
+
+    let l:starting_pos = getpos(".")
+    let l:starting_line = l:starting_pos[1]
+    let l:starting_column = l:starting_pos[2]
+
+    " Move the cursor to the beginning of the line and check if it has an
+    " opening parens
+    call cursor(l:starting_line, 1)
+
+    " This search will move the cursor to the opening parens
+    let l:line_has_no_parens = search("(", "c", l:starting_line) != l:starting_line
+
+    " Make sure there's a line to split under the cursor
+    if l:line_has_no_parens
+        " Move the cursor back to its original position
+        call cursor(l:starting_line, l:starting_column)
+        echo "No function arguments to split on this line (could not find opening parens)."
+        return
+    endif
+
+    " Get the indent of the current line
+    let l:indent = indent('.')
+
+    " Split the line's arguments. The previous search already moved the cursor
+    " to the opening parens.
+    execute "normal! a" . l:enter . l:esc
+    execute "s/" . a:delimiter . " */" . a:delimiter . "\r/g"
+    execute "normal! /)" . l:enter . "i" . l:enter . l:esc
+    nohlsearch
+
+    " Cursor is now on the last line with the closing parens. Move its indent
+    " back to match the first line's indent.
+    let l:ending_line = line(".")
+
+    call ChangeIndent(l:ending_line, l:indent)
+
+    " Now iterate through all the lines between the opening parens and closing
+    " parens to shift their indents over by one tab (&shiftwidth).
+
+    let l:iteration = l:starting_line + 1
+
+    while l:iteration < l:ending_line
+        call ChangeIndent(l:iteration, l:indent + &shiftwidth)
+        let l:iteration = l:iteration + 1
+    endwhile
+
+    " Finally, move the cursor onto the closing parens
+    call cursor(l:ending_line, l:indent + 1)
+endfunction
+
+nnoremap <Leader>sl :call SplitFunctionArguments(",")<CR>
+
 " This adds the :Copy and :Clip shortcuts, meaning you don't need to do :call Copy()
 com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
 com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
