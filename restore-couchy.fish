@@ -1,4 +1,4 @@
-#! /usr/bin/env fish 
+#! /usr/bin/env fish
 
 set scriptName (status -f)
 set password $argv[1]
@@ -22,8 +22,8 @@ else
 end
 
 set port 5984
-set username nozzlegear
-set volumeLocation "$HOME/docker/custom-volumes/couchy/data"
+set username "nozzlegear"
+set volumeLocation "$HOME/.local/volumes/couchy/data"
 
 echo "Restoring Couchy database with apache/couchdb:3 on port $port. Using '$username' as admin username, and '$volumeLocation' as the data volume location."
 echo ""
