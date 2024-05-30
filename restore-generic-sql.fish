@@ -1,4 +1,4 @@
-#! /usr/bin/env fish 
+#! /usr/bin/env fish
 
 set scriptName (status -f)
 set password $argv[1]
@@ -22,17 +22,20 @@ else
 end
 
 set port 1433
-set containerName "generic_sql"
-set imageName "mcr.microsoft.com/mssql/server:2019-latest"
-set volumeLocation "$HOME/docker/custom-volumes/generic_sql"
-# The data volume either needs to be owned by root, or we need to run Docker as whichever user owns the volume dir.
-# We'll assume the current user owns it and run the container as that user.
-set userId (id -u (whoami))
-set userGroupId (id -g (whoami))
+set containerName "blackbox"
+set volume "blackbox"
+set imageName "mcr.microsoft.com/mssql/server:2022-latest"
 
 set_color green
-echo "Restoring generic SQL database as $containerName with image '$imageName'. Using '$volumeLocation' as the data volume location, and user" (whoami) "as the owner of the data volume."
+echo "Restoring SQL database as $containerName with image '$imageName'. Using '$volume' as the data volume."
 echo ""
 set_color normal
 
-sudo docker run --restart "unless-stopped" --name "$containerName" --volume "$volumeLocation:/var/opt/mssql" -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$password" -p "$port:$port" -u "$userId:$groupId" "$imageName"
+podman run \
+    -dit \
+    --name "$containerName" \
+    -v "$volume:/var/opt/mssql" \
+    -e 'ACCEPT_EULA=Y' \
+    -e "MSSQL_SA_PASSWORD=$password" \
+    -p "$port:1433" \
+    "$imageName"
