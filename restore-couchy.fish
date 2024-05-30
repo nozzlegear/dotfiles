@@ -23,9 +23,19 @@ end
 
 set port 5984
 set username "nozzlegear"
+set containerName "couchy"
 set volumeLocation "$HOME/.local/volumes/couchy/data"
+set image "couchdb:3"
 
 echo "Restoring Couchy database with apache/couchdb:3 on port $port. Using '$username' as admin username, and '$volumeLocation' as the data volume location."
 echo ""
 
-sudo docker run --restart "unless-stopped" --name "couchy" --volume "$volumeLocation:/opt/couchdb/data" -d -e "COUCHDB_USER=$username" -e "COUCHDB_PASSWORD=$password" -p "$port:5984" apache/couchdb
+podman run \
+    -dit \
+    --restart "unless-stopped" \
+    --name "$containerName" \
+    --volume "$volumeLocation:/opt/couchdb/data" \
+    -e "COUCHDB_USER=$username" \
+    -e "COUCHDB_PASSWORD=$password" \
+    -p "$port:5984" \
+    "$image"
