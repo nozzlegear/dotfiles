@@ -39,3 +39,7 @@ podman run \
     -e "COUCHDB_PASSWORD=$password" \
     -p "$port:5984" \
     "$image"
+
+# TODO: if the database is brand spankin' new, the script *must* create the _users and _replicator database with curl
+# It can also optionally create the _global_changes database
+# It should also change the database config so that the database knows its own localhost address is `0.0.0.0:5984` instead of `any:5984`
