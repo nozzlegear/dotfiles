@@ -51,7 +51,7 @@ end
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
 alias cat 'bat'
-alias s 'git status'
+alias s 'git status --short'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
 alias gap 'git add -p'
@@ -60,14 +60,18 @@ alias ll 'eza -lhFa --group-directories-first --no-permissions --no-user --no-ti
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias yt yt-dlp
+alias reload "source ~/.config/fish/config.fish"
 
 # Abbreviation for finding the size of a file. When used, expands to du -h
-abbr size du -hs
+abbr --add size du -hs
+# Use dust instead of du for all other operations
+# https://github.com/bootandy/dust
+abbr --add du dust -rd1
 # Abbreviation for downloading just audio from a URL with youtube-dl
-abbr audio yt --extract-audio --audio-format "m4a" 
-abbr video yt --format "best"
+abbr --add audio --set-cursor -- yt --extract-audio --audio-format "wav" \""%\""
+abbr video yt-dlp --format "best"
 # Abbreviation for using fd, improved find utility
-abbr find fd --hidden 
+abbr find fd --hidden --ignore-case
 # Abbrevation for sd -- a sed replacement
 abbr sedr sd --preview
 # Abbreviation for installing software based on the operating system
