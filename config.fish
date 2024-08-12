@@ -83,6 +83,8 @@ else if isMac
     alias fleet "$HOME/Applications/Fleet.app/Contents/MacOS/fleet"
     # Set $i to the iCloud directory
     set -x i "$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+    # Use SecretAgent ssh agent
+    set -x SSH_AUTH_SOCK "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 else
     alias clip 'xsel --clipboard'
 end
