@@ -55,8 +55,8 @@ alias s 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
 alias gap 'git add -p'
-alias ls 'exa -hFa --group-directories-first'
-alias ll 'exa -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
+alias ls 'eza -ha -F --group-directories-first'
+alias ll 'eza -lhFa --group-directories-first --no-permissions --no-user --no-time --git'
 # rot13 cipher; usage: echo "hello world" | rot13
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias yt yt-dlp
