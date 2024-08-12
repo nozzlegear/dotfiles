@@ -27,27 +27,6 @@ function isMac
     return 1
 end
 
-function welcome -a os
-    if shouldEcho
-        echo ""
-        set_color "yellow"
-        echo -n "❯ "
-        set_color normal
-        echo "🐟 Fish on $os" 
-    end
-end
-
-if isWindows
-    welcome "WSL"
-    set WSL_running true 
-else if isMac
-    welcome "macOS"
-    set WSL_running false 
-else
-    welcome "Linux"
-    set WSL_running false 
-end
-
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
 alias cat 'bat'
