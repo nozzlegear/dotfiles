@@ -29,6 +29,7 @@ end
 
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
+set -x sdh "$r/sdh/Books/SDH/Projects"
 alias cat 'bat'
 alias s 'git status --short'
 alias gd 'git diff'
@@ -114,6 +115,10 @@ else if isMac
     alias clip 'pbcopy'
     alias paste 'pbpaste'
     alias vlc "/Applications/VLC.app/Contents/MacOS/VLC"
+    alias rider "/Applications/Rider.app/Contents/MacOS/rider"
+    alias audacity "/Applications/Audacity.app/Contents/MacOS/Audacity"
+    alias webstorm "$HOME/Applications/WebStorm.app/Contents/MacOS/webstorm"
+    alias fleet "$HOME/Applications/Fleet.app/Contents/MacOS/fleet"
     # Set $i to the iCloud directory
     set -x i "$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 else
@@ -158,7 +163,6 @@ if not test -f ~/.config/fish/env.fish
     touch ~/.config/fish/env.fish
 end
 source ~/.config/fish/env.fish
-set -gx ASPNETCORE_ENVIRONMENT "Development"
 
 # Point CurseBreaker to the wow retail directory
 # https://github.com/AcidWeb/CurseBreaker
@@ -170,11 +174,16 @@ else
     set -gx CURSEBREAKER_PATH "/home/nozzlegear/Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_retail_"
 end
 
+# Dotnet stuff
+set -gx ASPNETCORE_ENVIRONMENT "Development"
 # Prevent dotnet watch from opening browser windows
 set -gx DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
 
-# Set preferred text editor
+# Set preferred text editor to vim
 set -gx EDITOR nvim
+# Use neovim for manpages (nvim "+:help ft-man-plugin")
+set -gx MANPAGER "nvim +Man!"
+set -gx MANWIDTH "999"
 
 # Fix gpg stuff
 set -gx GPG_TTY (tty)
