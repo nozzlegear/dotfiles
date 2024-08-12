@@ -153,11 +153,6 @@ set -gx GPG_TTY (tty)
 # Set fuzzyfinder (:FZF in vim) to use ripgrep and ignore any files in .gitignore file
 set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
 
-# Attempting to make x11 server work in WSL
-if test "$WSL_running" = true
-    set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-end
-
 # Solarized dircolors from the Dracula theme for gnome terminal
 if command -q dircolors
     and test -f ~/repos/gnome-terminal/dircolors
