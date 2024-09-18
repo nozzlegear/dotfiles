@@ -1,34 +1,79 @@
 [alias]
     history = log
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    #last = log --decorate --pretty=oneline --abbrev-commit -3
-    last = log --decorate --abbrev-commit -5 --date=short --pretty='format:%C(auto)%h (%ad, %an) %s'
+    last = show
+    log-for-rebase = log --abbrev-commit --date-order --format=format:'%h%d %s (%an, %ar)' HEAD
     lc = diff HEAD^1 HEAD
+    v = !"git diff \"$1^1..$1\""
     # Source: https://stackoverflow.com/a/47285611
-    branch-by-date = for-each-ref --sort=committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
+    branch-by-date = for-each-ref --count=15 --sort=-committerdate refs/heads/ refs/remotes/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)' | tail
+    # Source: https://news.ycombinator.com/item?id=39357918
+    fza = "!git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 git add"
+    gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+    root = rev-parse --show-toplevel
+    deletetag = "!f() { git push origin --delete \"$1\"; }; f"
+    # Source: https://softwaredoug.com/blog/2022/11/09/idiot-proof-git-aliases.html
+    hub = "!f() { \
+       open \"$(git ls-remote --get-url \
+       | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+       | sed 's|\\.git$||'; \
+       )\"; \
+  }; f"
 [user]
-	email = joshua@nozzlegear.com
-	name = Joshua Harms
-	signingkey = 678CB5B8
+    email = joshua@nozzlegear.com
+    name = Joshua Harms
+    signingkey = 678CB5B8
 [credential]
     helper = osxkeychain
 [core]
-	ignorecase = false
-	autocrlf = input
+    ignorecase = false
+    autocrlf = input
+    safecrlf = true
     editor = nvim
-    excludesfile = ~/.gitignore_global
+    excludesfile = /Users/nozzlegear/.gitignore_global
 [gpg]
-	program = gpg
+    program = gpg
+[diff]
+    #external = delta
+    colorMoved = default
+    algorithm = histogram
 [core]
-    pager = "diff-so-fancy | less --tabs=4 -RFX"
+    #pager = "diff-so-fancy | less --tabs=4 -RFX"
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    # use n and N to move between diff sections
+    navigate = true
+    dark = true
+    # line numbers
+    features = decorations
 [commit]
-	gpgsign = true
+    gpgsign = true
 [merge]
     conflictstyle = zdiff3
+    tool = nvimdiff
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [remote "origin"]
-	prune = true
+    prune = true
+[gui]
+    fontui = -family .AppleSystemUIFont -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family Menlo -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+[pull]
+    rebase = true
+    autostash = true
+[rebase]
+    autostash = true
+    autosquash = true
+[push]
+    autoSetupRemote = true
+[fetch]
+    prune = true
+    prunetags = true
+[rerere]
+    enabled = true
+[init]
+    defaultBranch = main
