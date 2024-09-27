@@ -151,6 +151,7 @@ set -gx MANWIDTH "999"
 
 # Fix gpg stuff
 set -gx GPG_TTY (tty)
+set -gx PINENTRY_USER_DATA "USE_CURSES=0"
 
 # Set fuzzyfinder (:FZF in vim) to use ripgrep and ignore any files in .gitignore file
 set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
