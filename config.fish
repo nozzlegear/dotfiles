@@ -51,7 +51,7 @@ abbr --add du dust -rd1
 abbr --add audio --set-cursor -- yt --extract-audio --audio-format "wav" \""%\""
 abbr video yt-dlp --format "best"
 # Abbreviation for using fd, improved find utility
-abbr find fd --hidden --ignore-case
+abbr find fd --full-path --hidden --ignore-case
 # Abbrevation for sd -- a sed replacement
 abbr sedr sd --preview
 # Abbreviation for installing software based on the operating system
