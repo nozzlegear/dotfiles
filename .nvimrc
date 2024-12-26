@@ -1,14 +1,3 @@
-" NOTE: the default location for nvim's rc file has changed to
-" ~/.config/nvim/init.vim
-"
-" This ~/.nvimrc is not read by default anymore. Instead, you can change
-" simlink the file to the config folder:
-"
-" mkdir -p ~/.config/nvim
-" echo 'source ~/.nvimrc' > ~/.config/nvim/init.vim
-
-" Source for configurations:
-" https://stackoverflow.com/a/1878984
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
@@ -34,29 +23,45 @@ imap jk <esc>
 " Keybind ctrl-p to open fuzzyfinder (:FZF command)
 nnoremap <C-p> :FZF <enter>
 
+" Remap window/split navigation
+nnoremap <M-l> :wincmd l<CR>
+nnoremap <M-h> :wincmd h<CR>
+nnoremap <M-j> :wincmd j<CR>
+nnoremap <M-k> :wincmd k<CR>
+
 " Keybind -- to open the current directory
 nnoremap -- :Ex <enter>
 
-" Keybind \ to swap to the previous file
-nnoremap \ :e# <enter>
+" Keybind gb to swap to the previous file
+nnoremap gb :e# <enter>
+" TODO: find a way to show a dialog with a list of the most recent files visited here
+nnoremap <C-V>x0FFC0 :e# <enter>
 
-" Set the PasteToggle command to F2 to toggle paste indent on/off
+" Set the PjsteToggle command to F2 to toggle paste indent on/off
 " https://breezewiki.esmailelbob.xyz/vim/wiki/Toggle_auto-indenting_for_code_paste
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-" Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip. 
+" Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip.
 " https://stackoverflow.com/a/2585673
-"function Copy() range 
+"function Copy() range
 "    echo system('echo '.shellescape(join(getline(a:firstline, a:listline), "\n")).'| xclip -selection clipboard')
 "endfunction
 "
 " This version works on windows. TODO: figure out how to combine these two
 " functions so they're portable
 function Copy() range
-      echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip')
-endfunction   
+    echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip')
+endfunction
+
+function! SwapSwitchArrows() range abort
+    :'<,'>s/\(\S.*\) \+=> \+\(.*\),\+$/\2 => \1,/
+    "Replacing the text will deselect the lines, so select them again
+    let linenum_to_move = a:lastline - a:firstline
+    execute a:firstline . "normal! V". linenum_to_move . "j"
+    call cursor(a:lastline, indent('.'))
+endfunction
 
 function! ChangeIndent(line_number, num_spaces)
     let current_indent = repeat(' ', a:num_spaces)
@@ -125,89 +130,8 @@ com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
 " Tell FuzzyFinder to use ripgrep, which will ignore files in .gitignore by
 " default. Also tell it to ignore files in the .git folder so a search for
-" e.g. 'hooks' doesn't show files in the .git/hooks folder. 
+" e.g. 'hooks' doesn't show files in the .git/hooks folder.
 let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-vcs --hidden -g "!.git"'
-
-" Plug plugin manager
-" https://github.com/junegunn/vim-plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.local/share/nvim/plugged')
-
-" Language client (requirement for ionide-vim)
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-" Autocomplete plugin
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" Automatically turn off search highlighting after you're finished searching
-Plug 'romainl/vim-cool'
-
-" Neovim language server/config
-Plug 'neovim/nvim-lspconfig'
-
-" nvim-cmp provides autocompletion + utilities
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-
-" vsnip is required for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-" Line indent guides
-Plug 'lukas-reineke/indent-blankline.nvim'
-
-" Coc.nvim
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" C# support with omnisharp-vim
-"Plug 'OmniSharp/omnisharp-vim'
-" Mint
-Plug 'IrenejMarc/vim-mint'
-" Typescript
-"Plug 'Quramy/tsuquyomi'
-" JSX syntax
-Plug 'peitalin/vim-jsx-typescript'
-" F# syntax
-Plug 'adelarsq/neofsharp.vim'
-" Stylus syntax
-Plug 'iloginow/vim-stylus'
-" Fish syntax
-Plug 'khaveesh/vim-fish-syntax'
-" Commenting functions
-Plug 'preservim/nerdcommenter'
-" Applescript utilities
-Plug 'mityu/vim-applescript'
-" Nvim lua support for coc
-"Plug 'rafcamlet/coc-nvim-lua'
-" Neovim statusline
-"Plug 'adelarsq/neoline.vim'
-" More automcomplete stuff
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-" Initialize plugin system
-call plug#end()
 
 " Configure commenting function to add a space before each comment
 let g:NERDSpaceDelims = 1
@@ -227,143 +151,3 @@ let g:NERDSpaceDelims = 1
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 set completeopt=menu,menuone,noselect
-
-" Configure language servers
-
-lua << EOF
-
--- ### 
--- Custom keybindings
--- ###
-
--- Functional wrapper for mapping custom keybindings
--- Source: https://scribe.nixnet.services/create-custom-keymaps-in-neovim-with-lua-d1167de0f2c2
--- Source: https://gist.github.com/Jarmos-san/d46605cd3a795513526448f36e0db18e#file-example-keymap-lua
-function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
--- Bind Shift-Tab to the inverse of Tab (Ctrl-D by default)
--- https://stackoverflow.com/a/4766304
-map("i", "<S-Tab>", "<C-d>")
-
--- ###
--- Set up nvim-cmp
--- ###
-
-local cmp = require'cmp'
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
-    },
-    window = {
-
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'vsnip' },
-    },
-    {
-        { name = 'buffer' },
-    })
-})
-
--- Use buffer source for '/' and '?'
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Setup cmp's lspconfig
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- ###
--- lspconfig keybindings
--- ###
-
--- Use `:help vim.diagnostic.*` for documentation on any of the keybound functions
--- https://github.com/neovim/nvim-lspconfig
-local opts = { 
-    noremap = true,
-    silent = true
-}
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the keys inside after a language server attaches to the current buffer
-local attachBindings = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings. 
-    -- <M> is the "meta" key which is NOT super/cmd -- it's alt/option.
-    -- <M> does not seem to work on tablet? Or at least when sent through Blink shell.
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<M-i>', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<M-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<M-r>r', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<Leader>rr', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<Enter><Enter>', vim.lsp.buf.code_action, bufopts)
-    -- go next error
-    vim.keymap.set('n', 'gne',  vim.diagnostic.goto_next, bufopts)
-    -- go previous error
-    vim.keymap.set('n', 'gpe', vim.diagnostic.goto_prev, bufopts)
-
-    -- Toggle completions in insert mode
-    vim.keymap.set('i', '<M-space>', vim.lsp.buf.completion, bufopts)
-end
-
--- ###
--- lspconfigs for each language
--- ###
-
--- NOTE: the attachBindings function must be passed to each language setup
-
-require'lspconfig'.fsautocomplete.setup {
-    capabilities = capabilities,
-    on_attach = attachBindings,
-    cmd = {
-        "fsautocomplete", "--adaptive-lsp-server-enabled"
-    },
-    filetypes = {
-        "fsharp"
-    },
-    init_options = {
-        AutomaticWorkspaceInit = true
-    }
-}
-
-require'lspconfig'.csharp_ls.setup{
-    on_attach = attachBindings
-}
-
-require'lspconfig'.tsserver.setup{
-    on_attach = attachBindings
-}
-
-require'lspconfig'.zls.setup{
-    on_attach = attachBindings
-}
-EOF
