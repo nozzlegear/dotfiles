@@ -11,14 +11,18 @@ function journal
     for x in (seq $dircount -1 2)
        set -l dir (string join "/" $dirparts[1..$x])
        if test -f $dir/.journal.log
-               set -f journal $dir/.journal.log
-               break
+           set -f journal $dir/.journal.log
+           break
        end
     end
 
     if test "$argv[1]" = "show"
        printf "Last journal entries from: %s\n" "$journal"
        tail -5 $journal
+    else if test "$argv[1]" = "edit"
+        printf "Opening journal $journal for edit\n"
+        command "$EDITOR" "$journal"
+        return
     else
        printf "Add to journal: %s\n" "$journal"
        read -P "Addition: " -l line
