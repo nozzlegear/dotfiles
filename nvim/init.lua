@@ -150,7 +150,7 @@ require'lspconfig'.csharp_ls.setup{
     --root_dir = require'lspconfig'.util.root_pattern("_.sln", "_.csproj", "packages.config")
 }
 
-require'lspconfig'.tsserver.setup{
+require'lspconfig'.ts_ls.setup{
     on_attach = attachBindings
 }
 
