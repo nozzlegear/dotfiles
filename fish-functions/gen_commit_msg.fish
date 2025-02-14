@@ -32,8 +32,7 @@ function gen_commit_msg --argument gitDiff
         return 1
     end
 
-    set prompt "I want you to act as a commit message generator. I will provide you with a git diff containing changes I've made to my project, and I would like you to generate 3 appropriate commit messages using the conventional commit format. Do not give me choices like \"if the commit was adding a feature, choose this commit message,\" or \"if the commit was fixing a bug, choose that commit message;\" just do your best to decide which 3 commit messages are the most appropriate based on the changes contained in the git diff. Do not write any explanations or other words, just reply with the commit message. Here is the git diff: \n"
-    set codeblocked_git_diff "```"(echo $input)"```"
+    set codeblocked_git_diff (printf "```%s\n```Could you please generate 3 commit messages (preferably with a body going into more detail about the commit) for the git diff I've just given you?" $input)
 
-    ask phi4 (echo "$prompt $codeblocked_git_diff")
+    ollama run --nowordwrap commit-message-generator "$codeblocked_git_diff"
 end
