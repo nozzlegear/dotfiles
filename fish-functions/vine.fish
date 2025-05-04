@@ -3,7 +3,7 @@ function vine
         set_color yellow
         echo "Usage:"
         set_color normal
-        echo "  vine [--keep-temp] --name output_file_without_extension https://youtube.com/example"
+        echo "  vine [--keep-temp] [--cookies-from-safari] --name output_file_without_extension https://youtube.com/example"
     end
 
     function print_error -a msg
@@ -11,7 +11,7 @@ function vine
         echo ""
     end
 
-    argparse --name=vine 'h/help' 'k/keep-temp' 'n/name=' -- $argv
+    argparse --name=vine 'h/help' 'k/keep-temp' 'cookies-from-safari' 'n/name=' -- $argv
     or begin
         echo ""
         print_help
@@ -50,8 +50,16 @@ function vine
     cd "$temp_folder"
     or return 1
 
+    function exec_ytdlp -V name -V url -V _flag_cookies_from_safari
+        if set -q _flag_cookies_from_safari
+            yt-dlp --quiet --no-simulate --cookies-from-browser safari --print "_filename" -o "$name.%(ext)s" "$url"
+        else
+            yt-dlp --quiet --no-simulate --print "_filename" -o "$name.%(ext)s" "$url"
+        end
+    end
+
     # Use yt-dlp to download the video and capture the output
-    set filename (yt-dlp --quiet --no-simulate --print "_filename" -o "$name.%(ext)s" "$url")
+    set filename (exec_ytdlp)
     or return 1
 
     if set -q _flag_keep_temp
