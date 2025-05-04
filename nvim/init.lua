@@ -3,8 +3,10 @@ vim.cmd("source ~/.nvimrc")
 
 -- Plugins required here are loaded from the lua folder
 require("plugins")
-
 require("econfig")
+require("filetypes")
+require("plugin-configs/treesitter-highlighting")
+require("plugin-configs/treesitter-custom-parsers")
 
 --vim.cmd.colorscheme('onedark')
 
@@ -18,14 +20,12 @@ vim.cmd.colorscheme "catppuccin"
 -- ###
 
 -- Functional wrapper for mapping custom keybindings
--- Source: https://scribe.nixnet.services/create-custom-keymaps-in-neovim-with-lua-d1167de0f2c2
--- Source: https://gist.github.com/Jarmos-san/d46605cd3a795513526448f36e0db18e#file-example-keymap-lua
 function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- set termguicolors to enable highlight groups
@@ -158,6 +158,10 @@ require'lspconfig'.zls.setup{
     on_attach = attachBindings
 }
 
+require'lspconfig'.julials.setup{
+    on_attach = attachBindings
+}
+
 require 'lspconfig'.theme_check.setup{
     on_attach = attachBindings
 }
@@ -170,6 +174,71 @@ require 'lspconfig'.theme_check.setup{
 -- https://stackoverflow.com/a/4766304
 map("i", "<S-Tab>", "<C-d>")
 
+-- Define a function to toggle the terminal buffer
+local function toggle_terminal()
+  local term_buf = nil
+
+  -- Iterate over all buffers to find one with buftype 'terminal'
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == 'terminal' then
+        term_buf = buf
+        break
+    end
+  end
+
+  if term_buf then
+    -- If a terminal buffer exists, open it in a vertical split.
+    vim.cmd('vsplit')
+    vim.cmd('buffer ' .. term_buf)
+  else
+    -- Otherwise, create a new terminal buffer
+    vim.cmd('vsplit term://fish')
+  end
+end
+
+local function hide_tool_windows()
+    -- Lua's string.find is not true regex, and the hyphen has a special meaning.
+    -- It must be escaped with '%'
+    local neotreeSearchStr = 'neo%-tree'
+
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_valid(buf) then
+            local bufname = vim.fn.bufname(buf)
+            if vim.bo[buf].buftype == 'terminal' then
+                local mode = vim.api.nvim_get_mode()["mode"]
+                if mode == "t" then
+                    vim.api.nvim_feedkeys("<C-\\><C-n>", "n", false)
+                end
+                vim.cmd(':hide')
+            elseif string.find(bufname, neotreeSearchStr) then
+                vim.cmd(':Neotree close');
+            end
+        end
+    end
+end
+
+-- Bind <leader>t to opening a vertical terminal
+map("n", "<leader>t", toggle_terminal)
+-- Bind <leader>t to exit terminal-mode
+map("t", "<leader>t", "<C-\\><C-n>")
+-- Bind <leader>x to hide the opened terminal
+map({"t", "n"}, "<leader>x", hide_tool_windows)
+
+-- Rebind x and Del keys to delete without overwriting the paste register
+map("n", "<Del>", '"_x', opts)
+map("n", "x", '"_x', opts)
+
+-- Commenting (https://github.com/prdanelli/dotfiles/blob/41b5f75aabfcf77f25348d8d42c46281eb37df61/neovim/lua/config/keymaps.lua#L29)
+map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- Insert relative/full path to current file
+map("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", { desc = "Relative Path", silent = true })
+map("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", { desc = "Full Path", silent = true })
+
+-- Diagnostic keymaps
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix list" })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
@@ -178,8 +247,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
-
--- Make nvim interpret .hbs files as HTML
---vim.filetype.add({
---    extension = { hbs = "html" }
---})
