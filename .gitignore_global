@@ -337,5 +337,10 @@ TSWLatexianTemp*
 
 token
 
+env.fish
+.env.fish
 .envrc
 .direnv*
+*.secret
+.journal.log
+appsettings.local.json
