@@ -40,7 +40,7 @@ nnoremap <C-V>x0FFC0 :e# <enter>
 " Set the PjsteToggle command to F2 to toggle paste indent on/off
 " https://breezewiki.esmailelbob.xyz/vim/wiki/Toggle_auto-indenting_for_code_paste
 nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+" set pastetoggle=<F2>
 set showmode
 
 " Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip.
