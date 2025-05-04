@@ -41,6 +41,7 @@ alias ll 'eza -lhFa --group-directories-first --no-permissions --no-user --no-ti
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias yt yt-dlp
 alias reload "source ~/.config/fish/config.fish"
+alias resource " source ~/.config/fish/config.fish; and source ~/.config/fish/env.fish; and echo 'Done!'"
 
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr --add size du -hs
@@ -76,7 +77,6 @@ if test "$WSL_running" = true
         powershell.exe -C "\$wsh = New-Object -ComObject WScript.Shell; \$wsh.SendKeys('{CAPSLOCK}')"
     end
 else if isMac
-    alias clip 'pbcopy'
     alias paste 'pbpaste'
     alias vlc "/Applications/VLC.app/Contents/MacOS/VLC"
     alias rider "/Applications/Rider.app/Contents/MacOS/rider"
