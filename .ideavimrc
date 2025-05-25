@@ -1,0 +1,129 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+if has('ide')
+    "" JetBrains specific settings
+    set ideajoin
+    " Map vim marks to IDEA global marks
+    set ideamarks
+    " Show a few lines of context around the cursor. Note that this makes the
+    " text scroll if you mouse-click near the start or end of the window.
+    set scrolloff=5
+    " Turn this on to have the cursor jump to the search as you type it
+    " set incsearch
+    " Don't use Ex mode, use Q for formatting.
+    map Q gq
+    " Remove error bells
+    set visualbell
+endif
+
+function! SwapSwitchArrows() range abort
+    :'<,'>s/\(\S.*\) \+=> \+\(.*\),\+$/\2 => \1,/
+    "Replacing the text will deselect the lines, so select them again
+    let linenum_to_move = a:lastline - a:firstline
+    execute a:firstline . "normal! V". linenum_to_move . "j"
+    call cursor(a:lastline, indent('.'))
+endfunction
+
+"" Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" Remap jk to escape. Tried to remap f13 to escape but can't seem to get it to work
+imap jk <esc>
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+map <space>e <Action>(ShowErrorDescription)
+map <leader>k <Action>(ShowErrorDescription)
+" TODO: Map this to the default JetBrains keybind of Command + Enter?
+map <Enter><Enter> <Action>(ShowIntentionActions)
+map <leader>a <Action>(ShowIntentionActions)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>gh <Action>(Annotate)
+
+" CTRL+w - EditorSelectWord
+map <leader>w <Action>(EditorSelectWord)<Action>(EditorSelectWord)
+
+"" Refactoring
+map <leader>rr <Action>(RenameElement)
+map <leader>rl <Action>(Refactorings.QuickListPopupAction)
+map <leader>ri <Action>(ExtractInterface)
+vmap <leader>rf <Action>(ReformatCode)
+
+"" Navigation
+map <leader>a <Action>(GotoAction)
+map gi <Action>(GotoImplementation)
+map gi <Action>(GotoTypeDeclaration)
+map gb <Action>(Back)
+map gf <Action>(Forward)
+map <leader>f <Action>(Switcher)
+" Mnemonic: Go Next Error
+map gne <Action>(GotoNextError)
+map gpe <Action>(GotoPreviousError)
+
+if &ide == "JetBrains Rider"
+    map gnE <Action>(ReSharperGotoNextErrorInSolution)
+    map gpE <Action>(ReSharperGotoPreviousErrorInSolution)
+    "" -- Mnemonic: Go List Errors
+    map gle <Action>(Rider.ProblemsView.ErrorsInSolution)
+    " Open the current file in the File/Solution Explorer
+    map -- <Action>(SelectInProjectView)
+
+    """
+    " Unit Testing
+    " Mnemonic: Wack Test X
+    """
+    map <leader>u<Enter> <Action>(RiderUnitTestQuickListPopupAction)
+    " Append unit test under cursor to unit test session
+    map <leader>ua <Action>(RiderUnitTestAppendTestsAction)
+    " Run unit test under cursor
+    map <leader>U <Action>(RiderUnitTestRunContextAction)
+    " Debug unit test under cursor
+    map <leader>ud <Action>(RiderUnitTestDebugContextAction)
+    " Run current unit test session
+    map <leader>us <Action>(RiderUnitTestRunCurrentSessionAction)
+    " Repeat previous unit test run
+    map <leader>uu <Action>(RiderUnitTestRepeatPreviousRunAction)
+    " Find unit test in session window
+    map <leader>uf <Action>(RiderUnitTestNavigateToSessionAction)
+    " Focus the unit test session window
+    map <leader>uf <Action>(RiderUnitTestFocusSessionAction)
+elseif &ide == "WebStorm"
+    "" -- Mnemonic: Go List Errors
+    map gle <Action>(ActivateProblemsViewToolWindow)
+    " Open the current file in the File/Project Explorer
+    map -- <Action>(SelectInProjectView)
+end
+
+"" Building
+map <leader>B <Action>(BuildSolutionAction)
+map <leader>b <Action>(BuildCurrentProject)
+
+"" Debugging
+map <leader>D <Action>(Debug)
+map <leader>d <Action>(ToggleLineBreakpoint)
+
+"" -----Misc mappings
+" Modify the default J behavior so that it doesn't move the cursor
+nnoremap J Jh
+map <leader>x <Action>(HideAllWindows)
+map <leader>t <Action>(ActivateTerminalToolWindow)
+map <leader>q <Action>(ExpandCollapseToggleAction)
+
+" Make K the logical opposite of J
+"nnoremap K a<CR><Esc>k$
+
+" Split line on a comma.
+nnoremap <Leader>s, f,a<CR><Esc>^
+
+" Format a line with spacious chop
+map <Leader>sl V<Action>(RiderSpaciousFormatCode)
+
+"set ideastrictmode
+
+" todo: keep vim search from moving after pressing escape
+" todo: use multiple copy/paste dialog (cmd+shift+v)
