@@ -3,4 +3,5 @@
 .gitconfig
 .gitignore_global
 .ideavimrc
+.nvimrc
 .tmux.conf
