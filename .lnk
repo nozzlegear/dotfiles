@@ -2,3 +2,4 @@
 .config/nvim
 .gitconfig
 .gitignore_global
+.tmux.conf
