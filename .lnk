@@ -1,3 +1,4 @@
 .config/fish
 .config/nvim
 .gitconfig
+.gitignore_global
