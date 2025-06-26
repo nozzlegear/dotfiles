@@ -167,6 +167,10 @@ require 'lspconfig'.theme_check.setup{
     on_attach = attachBindings
 }
 
+require 'lspconfig'.svelte.setup{
+    on_attach = attachBindings
+}
+
 --- """
 --- Misc keymappings
 --- """

@@ -116,4 +116,15 @@ require("lazy").setup({
         require("nvim-base64").setup()
       end,
     },
+    { 'evanleck/vim-svelte',
+      config = function()
+          --let g:svelte_preprocessors = ['typescript']
+          vim.api.nvim_create_autocmd('FileType', {
+              pattern = "svelte",
+              callback = function()
+                  vim.bo.commentstring = '// %s'
+              end
+          })
+      end
+    },
 })
