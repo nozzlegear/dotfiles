@@ -340,3 +340,6 @@ token
 .envrc
 .direnv*
 *.secret
+
+# Ignore Claude code files
+.claude/
