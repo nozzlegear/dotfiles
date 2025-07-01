@@ -77,7 +77,6 @@ if test "$WSL_running" = true
         powershell.exe -C "\$wsh = New-Object -ComObject WScript.Shell; \$wsh.SendKeys('{CAPSLOCK}')"
     end
 else if isMac
-    alias clip 'pbcopy'
     alias paste 'pbpaste'
     alias vlc "/Applications/VLC.app/Contents/MacOS/VLC"
     alias rider "/Applications/Rider.app/Contents/MacOS/rider"
