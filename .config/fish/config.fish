@@ -57,6 +57,9 @@ abbr find fd --full-path --hidden --ignore-case
 abbr sedr sd --preview
 # Tree
 abbr --add tree eza --git-ignore --tree --level=5
+# Find extension
+abbr --add fe fd --full-path --hidden --ignore-case --extension
+
 # Abbreviation for installing software based on the operating system
 if isMac
     abbr i brew install
