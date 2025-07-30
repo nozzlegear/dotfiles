@@ -39,6 +39,8 @@
 [core]
     #pager = "diff-so-fancy | less --tabs=4 -RFX"
     pager = delta
+	compression = 9
+	whitespace = trailing-space
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -49,6 +51,7 @@
     features = decorations
 [commit]
 	gpgsign = true
+	verbose = true
 [merge]
     conflictstyle = zdiff3
 	tool = nvimdiff
@@ -75,6 +78,7 @@
     prunetags = true
 [rerere]
 	enabled = true
+	autoUpdate = true
 [init]
     defaultBranch = main
 [credential "https://github.com"]
@@ -83,3 +87,12 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[tag]
+	sort = -version:refname
+[maintenance]
+	auto = true
+	strategy = incremental
