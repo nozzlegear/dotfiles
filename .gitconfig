@@ -8,7 +8,6 @@
     branch-by-date = for-each-ref --count=15 --sort=-committerdate refs/heads/ refs/remotes/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)' | tail
     # Source: https://news.ycombinator.com/item?id=39357918
     fza = "!git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 git add"
-    fzr = "!git diff --name-only --cached | fzf -m --print0 | xargs -0 git reset"
     gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
     root = rev-parse --show-toplevel
     deletetag = "!f() { git push origin --delete \"$1\"; }; f"
@@ -20,19 +19,19 @@
        )\"; \
   }; f"
 [user]
-    email = joshua@nozzlegear.com
-    name = Joshua Harms
-    signingkey = 678CB5B8
+	email = joshua@nozzlegear.com
+	name = Joshua Harms
+	signingkey = 678CB5B8
 [credential]
     helper = osxkeychain
 [core]
-    ignorecase = false
-    autocrlf = input
+	ignorecase = false
+	autocrlf = input
     safecrlf = true
     editor = nvim
-    excludesfile = /Users/nozzlegear/.gitignore_global
+	excludesfile = /Users/nozzlegear/.gitignore_global
 [gpg]
-    program = gpg
+	program = gpg
 [diff]
     #external = delta
     colorMoved = default
@@ -40,6 +39,8 @@
 [core]
     #pager = "diff-so-fancy | less --tabs=4 -RFX"
     pager = delta
+	compression = 9
+	whitespace = trailing-space
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -49,32 +50,49 @@
     # line numbers
     features = decorations
 [commit]
-    gpgsign = true
+	gpgsign = true
+	verbose = true
 [merge]
     conflictstyle = zdiff3
-    tool = nvimdiff
+	tool = nvimdiff
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [remote "origin"]
-    prune = true
+	prune = true
 [gui]
-    fontui = -family .AppleSystemUIFont -size 18 -weight normal -slant roman -underline 0 -overstrike 0
-    fontdiff = -family Menlo -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family .AppleSystemUIFont -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Menlo -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 [pull]
-    rebase = true
+	rebase = true
     autostash = true
 [rebase]
     autostash = true
     autosquash = true
 [push]
-    autoSetupRemote = true
+	autoSetupRemote = true
 [fetch]
     prune = true
     prunetags = true
 [rerere]
-    enabled = true
+	enabled = true
+	autoUpdate = true
 [init]
     defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[tag]
+	sort = -version:refname
+[maintenance]
+	auto = true
+	strategy = incremental
