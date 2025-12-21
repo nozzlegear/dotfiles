@@ -59,6 +59,9 @@ abbr sedr sd --preview
 abbr --add tree eza --git-ignore --tree --level=5
 # Find extension
 abbr --add fe fd --full-path --hidden --ignore-case --extension
+# Git commit abbreviations
+abbr amend git commit --amend
+abbr commit --set-cursor -- git commit --edit -m \""%\""
 
 # Abbreviation for installing software based on the operating system
 if isMac
