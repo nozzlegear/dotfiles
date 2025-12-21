@@ -1,6 +1,6 @@
 return function()
-    require("lspconfig").fish_lsp.setup({
+    vim.lsp.config["fish_lsp"] = {
       cmd = { "fish-lsp", "start" },
       filetypes = { "fish" },
-    })
+    }
 end

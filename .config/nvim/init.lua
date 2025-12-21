@@ -3,13 +3,9 @@ vim.cmd("source ~/.nvimrc")
 
 -- Plugins required here are loaded from the lua folder
 require("plugins")
-
 require("econfig")
-
---vim.cmd.colorscheme('onedark')
-
+require("lspconfigs")
 require('pqf').setup()
-
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
 
@@ -90,29 +86,29 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+-- Mappings.
+-- <M> is the "meta" key which is NOT super/cmd -- it's alt/option.
+-- <M> does not seem to work on tablet? Or at least when sent through Blink shell.
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', '<C-i>', vim.lsp.buf.implementation, bufopts)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set('n', '<K-r>r', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<Leader>rr', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<Enter><Enter>', vim.lsp.buf.code_action, bufopts)
+-- go next error
+vim.keymap.set('n', 'gne',  vim.diagnostic.goto_next, bufopts)
+-- go previous error
+vim.keymap.set('n', 'gpe', vim.diagnostic.goto_prev, bufopts)
+
+-- Toggle completions in insert mode
+vim.keymap.set('i', '<C-space>', vim.lsp.buf.completion, bufopts)
+
 -- Use an on_attach function to only map the keys inside after a language server attaches to the current buffer
 local attachBindings = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    -- <M> is the "meta" key which is NOT super/cmd -- it's alt/option.
-    -- <M> does not seem to work on tablet? Or at least when sent through Blink shell.
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-i>', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<K-r>r', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<Leader>rr', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<Enter><Enter>', vim.lsp.buf.code_action, bufopts)
-    -- go next error
-    vim.keymap.set('n', 'gne',  vim.diagnostic.goto_next, bufopts)
-    -- go previous error
-    vim.keymap.set('n', 'gpe', vim.diagnostic.goto_prev, bufopts)
-
-    -- Toggle completions in insert mode
-    vim.keymap.set('i', '<C-space>', vim.lsp.buf.completion, bufopts)
 end
 
 -- ###
@@ -121,7 +117,7 @@ end
 
 -- NOTE: the attachBindings function must be passed to each language setup
 
-require'lspconfig'.fsautocomplete.setup {
+vim.lsp.config["fsautocomplete"] = {
     capabilities = capabilities,
     on_attach = attachBindings,
     cmd = {
@@ -136,7 +132,7 @@ require'lspconfig'.fsautocomplete.setup {
     }
 }
 
-require'lspconfig'.csharp_ls.setup{
+vim.lsp.config["csharp_ls"] = {
     on_attach = attachBindings,
     init_options = {
         AutomaticWorkspaceInit = true
@@ -150,24 +146,24 @@ require'lspconfig'.csharp_ls.setup{
     --root_dir = require'lspconfig'.util.root_pattern("_.sln", "_.csproj", "packages.config")
 }
 
-require'lspconfig'.ts_ls.setup{
+-- require'lspconfig'.ts_ls.setup{
+--     on_attach = attachBindings
+-- }
+
+vim.lsp.config["zls"] = {
     on_attach = attachBindings
 }
 
-require'lspconfig'.zls.setup{
-    on_attach = attachBindings
-}
-
-require'lspconfig'.julials.setup{
+vim.lsp.config["julials"] = {
     on_attach = attachBindings,
     filetypes = { "julia", "jl" }
 }
 
-require 'lspconfig'.theme_check.setup{
+vim.lsp.config["theme_check"] = {
     on_attach = attachBindings
 }
 
-require 'lspconfig'.svelte.setup{
+vim.lsp.config["svelte"] = {
     on_attach = attachBindings
 }
 

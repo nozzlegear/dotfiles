@@ -19,20 +19,7 @@ require("lazy").setup({
     -- Automatically turn off search highlighting after you're finished searching
     { 'romainl/vim-cool' },
     -- Neovim language server/config
-    { 'neovim/nvim-lspconfig',
-      config = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.sourcekit.setup {
-            capabilities = {
-              workspace = {
-                didChangeWatchedFiles = {
-                  dynamicRegistration = true,
-                },
-              },
-            },
-          }
-      end
-    },
+    { 'neovim/nvim-lspconfig' },
     -- nvim-cmp provides autocompletion + utilities
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
@@ -48,8 +35,6 @@ require("lazy").setup({
     -- { 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } },
     -- Automatically turn off search highlighting after you're finished searching
     { 'romainl/vim-cool' },
-    -- Neovim language server/config
-    { 'neovim/nvim-lspconfig' },
     -- Line indent guides
     { 'lukas-reineke/indent-blankline.nvim' },
     -- Coc.nvim
@@ -99,11 +84,11 @@ require("lazy").setup({
       config = require("./plugin-configs/neo-tree")
     },
     { 'mustache/vim-mustache-handlebars' },
-    -- Fish LSP
-    { 'ndonfris/fish-lsp',
-      build = { "yarn install" },
-      config = require("./plugin-configs/fish-lsp")
-    },
+    -- -- Fish LSP
+    -- { 'ndonfris/fish-lsp',
+    --   build = { "yarn install" },
+    --   config = require("lspconfigs.fish-lsp")
+    -- },
     { "deponian/nvim-base64",
       version = "*",
       keys = {
@@ -126,5 +111,9 @@ require("lazy").setup({
               end
           })
       end
+    },
+    { 'nvim-treesitter/nvim-treesitter' },
+    { 'apple/pkl-neovim',
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 })
