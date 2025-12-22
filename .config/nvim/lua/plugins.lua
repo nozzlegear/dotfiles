@@ -13,7 +13,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- Packages
+    { "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      config = function ()
+        local configs = require("nvim-treesitter.configs")
+
+        configs.setup({
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "sql","elixir", "javascript", "typescript", "c_sharp", "fsharp", "html", "graphql", "go", "swift", "fennel", "julia", "fish" },
+            sync_install = false,
+            highlight = { enable = true },
+            indent = { enable = true },
+          })
+      end
+    },
     { 'stevearc/dressing.nvim', opts = {} },
     { 'akinsho/git-conflict.nvim', version = "*", config = true },
     -- Automatically turn off search highlighting after you're finished searching
