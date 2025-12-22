@@ -42,6 +42,7 @@ alias ll 'eza -lhFa --group-directories-first --no-permissions --no-user --no-ti
 alias rot13 "tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 alias yt yt-dlp
 alias reload "source ~/.config/fish/config.fish"
+alias resource " source ~/.config/fish/config.fish; and source ~/.config/fish/env.fish; and echo 'Done!'"
 
 # Abbreviation for finding the size of a file. When used, expands to du -h
 abbr --add size du -hs
@@ -163,6 +164,9 @@ set -gx PINENTRY_USER_DATA "USE_CURSES=0"
 
 # Set fuzzyfinder (:FZF in vim) to use ripgrep and ignore any files in .gitignore file
 set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
+
+# Ripgrep's config file
+set -gx RIPGREP_CONFIG_PATH "$HOME/.config/.ripgreprc"
 
 # Solarized dircolors from the Dracula theme for gnome terminal
 if command -q dircolors
