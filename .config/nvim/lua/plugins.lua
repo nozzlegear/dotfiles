@@ -60,14 +60,6 @@ require("lazy").setup({
     -- Dotnet
     { 'adelarsq/neofsharp.vim' },
     --{ 'OmniSharp/omnisharp-vim' },
-    { 'razzmatazz/csharp-language-server',
-      build = {
-        "git init",
-        -- `--add-source <folder-name>` is the folder containing the .nupkg. `csharp-ls` what dotnet will rename the package to when adding the tool to the system path
-        "dotnet pack -c release -o output && \
-         dotnet tool install --global --add-source output csharp-ls"
-      }
-    },
     -- A plugin to visualise and resolve merge conflicts in neovim
     {'akinsho/git-conflict.nvim', version = "*", config = true},
     -- Prettier quickfix/location list windows for NeoVim
@@ -81,14 +73,9 @@ require("lazy").setup({
         "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
       },
-      config = require("./plugin-configs/neo-tree")
+      config = require("plugin-configs.neo-tree")
     },
     { 'mustache/vim-mustache-handlebars' },
-    -- -- Fish LSP
-    -- { 'ndonfris/fish-lsp',
-    --   build = { "yarn install" },
-    --   config = require("lspconfigs.fish-lsp")
-    -- },
     { "deponian/nvim-base64",
       version = "*",
       keys = {
