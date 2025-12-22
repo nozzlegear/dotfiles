@@ -1,0 +1,27 @@
+[git_branch]
+symbol = "🌳 "
+
+[battery]
+disabled = true
+
+[character]
+# Change the symbol for the terminal prompt when the last command failed
+error_symbol = '[✖](bold red)'
+
+[dotnet]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[elm]
+disabled = true
+
+[lua]
+disabled = true
+
+[package]
+disabled = true
+
+[swift]
+disabled = true

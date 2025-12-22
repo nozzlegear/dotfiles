@@ -1,5 +1,6 @@
 .config/fish
 .config/nvim
+.config/starship.toml
 .gitconfig
 .gitignore_global
 .ideavimrc
