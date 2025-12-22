@@ -100,8 +100,14 @@ elseif &ide == "WebStorm"
 end
 
 "" Building
-map <leader>B <Action>(BuildSolutionAction)
-map <leader>b <Action>(BuildCurrentProject)
+map <leader>B <Action>(BuildCurrentProject)
+map <leader>bs <Action>(BuildSolutionAction)
+map <leader>bc <Action>(CleanSolutionAction)
+map <leader>bf <Action>(ActivateBuildToolWindow)
+
+"" Problems
+map <leader>E <Action>(ActivateProblemsViewToolWindow)
+map <leader>e <Action>(ActivateFindToolWindow)
 
 "" Debugging
 map <leader>D <Action>(Debug)
