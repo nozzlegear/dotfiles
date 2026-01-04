@@ -1,3 +1,5 @@
+.claude/commands/commit.md
+.claude/commands/pull-request.md
 .config/fish
 .config/nvim
 .config/starship.toml
