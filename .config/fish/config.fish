@@ -44,33 +44,6 @@ alias yt yt-dlp
 alias reload "source ~/.config/fish/config.fish"
 alias resource " source ~/.config/fish/config.fish; and source ~/.config/fish/env.fish; and echo 'Done!'"
 
-# Abbreviation for finding the size of a file. When used, expands to du -h
-abbr --add size du -hs
-# Use dust instead of du for all other operations
-# https://github.com/bootandy/dust
-abbr --add du dust -rd1
-# Abbreviation for downloading just audio from a URL with youtube-dl
-abbr --add audio --set-cursor -- yt --extract-audio --audio-format "wav" \""%\""
-abbr video yt-dlp --format "best"
-# Abbreviation for using fd, improved find utility
-abbr find fd --full-path --hidden --ignore-case
-# Abbrevation for sd -- a sed replacement
-abbr sedr sd --preview
-# Tree
-abbr --add tree eza --git-ignore --tree --level=5
-# Find extension
-abbr --add fe fd --full-path --hidden --ignore-case --extension
-# Git commit abbreviations
-abbr amend git commit --amend
-abbr commit --set-cursor -- git commit --edit -m \""%\""
-
-# Abbreviation for installing software based on the operating system
-if isMac
-    abbr i brew install
-else
-    abbr i sudo apt install -y
-end
-
 if test "$WSL_running" = true
     set -x u '/mnt/c/Users/nozzlegear'
 	set -x r ~/repos
