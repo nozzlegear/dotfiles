@@ -136,6 +136,7 @@ vim.lsp.config['theme_check'] = {
 }
 
 vim.lsp.config['svelte'] = {
+    filetypes = { "svelte" }
 }
 
 --- """
