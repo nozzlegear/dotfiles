@@ -141,5 +141,13 @@ require("lazy").setup({
           pkl_cli_path = "/opt/homebrew/bin/pkl"
         }
       end,
-    }
+    },
+    {
+        "oug-t/difi.nvim",
+        event = "VeryLazy",
+        keys = {
+            -- Context-aware: Syncs with CLI target (e.g. main) or defaults to HEAD
+            { "<leader>df", ":Difi<CR>", desc = "Toggle Difi" },
+        },
+    },
 })
