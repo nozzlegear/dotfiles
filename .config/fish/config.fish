@@ -149,7 +149,7 @@ end
 
 # Use starship prompt
 # https://starship.rs
-eval (starship init fish)
+#eval (starship init fish)
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 test -e {$HOME}/.swiftly/env.fish ; and source {$HOME}/.swiftly/env.fish

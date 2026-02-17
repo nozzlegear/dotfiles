@@ -6,3 +6,11 @@ secrets.fish
 .secrets
 .secrets.fish
 *secret*
+
+# Files managed by Pure Fish
+.config/fish/functions/_pure*.fish
+.config/fish/functions/fish_mode_prompt.fish
+.config/fish/functions/fish_prompt.fish
+.config/fish/functions/fish_title.fish
+.config/fish/conf.d/_pure*.fish
+.config/fish/conf.d/pure.fish
