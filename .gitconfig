@@ -94,3 +94,6 @@
 [maintenance]
 	auto = true
 	strategy = incremental
+[filter "strip-yarn-timestamp"]
+	clean = sed '/^lastUpdateCheck/d'
+	smudge = cat
