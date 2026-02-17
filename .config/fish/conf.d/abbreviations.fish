@@ -9,6 +9,7 @@ abbr -a -- fe 'fd --full-path --hidden --ignore-case --extension'
 abbr -a -- amend 'git commit --amend'
 abbr -a --set-cursor='%' -- commit 'git commit --edit -m "%"'
 abbr -a -- rebase 'git rebase --interactive --autosquash'
+abbr -a -- con 'git rebase --continue'
 
 if test (uname -s) = "Darwin"
     abbr i brew install
