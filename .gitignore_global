@@ -343,3 +343,4 @@ token
 
 # Ignore Claude code files
 .claude/
+CLAUDE.md
