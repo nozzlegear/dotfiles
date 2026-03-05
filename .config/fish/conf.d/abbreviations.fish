@@ -8,6 +8,7 @@ abbr -a -- tree 'eza --git-ignore --tree --level=5'
 abbr -a -- fe 'fd --full-path --hidden --ignore-case --extension'
 abbr -a -- amend 'git commit --amend'
 abbr -a --set-cursor='%' -- commit 'git commit --edit -m "%"'
+abbr -a --set-cursor='%' -- commitc 'git commit --edit -C "%"'
 abbr -a -- rebase 'git rebase --interactive --autosquash'
 abbr -a -- con 'git rebase --continue'
 
