@@ -7,6 +7,20 @@ return function()
           ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
         },
       },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = true,
+          hide_hidden = false,
+          hide_by_name = {
+            ".git",
+            "thumbs.db"
+          },
+          never_show = {
+            ".DS_Store"
+          }
+        }
+      }
     }
 
     -- Remap -- and <leader>f to toggling neotree
