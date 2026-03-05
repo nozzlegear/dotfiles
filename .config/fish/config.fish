@@ -36,6 +36,8 @@ end
 set -x r ~/repos
 set -x sdh "$r/sdh/Books/SDH/Projects"
 set -x sb "$r/sdh/Books/ShopifyBilling/ShopifyBilling"
+set dotfiles "$HOME/.config/lnk"
+
 alias cat 'bat'
 alias s 'git status --short'
 alias gd 'git diff'
