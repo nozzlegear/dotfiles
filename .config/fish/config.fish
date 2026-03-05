@@ -27,6 +27,11 @@ function isMac
     return 1
 end
 
+if isMac
+    # This is used by tools like sops
+    set -x XDG_CONFIG_HOME "$HOME/.config"
+end
+
 # Custom aliases, functions and abbreviations
 set -x r ~/repos
 set -x sdh "$r/sdh/Books/SDH/Projects"
@@ -140,6 +145,9 @@ set -gx FZF_DEFAULT_COMMAND 'rg --files --ignore-vcs --hidden'
 
 # Ripgrep's config file
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/.ripgreprc"
+
+# Sops key file
+set -x SOPS_AGE_SSH_PRIVATE_KEY_FILE "$HOME/.config/sops/age/keys.txt"
 
 # Solarized dircolors from the Dracula theme for gnome terminal
 if command -q dircolors
