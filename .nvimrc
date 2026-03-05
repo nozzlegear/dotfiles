@@ -42,18 +42,6 @@ nnoremap <C-V>x0FFC0 :e# <enter>
 nnoremap <F2> :set invpaste paste?<CR>
 set showmode
 
-" Add a copy command that copies to clipboard. Added because on Linux my yank to clipboard will paste in everything _but_ rider due to the yank using xsel instead of xclip.
-" https://stackoverflow.com/a/2585673
-"function Copy() range
-"    echo system('echo '.shellescape(join(getline(a:firstline, a:listline), "\n")).'| xclip -selection clipboard')
-"endfunction
-"
-" This version works on windows. TODO: figure out how to combine these two
-" functions so they're portable
-function Copy() range
-    echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\r")).'| clip')
-endfunction
-
 function! SwapSwitchArrows() range abort
     :'<,'>s/\(\S.*\) \+=> \+\(.*\),\+$/\2 => \1,/
     "Replacing the text will deselect the lines, so select them again
@@ -122,10 +110,6 @@ function! SplitFunctionArguments(delimiter) abort
 endfunction
 
 nnoremap <Leader>sl :call SplitFunctionArguments(",")<CR>
-
-" This adds the :Copy and :Clip shortcuts, meaning you don't need to do :call Copy()
-com -range=% -nargs=0 Copy :<line1>,<line2>call Copy()
-com -range=% -nargs=0 Clip :<line1>,<line2>call Copy()
 
 " Tell FuzzyFinder to use ripgrep, which will ignore files in .gitignore by
 " default. Also tell it to ignore files in the .git folder so a search for
