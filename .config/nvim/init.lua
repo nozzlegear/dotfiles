@@ -74,9 +74,6 @@ cmp.setup.cmdline({ '/', '?' }, {
     }
 })
 
--- Setup cmp's lspconfig
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- ###
 -- lspconfig keybindings
 -- ###
@@ -91,53 +88,6 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- ###
--- lspconfigs for each language
--- ###
-
-vim.lsp.config['fsautocomplete'] = {
-    capabilities = capabilities,
-    cmd = {
-        "fsautocomplete", "--adaptive-lsp-server-enabled"
-    },
-    filetypes = {
-        "fsharp",
-        "fsproj"
-    },
-    init_options = {
-        AutomaticWorkspaceInit = true
-    }
-}
-
-vim.lsp.config['csharp_ls'] = {
-    init_options = {
-        AutomaticWorkspaceInit = true
-    },
-    handlers = {
-      --["textDocument/definition"] = require('csharpls_extended').handler,
-    },
-    cmd = { "csharp-ls" },
-    filetypes = { "cs", "csproj", "razor", "fs" }
-    -- Use custom csharp-ls fix until https://github.com/razzmatazz/csharp-language-server/issues/121 is fixed
-    --root_dir = require'lspconfig'.util.root_pattern("_.sln", "_.csproj", "packages.config")
-}
-
--- require'lspconfig'.ts_ls.setup{
--- }
-
-vim.lsp.config['zls'] = {
-}
-
-vim.lsp.config['julials'] = {
-}
-
-vim.lsp.config['theme_check'] = {
-}
-
-vim.lsp.config['svelte'] = {
-    filetypes = { "svelte" }
-}
 
 --- """
 --- Misc keymappings
