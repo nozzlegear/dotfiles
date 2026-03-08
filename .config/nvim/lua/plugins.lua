@@ -14,17 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter",
+      branch = "main",
       build = ":TSUpdate",
-      config = function ()
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "sql","elixir", "javascript", "typescript", "c_sharp", "fsharp", "html", "graphql", "go", "swift", "fennel", "julia", "fish" },
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },
-          })
-      end
     },
     { 'stevearc/dressing.nvim', opts = {} },
     { 'akinsho/git-conflict.nvim', version = "*", config = true },
@@ -118,6 +109,7 @@ require("lazy").setup({
       dependencies = {
         {
           "nvim-treesitter/nvim-treesitter",
+          branch = "main",
           build = function(_)
             vim.cmd("TSUpdate")
           end,
