@@ -11,6 +11,8 @@ abbr -a --set-cursor='%' -- commit 'git commit --edit -m "%"'
 abbr -a --set-cursor='%' -- commitc 'git commit --edit -C "%"'
 abbr -a -- rebase 'git rebase --interactive --autosquash'
 abbr -a -- con 'git rebase --continue'
+abbr -a --set-cursor='%' -- gs 'git log --source -i --grep="%"'
+abbr -a --set-cursor='%' -- gsa 'git log --source --all -i --grep="%"'
 
 if test (uname -s) = "Darwin"
     abbr i brew install
