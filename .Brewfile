@@ -182,8 +182,6 @@ brew "git"
 brew "git-absorb"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Tcl/Tk UI for the git revision control system
-brew "git-gui"
 # Git extension for versioning large files
 brew "git-lfs"
 # Passphrase entry dialog utilizing the Assuan protocol
@@ -212,8 +210,6 @@ brew "htmltest"
 brew "htop"
 # Ping-like tool for HTTP requests
 brew "httping"
-# Configurable static site generator
-brew "hugo"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Display an interface's bandwidth usage
@@ -232,10 +228,6 @@ brew "just"
 brew "killport"
 # High-performance authoritative-only DNS server
 brew "knot"
-# Tool to move from `docker-compose` to Kubernetes
-brew "kompose"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
 # Postgres C API library
 brew "libpq"
 # Use Realtek DVB-T dongles as a cheap SDR
@@ -326,14 +318,10 @@ brew "rtmpdump"
 brew "rust"
 # Command-line tool for the Amazon S3 service
 brew "s3cmd"
-# CLI search and replace | Space Age seD
-brew "sad"
 # Small man page generator
 brew "scdoc"
 # Interactive find and replace in the terminal
 brew "scooter"
-# Intuitive find & replace CLI
-brew "sd"
 # Static http server anywhere you need one
 brew "serve"
 # Cryptographically sign and verify files
@@ -421,8 +409,6 @@ brew "stripe/stripe-cli/stripe"
 brew "yarlson/lnk/lnk"
 # JSON navigator and interactive filter leveraging jq
 brew "ynqa/tap/jnv"
-# Collection of apps and services for photography, design, video, web, and UX
-cask "adobe-creative-cloud"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to customise input devices and automate computer systems
@@ -435,8 +421,6 @@ cask "claude"
 cask "container"
 # Command-line display management utility
 cask "cscreen"
-# Provides developers secure tunnels to share local web services
-cask "devtunnel"
 # Voice and text chat software
 cask "discord"
 # Developer platform
@@ -480,14 +464,10 @@ cask "podman-desktop"
 cask "powershell"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
-# Kubernetes and container management on the desktop
-cask "rancher"
 # .NET IDE
 cask "rider"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Screenshot measurement and annotation tool
-cask "shottr"
 # Interactive log viewer for MSBuild structured logs (*.binlog)
 cask "structuredlogviewer"
 # Web browser focusing on security
