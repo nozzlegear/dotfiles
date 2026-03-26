@@ -1,3 +1,4 @@
+.Brewfile
 .claude/commands/commit-multi.md
 .claude/commands/commit.md
 .claude/commands/pull-request.md
