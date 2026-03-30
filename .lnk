@@ -6,6 +6,8 @@
 .gitconfig
 .gitignore_global
 .ideavimrc
+.local/share/nvim-jump/scripts/open.sh
+.local/share/nvim-jump/scripts/quickfix.sh
 .nvimrc
 .profile
 .tmux.conf
