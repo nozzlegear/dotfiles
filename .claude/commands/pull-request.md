@@ -32,10 +32,6 @@ This command creates a pull request by analyzing the commits on the current bran
 ```bash
 gh pr create --title "Upgrade Sentry browser packages and configuration" --body "$(cat <<'EOF'
 This PR upgrades Sentry's browser packages to the latest versions and configures the latest integrations for improved error tracking. It also adds user data to the initial scope and wires up server-side Sentry configuration for view rendering.
-
-- Upgrade @sentry/browser and related packages
-- Add latest Sentry integrations
-- Configure user scope data
 EOF
 )" --label "logging,development"
 ```
@@ -43,5 +39,11 @@ EOF
 ## Notes
 - Ensure the branch is pushed to remote before creating PR
 - Use comma-separated labels: `--label "label1,label2"`
-- Keep summaries concise and technical
-- No emojis in PR content
+- For the PR's subject line, use the imperative mood (e.g. "Add a Foo to the Bar feature")
+- Do not use emojis or bullet lists in the PR's body
+- Keep the PR's body concise
+- Don't be overly technical unless the PR itself is technical (e.g. a very finicky bug fix)
+- Reference any relevant issues where possible (check the messages of the commits included in the PR)
+- Do NOT list the files, classes or types that were changed in the PR
+- Do NOT add a Claude co-authorship footer to the PR body
+- Always use American English

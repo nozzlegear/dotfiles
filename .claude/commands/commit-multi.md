@@ -77,3 +77,4 @@ scope: auth
 - Reference issues/PRs when relevant
 - Do NOT list the files that were changed in commit messages or bodies.
 - Do NOT add Claude co-authorship footer to commit messages or bodies.
+- Always use American English when writing a commit message.

@@ -39,9 +39,8 @@ This command analyzes staged git changes and creates a clear, concise commit mes
 ```
 Add password reset functionality
 
-- Implement forgot password flow
-- Add email notification service
-- Create password reset tokens with 24h expiry
+Implemented the Forgot Password flow with a 24h expiry for the Password Reset tokens.
+Added the Email Notification service.
 
 type: feature
 scope: auth
@@ -64,4 +63,6 @@ scope: auth
 - Keep subject line under 90 characters
 - Use present tense ("add" not "added")
 - Reference issues/PRs when relevant
-- Do NOT add Claude co-authorship footer to commits
+- Do NOT list the files that were changed in commit messages or bodies.
+- Do NOT add Claude co-authorship footer to commit messages or bodies.
+- Always use American English when writing a commit message.
