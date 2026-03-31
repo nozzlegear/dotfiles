@@ -1,7 +1,5 @@
 .Brewfile
-.claude/commands/commit-multi.md
-.claude/commands/commit.md
-.claude/commands/pull-request.md
+.claude/commands
 .config/fish
 .config/nvim
 .config/starship.toml
