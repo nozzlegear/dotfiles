@@ -6,6 +6,7 @@ tap "isen-ng/dotnet-sdk-versions"
 tap "jstkdng/programs"
 tap "microsoft/mssql-release"
 tap "mint-lang/mint-lang"
+tap "mpryor/tap"
 tap "oug-t/difi"
 tap "oven-sh/bun"
 tap "shopify/shopify"
@@ -38,6 +39,8 @@ brew "aspell"
 brew "glib"
 # Protocol definitions and daemon for D-Bus at-spi
 brew "at-spi2-core"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # C library implementing the SSH2 protocol
@@ -72,6 +75,8 @@ brew "libavif"
 brew "pango"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Statistics utility to count lines of code
 brew "cloc"
 # Cross-platform make
@@ -184,14 +189,26 @@ brew "git-absorb"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Bash-tool to store the private data inside a git repo
 brew "git-secret"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # Gnumeric spreadsheet program
@@ -228,8 +245,18 @@ brew "just"
 brew "killport"
 # High-performance authoritative-only DNS server
 brew "knot"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12", link: false
+# Light HTTP/1.1 server library
+brew "libmicrohttpd"
 # Postgres C API library
 brew "libpq"
+# Library for reading RAW files from digital photo cameras
+brew "libraw"
+# Reliable Internet Stream Transport (RIST)
+brew "librist"
 # Use Realtek DVB-T dongles as a cheap SDR
 brew "librtlsdr"
 # General purpose TCP-IP emulator
@@ -262,6 +289,10 @@ brew "ncdu"
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Incremental parsing library
+brew "tree-sitter"
+# Control nvim processes using `nvr` command-line tool
+brew "neovim-remote"
 # Net top tool grouping bandwidth per process
 brew "nethogs"
 # Statically typed compiled systems programming language
@@ -288,6 +319,8 @@ brew "pkl"
 brew "pkl-lsp"
 # Paste PNG into files
 brew "pngpaste"
+# PNG image optimizing utility
+brew "pngquant"
 # Alternative to docker-compose using podman
 brew "podman-compose"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -300,6 +333,8 @@ brew "prqlc"
 brew "python@3.10", link: false
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9", link: false
 # Generic machine emulator and virtualizer
 brew "qemu"
 # Tools for and transforming and inspecting PDF files
@@ -336,6 +371,8 @@ brew "sops"
 brew "spark"
 # Soak up standard input and write to a file
 brew "sponge"
+# Secure Reliable Transport
+brew "srt"
 # SSH server & client auditing
 brew "ssh-audit"
 # Cross-shell prompt for astronauts
@@ -356,8 +393,6 @@ brew "tmux"
 brew "tnef"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Incremental parsing library
-brew "tree-sitter"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Command-line tool for URL parsing and manipulation
@@ -396,6 +431,8 @@ brew "jstkdng/programs/ueberzugpp"
 brew "microsoft/mssql-release/mssql-tools"
 # Refreshing programming language for the front-end web
 brew "mint-lang/mint-lang/mint-lang"
+# Nothing Less - A TUI for parsing and arranging tabular data
+brew "mpryor/tap/nless"
 # The pixel-perfect terminal diff viewer
 brew "oug-t/difi/difi"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
