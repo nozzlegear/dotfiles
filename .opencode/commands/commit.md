@@ -1,0 +1,68 @@
+---
+title: Git Commit Task
+read_only: true
+type: command
+---
+
+Generate a well-structured commit message based on staged changes.
+
+## Description
+
+This command analyzes staged git changes and creates a clear, concise commit message. It reviews the changes, categorizes the nature and scope, and then commits them without asking for confirmation.
+
+- Append the nature and scope to the commit in git trailers, e.g. `type: fix` or `type: refactor`.
+- Do NOT prefix commit messages with the conventional commits standard.
+- Do NOT add Claude co-authorship footer to commits
+
+## Usage
+`commit`
+
+## Steps
+1. Run `git status` to see staged files
+2. Review changes with `git diff --cached` if needed
+3. Analyze the nature of changes:
+   - Feature additions (feature)
+   - Bug fixes (fix)
+   - Documentation (docs)
+   - Style changes (style)
+   - Refactoring (refactor)
+   - Tests (test)
+   - Chores (chore)
+5. Write a commit message with:
+   - Clear, imperative mood description
+   - Body with "why" and "what" if needed
+   - Footer with references if applicable
+   - Nature and scope in the trailers (`type: fix` or `scope: feat`)
+
+## Examples
+### Example 1: Simple feature commit
+```
+Add password reset functionality
+
+Implemented the Forgot Password flow with a 24h expiry for the Password Reset tokens.
+Added the Email Notification service.
+
+type: feature
+scope: auth
+```
+
+### Example 2: Bug fix commit
+```
+Resolve null pointer in user validation
+
+Validation was failing when optional fields were undefined.
+Added null checks before accessing nested properties.
+
+Fixes #123
+
+type: fix
+scope: auth
+```
+
+## Notes
+- Keep subject line under 90 characters
+- Use present tense ("add" not "added")
+- Reference issues/PRs when relevant
+- Do NOT list the files that were changed in commit messages or bodies.
+- Do NOT add Claude co-authorship footer to commit messages or bodies.
+- Always use American English when writing a commit message.

@@ -1,0 +1,38 @@
+prompt = """
+Open or jump to a file location in an existing Neovim instance via nvr (neovim-remote).
+
+Use this when asked to open/jump to a file in Neovim, open a specific file:line:col, or populate Neovim's quickfix list with search results.
+
+## Opening a file
+
+Run this to open a file in a new Neovim tab and jump to a specific location:
+
+```bash
+~/.local/share/nvim-jump/scripts/open.sh <absolute-path> <line> <col>
+```
+
+- Always use absolute paths.
+- If line or col are unknown, use `1`.
+
+## Populating quickfix
+
+1. Write a quickfix file with one entry per line in this format:
+
+```
+/absolute/path/to/file:line:col: message
+```
+
+2. Then load it into Neovim:
+
+```bash
+~/.local/share/nvim-jump/scripts/quickfix.sh /tmp/claude.qf
+```
+
+## Environment
+
+- Set `$NVIM_SERVER` to the Neovim socket path if it differs from `/tmp/nvimsocket`.
+- Requires `nvr` (neovim-remote) in PATH.
+- Neovim must be running with `--listen` on the matching socket.
+
+{{args}}
+"""
