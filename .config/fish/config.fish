@@ -39,7 +39,6 @@ set -x sb "$r/sdh/Books/ShopifyBilling/ShopifyBilling"
 set dotfiles "$HOME/.config/lnk"
 
 alias cat 'bat'
-alias s 'git status --short'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
 alias gap 'git add -p'
