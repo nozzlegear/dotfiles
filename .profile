@@ -8,3 +8,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export XDG_CONFIG_HOME="$HOME/.config"
 
 . "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/nozzlegear/.lmstudio/bin"
+# End of LM Studio CLI section
+

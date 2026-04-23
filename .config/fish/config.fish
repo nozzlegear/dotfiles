@@ -163,3 +163,8 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 test -e {$HOME}/.swiftly/env.fish ; and source {$HOME}/.swiftly/env.fish
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/nozzlegear/.lmstudio/bin
+# End of LM Studio CLI section
+
