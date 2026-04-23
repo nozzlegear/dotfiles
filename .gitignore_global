@@ -344,3 +344,6 @@ token
 # Ignore Claude code files
 .claude/
 CLAUDE.md
+
+# Ignore jj's repo history files (prevents them from being cleaned by git clean)
+.jj/
