@@ -4,6 +4,7 @@
 .config/fish
 .config/nvim
 .config/starship.toml
+.config/uv/uv.toml
 .gemini/commands
 .gitconfig
 .gitignore_global
