@@ -1,4 +1,5 @@
 .Brewfile
+.bunfig.toml
 .claude/commands
 .config/fish
 .config/nvim
