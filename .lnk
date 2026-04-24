@@ -9,6 +9,7 @@
 .ideavimrc
 .local/share/nvim-jump/scripts/open.sh
 .local/share/nvim-jump/scripts/quickfix.sh
+.npmrc
 .nvimrc
 .profile
 .tmux.conf
