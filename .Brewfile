@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 tap "isen-ng/dotnet-sdk-versions"
 tap "jstkdng/programs"
+tap "jundot/omlx", "https://github.com/jundot/omlx"
 tap "microsoft/mssql-release"
 tap "mint-lang/mint-lang"
 tap "mpryor/tap"
@@ -21,12 +22,6 @@ brew "age"
 brew "age-plugin-se"
 # Plugin for encrypting files with age and PIV tokens such as YubiKeys
 brew "age-plugin-yubikey"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# New file format for still image compression
-brew "jpeg-xl"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Next generation of apngasm, the APNG assembler
@@ -69,6 +64,10 @@ brew "cairo"
 brew "gdk-pixbuf"
 # OpenType text shaping engine
 brew "harfbuzz"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
+# New file format for still image compression
+brew "jpeg-xl"
 # Library for encoding and decoding .avif files
 brew "libavif"
 # Framework for layout and rendering of i18n text
@@ -137,6 +136,8 @@ brew "yt-dlp"
 brew "gallery-dl"
 # GNU compiler collection
 brew "gcc"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # Image processing and image analysis library
@@ -145,38 +146,12 @@ brew "leptonica"
 brew "tesseract"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# GNU Ubiquitous Intelligent Language for Extensions
-brew "guile"
-# Database of common MIME types
-brew "shared-mime-info"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12", link: false
-# Library for reading RAW files from digital photo cameras
-brew "libraw"
-# Light HTTP/1.1 server library
-brew "libmicrohttpd"
-# Reliable Internet Stream Transport (RIST)
-brew "librist"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9", link: false
-# Secure Reliable Transport
-brew "srt"
+# Database of common MIME types
+brew "shared-mime-info"
 # Turn movies into GIFs
 brew "gifify"
 # GIF image/animation creator/editor
@@ -263,8 +238,8 @@ brew "librtlsdr"
 brew "libslirp"
 # C library SSHv1/SSHv2 client and server protocols
 brew "libssh"
-# Next-gen compiler infrastructure
-brew "llvm"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Tool for linting and static analysis of Lua code
 brew "luacheck"
 # Package manager for the Lua programming language
@@ -279,6 +254,8 @@ brew "markdownlint-cli2"
 brew "miller"
 # Sign files & verify signatures. Works with signify in OpenBSD
 brew "minisign"
+# Run LLMs with MLX
+brew "mlx-lm"
 # Cross platform, open source .NET development framework
 brew "mono"
 # Remote terminal application
@@ -287,10 +264,10 @@ brew "mosh"
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Incremental parsing library
 brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Control nvim processes using `nvr` command-line tool
 brew "neovim-remote"
 # Net top tool grouping bandwidth per process
@@ -299,10 +276,16 @@ brew "nethogs"
 brew "nim"
 # Programs for dealing with numbers from the command-line
 brew "num-utils"
+# Modern shell for the GitHub era
+brew "nushell"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # General-purpose speech recognition model
 brew "openai-whisper"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Open Visual Inference And Optimization toolkit for AI inference
 brew "openvino"
 # Shell command parallelization utility
@@ -345,8 +328,6 @@ brew "rclone"
 brew "rename"
 # Tools for file renaming
 brew "renameutils"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
 # Safe, concurrent, practical language
@@ -427,6 +408,8 @@ brew "bgreenwell/lstr/lstr"
 brew "dart-lang/dart/dart"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
+# LLM inference server optimized for Apple Silicon
+brew "jundot/omlx/omlx", args: ["with-grammar"]
 # Sqlcmd and Bcp for Microsoft(R) SQL Server(R)
 brew "microsoft/mssql-release/mssql-tools"
 # Refreshing programming language for the front-end web
@@ -479,6 +462,8 @@ cask "inkscape"
 cask "iterm2"
 # Open-source keystroke visualiser
 cask "keycastr"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Native chat application for all major LLM APIs
 cask "macai"
 # Speech recognition tool
