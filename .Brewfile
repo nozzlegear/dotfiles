@@ -11,7 +11,6 @@ tap "mpryor/tap"
 tap "oug-t/difi"
 tap "oven-sh/bun"
 tap "shopify/shopify"
-tap "stripe/stripe-cli"
 tap "yarlson/lnk"
 tap "ynqa/tap"
 # Static checker for GitHub Actions workflow files
@@ -425,8 +424,6 @@ brew "oven-sh/bun/bun"
 # A CLI tool to build for the Shopify platform
 brew "shopify/shopify/shopify-cli"
 brew "shopify/shopify/theme-check"
-# Stripe CLI utility
-brew "stripe/stripe-cli/stripe"
 # Git-native dotfiles management that doesn't suck
 brew "yarlson/lnk/lnk"
 # JSON navigator and interactive filter leveraging jq
