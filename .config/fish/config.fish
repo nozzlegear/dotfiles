@@ -132,6 +132,8 @@ end
 set -gx ASPNETCORE_ENVIRONMENT "Development"
 # Prevent dotnet watch from opening browser windows
 set -gx DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
+# Opt out of dontet's CLI telemetry
+set -x DOTNET_CLI_TELEMETRY_OPTOUT true
 
 # Set preferred text editor to vim
 set -gx EDITOR nvim
@@ -151,6 +153,9 @@ set -gx RIPGREP_CONFIG_PATH "$HOME/.config/.ripgreprc"
 
 # Sops key file
 set -x SOPS_AGE_SSH_PRIVATE_KEY_FILE "$HOME/.config/sops/age/keys.txt"
+
+# Turn off Shopify CLI analytics: https://shopify.dev/docs/apps/tools/cli#usage-reporting
+set -x SHOPIFY_CLI_NO_ANALYTICS 1
 
 # Solarized dircolors from the Dracula theme for gnome terminal
 if command -q dircolors
