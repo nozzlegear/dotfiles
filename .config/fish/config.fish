@@ -87,6 +87,8 @@ if isMac
     eval "$(/opt/homebrew/bin/brew shellenv)"
     # Add the homebrew version of Ruby to path, so it comes before the default macos version
     fish_add_path /opt/homebrew/opt/ruby/bin
+    # Disable Homebrew's annoyingly verbose hints about what it's doing
+    set -x HOMEBREW_NO_ENV_HINTS 1
 end
 
 # yt-dlp should be used instead of youtube-dl
