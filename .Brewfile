@@ -146,12 +146,38 @@ brew "leptonica"
 brew "tesseract"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12", link: false
+# Library for reading RAW files from digital photo cameras
+brew "libraw"
+# Light HTTP/1.1 server library
+brew "libmicrohttpd"
+# Reliable Internet Stream Transport (RIST)
+brew "librist"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9", link: false
 # Database of common MIME types
 brew "shared-mime-info"
+# Secure Reliable Transport
+brew "srt"
 # Turn movies into GIFs
 brew "gifify"
 # GIF image/animation creator/editor
@@ -164,26 +190,14 @@ brew "git-absorb"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
 # Passphrase entry dialog utilizing the Assuan protocol
 brew "pinentry"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
-# GNU Ubiquitous Intelligent Language for Extensions
-brew "guile"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Bash-tool to store the private data inside a git repo
 brew "git-secret"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # Gnumeric spreadsheet program
@@ -220,18 +234,8 @@ brew "just"
 brew "killport"
 # High-performance authoritative-only DNS server
 brew "knot"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12", link: false
-# Light HTTP/1.1 server library
-brew "libmicrohttpd"
 # Postgres C API library
 brew "libpq"
-# Library for reading RAW files from digital photo cameras
-brew "libraw"
-# Reliable Internet Stream Transport (RIST)
-brew "librist"
 # Use Realtek DVB-T dongles as a cheap SDR
 brew "librtlsdr"
 # General purpose TCP-IP emulator
@@ -240,6 +244,8 @@ brew "libslirp"
 brew "libssh"
 # LLM inference in C/C++
 brew "llama.cpp"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Tool for linting and static analysis of Lua code
 brew "luacheck"
 # Package manager for the Lua programming language
@@ -316,8 +322,6 @@ brew "prqlc"
 brew "python@3.10", link: false
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9", link: false
 # Generic machine emulator and virtualizer
 brew "qemu"
 # Tools for and transforming and inspecting PDF files
@@ -352,8 +356,6 @@ brew "sops"
 brew "spark"
 # Soak up standard input and write to a file
 brew "sponge"
-# Secure Reliable Transport
-brew "srt"
 # SSH server & client auditing
 brew "ssh-audit"
 # Cross-shell prompt for astronauts
