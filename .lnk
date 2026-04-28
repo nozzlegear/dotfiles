@@ -3,6 +3,7 @@
 .claude/commands
 .config/fish
 .config/nvim
+.config/opencode/commands
 .config/starship.toml
 .config/uv/uv.toml
 .gemini/commands
