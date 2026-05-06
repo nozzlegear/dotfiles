@@ -14,7 +14,7 @@ This command analyzes the changes in the current `jj` changeset and creates a cl
 
 ## Steps
 1. Run `jj status` to see modified, added and removed files in the current changeset
-2. Review a full changeset diff with `jj diff`, or an individual file diff with `jj diff ./path/to/file` if needed.
+2. Review a full changeset diff with `jj diff`, or an individual file diff with `jj diff ./path/to/file` if needed. Do not ask the user to review the diff.
 3. Analyze the type of changes:
    - Feature additions (type: feature)
    - Existing feature enhancement (type: enhancement)
@@ -25,7 +25,7 @@ This command analyzes the changes in the current `jj` changeset and creates a cl
    - Refactoring (type: refactor)
    - Tests (type: test)
    - Chores (type: chore)
-5. Use `jj describe` to write a description message with:
+5. Run `jj describe` to write a description message with:
    - A subject line (the first line of the description) that uses present tense, imperative mood description
    - A body (any line beyond the first line) that uses past tense, indicative mood.
    - The body should explain "why" the change was made and to "what"
@@ -61,7 +61,8 @@ scope: auth
 - Keep subject line under 80 characters
 - Reference issues/PRs when relevant
 - Always use American English when writing a commit message.
+- Do NOT ask the user to review diffs, logs or messages – just give them a summary when you're done.
 - Do NOT list the files that were changed in commit messages or bodies.
-- Do NOT add Claude co-authorship footer to commit messages or bodies.
+- Do NOT add a co-authorship footer to commit messages or bodies.
 - Do NOT prefix description messages with the "conventional commits" standard.
 """
