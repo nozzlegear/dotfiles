@@ -2,6 +2,7 @@
 .bunfig.toml
 .claude/commands
 .config/fish
+.config/jj/config.toml
 .config/nvim
 .config/opencode/commands
 .config/starship.toml
