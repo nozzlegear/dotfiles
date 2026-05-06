@@ -132,8 +132,10 @@ end
 set -x ASPNETCORE_ENVIRONMENT "Development"
 # Prevent dotnet watch from opening browser windows
 set -x DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
-# Opt out of dontet's CLI telemetry
+
+# Telemetry opt out
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
+set -x ASTRO_TELEMETRY_DISABLED 1
 
 # Set preferred text editor to vim
 set -gx EDITOR nvim
