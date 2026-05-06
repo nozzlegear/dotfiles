@@ -1,0 +1,20 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Joshua Harms"
+email = "joshua@nozzlegear.com"
+
+[signing]
+key = "678CB5B8"
+behavior = "own"
+backend = "gpg"
+
+[git]
+sign-on-push = true
+
+[aliases]
+remote-ahead = ["log", "-r", "remote_bookmarks(remote=exact:'origin') ~ ::@"]
+short-log = ["log", "-T", 'coalesce(description.first_line(), description_placeholder) ++ "\n"']
+
+[ui]
+diff-editor = ":builtin"
