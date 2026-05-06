@@ -5,7 +5,11 @@ vim.lsp.enable({
     "cssls",
     "html-ls",
     "astro",
-    "svelte"
+    "svelte",
+    "taplo", -- Toml LSP server
+    "json-lsp",
+    "vim-lsp-server",
+    "lua-lsp-server"
 })
 
 vim.lsp.config["html-ls"] = {
