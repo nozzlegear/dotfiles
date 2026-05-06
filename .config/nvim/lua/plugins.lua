@@ -142,4 +142,14 @@ require("lazy").setup({
             { "<leader>df", ":Difi<CR>", desc = "Toggle Difi" },
         },
     },
+    {
+        -- Mason manages external tooling (LSP servers, DAP adapters, linters, formatters)
+        "mason-org/mason.nvim",
+        opts = {}
+    },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = { "mason-org/mason.nvim" },
+        config = require("plugin-configs.mason-tool-installer")
+    }
 })
