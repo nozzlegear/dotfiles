@@ -17,10 +17,12 @@ This command creates a pull request by analyzing the commits on the current bran
 `pull-request`
 
 ## Steps
-1. Run `git log master..HEAD --oneline` to see commits in the branch
-2. Run `git diff master...HEAD --stat` to understand scope of changes
-3. Run `gh label list` to see available labels
-4. Analyze the commits and changes to create a summary
+1. Detect the VCS: run `jj root` to check if the repo uses Jujutsu (jj). If it succeeds, use jj commands; otherwise fall back to git.
+   - **jj**: run `jj bookmark list` to find the current bookmark, then `jj log --no-pager -r "main..<bookmark>"` and `jj diff -r "main..<bookmark>" --stat` for commits and scope. Use `jj git remote list` to find the GitHub remote for `gh` commands (e.g. `--repo owner/name`).
+   - **git**: run `git log master..HEAD --oneline` and `git diff master...HEAD --stat`.
+2. Run `gh label list` (with `--repo` if needed) to see available labels
+3. Analyze the commits and changes to create a summary
+4. Ensure the branch/bookmark is pushed to the remote before creating the PR
 5. Create PR with `gh pr create` including:
    - Short, descriptive title
    - One-paragraph description of the changes
