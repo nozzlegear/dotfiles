@@ -8,6 +8,7 @@
 .config/starship.toml
 .config/uv/uv.toml
 .gemini/commands
+.gemini/policies
 .gitconfig
 .gitignore_global
 .ideavimrc
