@@ -13,8 +13,11 @@ This command analyzes the changes in the current `jj` changeset and creates a cl
 `describe`
 
 ## Steps
-1. Run `jj status` to see modified, added and removed files in the current changeset
-2. Review a full changeset diff with `jj diff`, or an individual file diff with `jj diff ./path/to/file` if needed. Do not ask the user to review the diff.
+1. Run `jj status --no-pager` to see modified, added and removed files in the current changeset
+   - Always use the `--no-pager` flag with `jj status`.
+2. Review a full changeset diff with `jj diff --no-pager`, or an individual file diff with `jj diff --no-pager ./path/to/file` if needed.
+   - Always use the `--no-pager` flag with `jj diff`.
+   - Do not ask the user to review the diff.
 3. Analyze the type of changes:
    - Feature additions (type: feature)
    - Existing feature enhancement (type: enhancement)
@@ -61,6 +64,7 @@ scope: auth
 - Keep subject line under 80 characters
 - Reference issues/PRs when relevant
 - Always use American English when writing a commit message.
+- Always use the `--no-pager` flag with `jj status` and `jj diff`.
 - Do NOT ask the user to review diffs, logs or messages – just give them a summary when you're done.
 - Do NOT list the files that were changed in commit messages or bodies.
 - Do NOT add a co-authorship footer to commit messages or bodies.
