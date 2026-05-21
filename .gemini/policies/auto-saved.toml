@@ -32,3 +32,24 @@ priority = 950
 toolName = "run_shell_command"
 commandPrefix = [ "npm" ]
 modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 950
+toolName = "run_shell_command"
+commandPrefix = [ "cat", "grep" ]
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 950
+toolName = "run_shell_command"
+commandPrefix = [ "mkdir" ]
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 950
+toolName = "run_shell_command"
+commandPrefix = [ "cat", "head" ]
+modes = [ "autoEdit", "yolo" ]
