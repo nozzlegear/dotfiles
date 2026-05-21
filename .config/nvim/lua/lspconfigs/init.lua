@@ -9,7 +9,9 @@ vim.lsp.enable({
     "taplo", -- Toml LSP server
     "json-lsp",
     "vim-lsp-server",
-    "lua-lsp-server"
+    "lua-lsp-server",
+    "svelte-language-server",
+    "astro-language-server",
 })
 
 vim.lsp.config["html-ls"] = {
