@@ -7,14 +7,39 @@ email = "joshua@nozzlegear.com"
 [signing]
 key = "678CB5B8"
 behavior = "own"
-backend = "gpg"
 
 [git]
 sign-on-push = true
+# Allows code forges to extract change-ids from commits, and allows jj to track changes across force pushes
+write-change-id-header = true
 
 [aliases]
 remote-ahead = ["log", "-r", "remote_bookmarks(remote=exact:'origin') ~ ::@"]
 short-log = ["log", "-T", 'coalesce(description.first_line(), description_placeholder) ++ "\n"']
+# Rebase the current bookmark on its upstream (https://oppi.li/posts/configuring_jujutsu/)
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
 [ui]
-diff-editor = ":builtin"
+diff-formatter = "difft"
+
+[merge-tools.difft]
+program = "difft"
+diff-args = ["--color=always", "$left", "$right"]
+
+[template-aliases]
+"format_timestamp(timestamp)" = "timestamp.ago()"
+
+[templates]
+log = """
+separate(" ",
+  if(root, "root()"),
+  change_id.shortest(8),
+  committer.timestamp().ago(),
+  if(bookmarks, ("[" ++ bookmarks ++ "]")),
+  if(empty, label("empty", "(empty)")),
+  coalesce(description.first_line(), description_placeholder),
+  if(conflict, label("conflict", "conflict")),
+  if(!mine, author.name()),
+) ++ "\n"
+"""
+
