@@ -16,13 +16,6 @@ modes = [ "autoEdit", "yolo" ]
 decision = "allow"
 priority = 950
 toolName = "run_shell_command"
-commandPrefix = [ "jj" ]
-modes = [ "autoEdit", "yolo" ]
-
-[[rule]]
-decision = "allow"
-priority = 950
-toolName = "run_shell_command"
 commandPrefix = [ "dotnet" ]
 modes = [ "autoEdit", "yolo" ]
 
@@ -30,7 +23,7 @@ modes = [ "autoEdit", "yolo" ]
 decision = "allow"
 priority = 950
 toolName = "run_shell_command"
-commandPrefix = [ "npm" ]
+commandPrefix = [ "npm (install|info|i|remove|rm|uninstall) " ]
 modes = [ "autoEdit", "yolo" ]
 
 [[rule]]
