@@ -7,6 +7,7 @@ email = "joshua@nozzlegear.com"
 [signing]
 key = "678CB5B8"
 behavior = "own"
+backend = "gpg"
 
 [git]
 sign-on-push = true
