@@ -1,4 +1,3 @@
-.Brewfile
 .bunfig.toml
 .claude/commands
 .claude/hooks
