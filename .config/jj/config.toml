@@ -86,3 +86,6 @@ log = 'stack(mine() | @) | trunk() | @'
 
 # Find any commits in the stack that have the review prefix
 'review()' = 'stack & (description(glob:"review:*") | description(glob:"(review)*"))'
+
+# Finds any mutable commit in the stack by the user that haven't been signed
+'unsigned()' = '(stack() & mine()) ~ signed()'
