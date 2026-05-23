@@ -132,6 +132,8 @@ end
 set -x ASPNETCORE_ENVIRONMENT "Development"
 # Prevent dotnet watch from opening browser windows
 set -x DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
+# Turn off the msbuild logger, which causes input lag on iTerm2
+set -x MSBUILDTERMINALLOGGER "off"
 
 # Telemetry opt out
 set -x DOTNET_CLI_TELEMETRY_OPTOUT true
