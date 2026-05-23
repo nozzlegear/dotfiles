@@ -62,7 +62,7 @@ log = 'stack(mine() | @) | trunk() | @'
 
 # Private and WIP commits that should never be pushed anywhere. Often part of
 # work-in-progress merge stacks.
-'wip()' = 'description(glob:"wip:*")'
+'wip()' = 'description(glob:"wip:*") | description(glob:"wip *") | description(glob:"WIP *")'
 'private()' = 'description(glob:"private:*")'
 'blacklist()' = 'wip() | private()'
 
@@ -86,3 +86,6 @@ log = 'stack(mine() | @) | trunk() | @'
 
 # Finds the rev where @ and trunk() forked off
 'forkpoint' = 'fork_point(@ | trunk())'
+
+# Find any commits in the stack that have the review prefix
+'review()' = 'stack & (description(glob:"review:*") | description(glob:"(review)*"))'
