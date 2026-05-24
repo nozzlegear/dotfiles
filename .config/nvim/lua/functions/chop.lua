@@ -32,6 +32,6 @@ vim.keymap.set("v", "<leader>gw", function()
   end
 
   local lines = vim.api.nvim_buf_get_lines(0, start_row, end_row + 1, false)
-  local wrapped = wrap_lines_at(lines, 70)
+  local wrapped = wrap_lines_at(lines, 72)
   vim.api.nvim_buf_set_lines(0, start_row, end_row + 1, false, wrapped)
-end, { desc = "Wrap selected lines at 70 chars" })
+end, { desc = "Wrap selected lines at 72 chars" })
