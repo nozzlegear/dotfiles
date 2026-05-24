@@ -1,0 +1,28 @@
+{
+  "ui": {
+    "showUserIdentity": false,
+    "loadingPhrases": "witty"
+  },
+  "agents": {
+    "browser": {
+      "blockFileUploads": true
+    }
+  },
+  "experimental": {
+    "modelSteering": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    },
+    "enablePermanentToolApproval": true,
+    "environmentVariableRedaction": {
+      "enabled": true
+    }
+  },
+  "general": {
+    "vimMode": true,
+    "defaultApprovalMode": "auto_edit",
+    "enableAutoUpdate": false
+  }
+}

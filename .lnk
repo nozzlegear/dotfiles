@@ -10,6 +10,7 @@
 .gemini/GEMINI.md
 .gemini/commands
 .gemini/policies
+.gemini/settings.json
 .gitconfig
 .gitignore_global
 .ideavimrc
