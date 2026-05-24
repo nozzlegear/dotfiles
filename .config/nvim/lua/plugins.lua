@@ -173,4 +173,26 @@ require("lazy").setup({
             },
         },
     },
+    {
+        "HakonHarnes/img-clip.nvim",
+        event = "BufEnter",
+        opts = {
+            default = {
+                dir_path = "assets",
+                file_name = "%Y-%m-%d-%H-%M-%S",
+                prompt_for_file_name = false,
+                use_absolute_path = false,
+                relative_to_current_file = true,
+                insert_mode_after_paste = true,
+            },
+        },
+        keys = {
+            {
+                "<C-v>",
+                function() require("img-clip").paste_image() end,
+                mode = "i",
+                desc = "Paste image from clipboard",
+            },
+        },
+    },
 })
