@@ -151,5 +151,26 @@ require("lazy").setup({
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         dependencies = { "mason-org/mason.nvim" },
         config = require("plugin-configs.mason-tool-installer")
-    }
+    },
+    {
+        -- Fuzzy picker UI built on top of fzf. Used for buffer/file switching.
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = {
+            -- <C-p>: open buffers (MRU) + unignored project files, like classic fzf <C-p>
+            { "<C-p>", function() require("functions.buf_picker").open() end,
+              desc = "Buffers + project files" },
+            -- <leader>f: files opened in previous sessions (catches /tmp files, commit messages, etc.)
+            { "<leader>f", function() require("fzf-lua").oldfiles({ include_current_session = true }) end,
+              desc = "Recent files (oldfiles)" },
+        },
+        opts = {
+            winopts = {
+                height  = 0.5,
+                width   = 0.7,
+                row     = 0.3,
+                preview = { hidden = "hidden" },
+            },
+        },
+    },
 })

@@ -128,11 +128,16 @@ local function hide_tool_windows()
         if vim.api.nvim_buf_is_valid(buf) then
             local bufname = vim.fn.bufname(buf)
             if vim.bo[buf].buftype == 'terminal' then
-                local mode = vim.api.nvim_get_mode()["mode"]
-                if mode == "t" then
-                    vim.api.nvim_feedkeys("<C-\\><C-n>", "n", false)
+                -- Find every window displaying this terminal buffer and close it,
+                -- but only when it isn't the last window open (closing the last
+                -- window would exit neovim, which :hide also refused to do).
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    if vim.api.nvim_win_get_buf(win) == buf
+                        and #vim.api.nvim_list_wins() > 1
+                    then
+                        vim.api.nvim_win_close(win, false)
+                    end
                 end
-                vim.cmd(':hide')
             elseif string.find(bufname, neotreeSearchStr) then
                 vim.cmd(':Neotree close');
             end
