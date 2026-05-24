@@ -1,17 +1,19 @@
 require("lspconfigs.fish")
 
 vim.lsp.enable({
-    "ts_ls",
+    --"ts_ls",
     "cssls",
     "html-ls",
     "astro",
     "svelte",
     "taplo", -- Toml LSP server
     "json-lsp",
-    "vim-lsp-server",
+    --"vim-lsp-server",
     "lua-lsp-server",
     "svelte-language-server",
     "astro-language-server",
+    "typescript-language-server",
+    "yaml-language-server"
 })
 
 vim.lsp.config["html-ls"] = {
