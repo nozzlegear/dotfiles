@@ -1,0 +1,14 @@
+# Rule 1: Allow git commands ONLY if the agent confirms it has verified .jj does not exist.
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = 'git .*"description":".*\[NO_JJ\].*".*'
+decision = "allow"
+priority = 200
+
+# Rule 2: Deny git commands by default and instruct the agent on the verification process.
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "git"
+decision = "deny"
+priority = 100
+denyMessage = "You attempted to use a 'git' command. This repository might be using Jujutsu (jj). Please check for a '.jj' directory. If '.jj' exists, you MUST use 'jj'. If '.jj' DOES NOT exist, you may use 'git' by adding '[NO_JJ]' to your 'description' parameter to confirm your verification."
