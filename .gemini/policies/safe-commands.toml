@@ -1,29 +1,15 @@
-# Allow git commit commands automatically
-[[rule]]
-toolName = "run_shell_command"
-commandRegex = "git (status|add|reset|commit|diff|log|stash|checkout) "
-decision = "allow"
-# If true, lets shell commands use redirection operators (>, >>, <,
-# <<, <<<). By default, the policy engine asks for confirmation when
-# redirection is detected, even if a rule matches the command. This
-# permission is granular; it only applies to the specific rule it's
-# defined in. In chained commands (e.g., cmd1 > file && cmd2), each
-# individual command rule must permit redirection if it's used.
-allowRedirection = true
-priority = 100
-
 # Allow jj commands that don't require a pager
 [[rule]]
 toolName = "run_shell_command"
-commandRegex = "jj (describe|status|st|split|bookmark|workspace)"
+commandRegex = "jj (describe|split|bookmark|workspace|new)"
 decision = "allow"
 allowRedirection = true
 priority = 100
 
-# Allow jj show, log, and diff ONLY if they include the --no-pager flag
+# Allow these jj commands ONLY if they include the --no-pager flag
 [[rule]]
 toolName = "run_shell_command"
-commandRegex = 'jj (show|log|diff).*--no-pager'
+commandRegex = 'jj (show|log|diff|file show|help|resolve|status|st ).*--no-pager'
 decision = "allow"
 allowRedirection = true
 priority = 100
@@ -31,7 +17,126 @@ priority = 100
 # Deny jj show, log, and diff if they lack the --no-pager flag
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = ["jj show", "jj log", "jj diff"]
+commandPrefix = ["jj show", "jj log", "jj diff", "jj file show", "jj help", "jj resolve", "jj st", "jj status"]
 decision = "deny"
 priority = 90
-denyMessage = "For stability, you must include the '--no-pager' flag when running jj show, log, or diff."
+denyMessage = "For stability, you must include the '--no-pager' flag when running that jj command."
+
+# DijonBot MCP
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "list_pull_request_files"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "start_review"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "add_review_comment"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "submit_review"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "get_pull_request"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "create_review"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "create_issue"
+mcpName = "dijon-github-bot"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "enter_plan_mode"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "find_organizations"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "get_sentry_resource"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "update_issue"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "search_issues"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "find_projects"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "search_events"
+mcpName = "sentry"
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "run_shell_command"
+commandPrefix = [ "luacheck" ]
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "run_shell_command"
+commandPrefix = [ "zizmor" ]
+modes = [ "autoEdit", "yolo" ]
+
+[[rule]]
+decision = "allow"
+priority = 100
+toolName = "run_shell_command"
+commandPrefix = [ "date" ]
+modes = [ "autoEdit", "yolo" ]
