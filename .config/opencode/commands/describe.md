@@ -65,3 +65,8 @@ scope: auth
 - Do NOT list the files that were changed in commit messages or bodies.
 - Do NOT add Claude co-authorship footer to commit messages or bodies.
 - Do NOT prefix description messages with the "conventional commits" standard.
+
+## Multi-Commit Describing
+- When describing multiple commits, run `jj describe -r <commit_id> -m "..."` **sequentially**, one at a time.
+- Running multiple `jj describe` commands in parallel causes divergent commit errors because each rewrites and rebases descendants.
+- Use change IDs (e.g., `jj describe -r rlmnumww -m "..."`) to target specific commits regardless of their commit ID changing after rebases.
