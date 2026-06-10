@@ -1,6 +1,7 @@
 .Brewfile
 .bunfig.toml
 .claude/commands
+.claude/hooks
 .config/fish
 .config/jj/config.toml
 .config/nvim
