@@ -6,7 +6,8 @@ email = "joshua@nozzlegear.com"
 
 [signing]
 key = "678CB5B8"
-behavior = "own"
+#behavior = "own"
+behavior = "keep"
 backend = "gpg"
 
 [git]
@@ -41,7 +42,7 @@ diff-args = ["--color=always", "$left", "$right"]
 log = """
 separate(" ",
   if(root, "root()"),
-  change_id.shortest(8),
+  if(divergent, change_id.shortest(8) ++ label("conflict", "/" ++ change_offset), change_id.shortest(8)),
   committer.timestamp().ago(),
   if(bookmarks, ("[" ++ bookmarks ++ "]")),
   if(empty, label("empty", "(empty)")),
