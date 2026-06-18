@@ -16,12 +16,19 @@ write-change-id-header = true
 
 [aliases]
 remote-ahead = ["log", "-r", "remote_bookmarks(remote=exact:'origin') ~ ::@"]
+
 short-log = ["log", "-T", 'coalesce(description.first_line(), description_placeholder) ++ "\n"']
+
 # Rebase the current bookmark on its upstream (https://oppi.li/posts/configuring_jujutsu/)
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
+# List any commits in the stack that have the review prefix
+# TODO: make this command automatically take us to the first reviewable commit (jj edit $first)
+'review' = ["log", "-r", 'review()']
+
 [ui]
 diff-formatter = "difft"
+merge-editor = ":builtin"
 
 [merge-tools.difft]
 program = "difft"
@@ -72,11 +79,11 @@ log = 'stack(mine() | @) | trunk() | @'
 'stack(x)' = 'stack(x, 2)'
 'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
 
-# The current set of "open" works. It is defined as: all stacks that are
-# reachable from my working copy, or any other commit I wrote.
-# n = 1, meaning that nothing from `trunk()` is included, so all resulting
-# commits are mutable by definition.
-'open()' = 'stack(mine() | @, 1)'
+# The current set of "open" works. It is defined as: all stacks that
+# are reachable from my working copy. n = 1, meaning that nothing from
+# `trunk()` is included, so all resulting commits are mutable by
+# definition.
+'open()' = 'stack(@, 1) & mine()'
 
 # the set of 'ready()' commits. defined as the set of open commits, but nothing
 # that is blacklisted or any of their children.
@@ -86,7 +93,10 @@ log = 'stack(mine() | @) | trunk() | @'
 'forkpoint' = 'fork_point(@ | trunk())'
 
 # Find any commits in the stack that have the review prefix
-'review()' = 'stack & (description(glob:"review:*") | description(glob:"(review)*"))'
+'review()' = 'stack(@, 1) & (description(glob:"review:*") | description(glob:"(review)*"))'
+
+# Find any commits in the stack that have git's "fixup!" prefix
+'fixup()' = 'stack(@, 1) & description(regex:"^fixup! ")'
 
 # Finds any mutable commit in the stack by the user that haven't been signed
-'unsigned()' = '(stack() & mine()) ~ signed()'
+'unsigned()' = '(stack(@, 1) & mine()) ~ signed()'
