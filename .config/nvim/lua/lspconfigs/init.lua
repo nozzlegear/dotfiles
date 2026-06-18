@@ -4,8 +4,6 @@ vim.lsp.enable({
     --"ts_ls",
     "cssls",
     "html-ls",
-    "astro",
-    "svelte",
     "taplo", -- Toml LSP server
     "json-lsp",
     --"vim-lsp-server",
@@ -28,12 +26,24 @@ vim.lsp.config["cssls"] = {
     filetypes = { "css", "scss", "less" }
 }
 
-vim.lsp.config["astro"] = {
+vim.lsp.config["astro-language-server"] = {
     filetypes = { "astro" }
 }
 
-vim.lsp.config["svelte"] = {
-    filetypes = { "svelte" }
+vim.lsp.config["taplo"] = {
+    filetypes = { "toml" }
+}
+
+vim.lsp.config["json-lsp"] = {
+    filetypes = { "json", "jsonc", "json5" }
+}
+
+vim.lsp.config["yaml-language-server"] = {
+    filetypes = { "yaml", "yml" }
+}
+
+vim.lsp.config['pkl-lsp'] = {
+    filetypes = { "pkl", "pkl.properties" }
 }
 
 vim.lsp.config['csharp_ls'] = {
@@ -54,6 +64,10 @@ vim.lsp.config['julials'] = {
 }
 
 vim.lsp.config['theme_check'] = {
+}
+
+vim.lsp.config["typescript-language-server"] = {
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }
 }
 
 vim.lsp.config['fsautocomplete'] = {
