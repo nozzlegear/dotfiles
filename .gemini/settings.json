@@ -1,7 +1,7 @@
 {
   "ui": {
     "showUserIdentity": false,
-    "loadingPhrases": "witty"
+    "loadingPhrases": "tips"
   },
   "agents": {
     "browser": {
@@ -24,5 +24,21 @@
     "vimMode": true,
     "defaultApprovalMode": "auto_edit",
     "enableAutoUpdate": false
+  },
+  "mcpServers": {
+    "dijon-github-bot": {
+      "type": "stdio",
+      "command": "DijonBotMcp",
+      "args": [
+        "--config",
+        "/Users/nozzlegear/Repos/dijon-github-bot/bot-settings.json",
+        "--pem",
+        "/Users/nozzlegear/Repos/dijon-github-bot/dijon-bot.2026-05-09.private-key.pem"
+      ],
+      "env": {}
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp"
+    }
   }
 }
