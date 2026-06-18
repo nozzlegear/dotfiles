@@ -1,18 +1,16 @@
-tap "bgreenwell/lstr"
-tap "dart-lang/dart"
+tap "bgreenwell/lstr", trusted: true
+tap "dart-lang/dart", trusted: true
+tap "dnsimple/tap"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "isen-ng/dotnet-sdk-versions"
-tap "jstkdng/programs"
-tap "jundot/omlx", "https://github.com/jundot/omlx"
-tap "microsoft/mssql-release"
-tap "mint-lang/mint-lang"
+tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
+tap "microsoft/mssql-release", "https://github.com/Microsoft/homebrew-mssql-release", trusted: true
+tap "mint-lang/mint-lang", trusted: true
 tap "mpryor/tap"
-tap "oug-t/difi"
-tap "oven-sh/bun"
-tap "shopify/shopify"
-tap "yarlson/lnk"
-tap "ynqa/tap"
+tap "shopify/shopify", trusted: true
+tap "xguot/difi", "https://github.com/xguot/homebrew-difi.git", trusted: true
+tap "yarlson/lnk", trusted: true
+tap "ynqa/tap", trusted: true
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
 # Simple, modern, secure file encryption
@@ -23,6 +21,8 @@ brew "age-plugin-se"
 brew "age-plugin-yubikey"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
+# Apple Intelligence from the command-line, with OpenAi-compatible API server
+brew "apfel"
 # Next generation of apngasm, the APNG assembler
 brew "apngasm"
 # Text processor and publishing toolchain for AsciiDoc
@@ -59,22 +59,6 @@ brew "buildkit"
 brew "caddy", restart_service: :changed
 # Vector graphics library with cross-device output support
 brew "cairo"
-# Toolkit for image loading and pixel buffer manipulation
-brew "gdk-pixbuf"
-# OpenType text shaping engine
-brew "harfbuzz"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# New file format for still image compression
-brew "jpeg-xl"
-# Library for encoding and decoding .avif files
-brew "libavif"
-# Framework for layout and rendering of i18n text
-brew "pango"
-# Library to render SVG files using Cairo
-brew "librsvg"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Statistics utility to count lines of code
 brew "cloc"
 # Cross-platform make
@@ -91,10 +75,14 @@ brew "curl"
 brew "dasel"
 # Tools to manipulate dates with a focus on financial data
 brew "dateutils"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # Diff that understands syntax
 brew "difftastic"
+# Pixel-perfect terminal diff viewer
+brew "difi"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Command-line tool for DigitalOcean
@@ -105,12 +93,16 @@ brew "doggo"
 brew "dos2unix"
 # Intelligent archive extraction
 brew "dtrx"
+# Embeddable SQL OLAP Database Management System
+brew "duckdb"
 # More intuitive version of du in rust
 brew "dust"
 # Functional programming language for building browser-based GUIs
 brew "elm"
 # Run arbitrary commands when files change
 brew "entr"
+# ESP8266 and ESP32 serial bootloader utility
+brew "esptool"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Modern, maintained replacement for ls
@@ -135,12 +127,18 @@ brew "yt-dlp"
 brew "gallery-dl"
 # GNU compiler collection
 brew "gcc"
-# Interact with Google Gemini AI models from the command-line
-brew "gemini-cli"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Image processing and image analysis library
 brew "leptonica"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # OCR (Optical Character Recognition) engine
 brew "tesseract"
 # Interpreter for PostScript and PDF
@@ -149,6 +147,8 @@ brew "ghostscript"
 brew "libheif"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# New file format for still image compression
+brew "jpeg-xl"
 # Database of common MIME types
 brew "shared-mime-info"
 # Turn movies into GIFs
@@ -185,6 +185,8 @@ brew "go"
 brew "gobject-introspection"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
+# Library to render SVG files using Cairo
+brew "librsvg"
 # Gnumeric spreadsheet program
 brew "goffice"
 # Library access to GnuPG
@@ -195,6 +197,8 @@ brew "gping"
 brew "gron"
 # Kubernetes package manager
 brew "helm"
+# Client library for huggingface.co hub
+brew "hf"
 # HTML validator written in Go
 brew "htmltest"
 # Improved top (interactive process viewer)
@@ -221,8 +225,8 @@ brew "killport"
 brew "knot"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
+# Library for encoding and decoding .avif files
+brew "libavif"
 # Light HTTP/1.1 server library
 brew "libmicrohttpd"
 # Postgres C API library
@@ -305,8 +309,8 @@ brew "pkl-lsp"
 brew "pngpaste"
 # PNG image optimizing utility
 brew "pngquant"
-# Alternative to docker-compose using podman
-brew "podman-compose"
+# Tool for managing OCI containers and pods
+brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Command-line shell and scripting language
@@ -318,11 +322,15 @@ brew "python@3.10"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
 # Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.9", link: false
 # Generic machine emulator and virtualizer
 brew "qemu"
 # Tools for and transforming and inspecting PDF files
 brew "qpdf"
+# Better WHOIS and domain intelligence toolkit
+brew "quien"
 # Rsync for cloud storage
 brew "rclone"
 # Perl-powered file rename script with many helpful built-ins
@@ -339,6 +347,8 @@ brew "s3cmd"
 brew "scdoc"
 # Interactive find and replace in the terminal
 brew "scooter"
+# Command-line utility to interact with Sentry
+brew "sentry-cli"
 # Static http server anywhere you need one
 brew "serve"
 # Cryptographically sign and verify files
@@ -401,26 +411,22 @@ brew "yq"
 brew "zellij"
 # Programming language designed for robustness, optimality, and clarity
 brew "zig"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # Language Server for Zig
 brew "zls"
 # A fast, minimalist directory tree viewer
 brew "bgreenwell/lstr/lstr"
 # SDK
 brew "dart-lang/dart/dart"
-# Drop in replacement for ueberzug written in C++
-brew "jstkdng/programs/ueberzugpp"
+# DNSimple command-line tool.
+brew "dnsimple/tap/dnsimple", trusted: true
 # LLM inference server optimized for Apple Silicon
-brew "jundot/omlx/omlx", args: ["with-grammar"]
+brew "jundot/omlx/omlx", trusted: true
 # Sqlcmd and Bcp for Microsoft(R) SQL Server(R)
 brew "microsoft/mssql-release/mssql-tools"
 # Refreshing programming language for the front-end web
 brew "mint-lang/mint-lang/mint-lang"
-# Nothing Less - A TUI for parsing and arranging tabular data
-brew "mpryor/tap/nless"
-# The pixel-perfect terminal diff viewer
-brew "oug-t/difi/difi"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
 # A CLI tool to build for the Shopify platform
 brew "shopify/shopify/shopify-cli"
 brew "shopify/shopify/theme-check"
@@ -428,6 +434,8 @@ brew "shopify/shopify/theme-check"
 brew "yarlson/lnk/lnk"
 # JSON navigator and interactive filter leveraging jq
 brew "ynqa/tap/jnv"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Multi-track audio editor and recorder
 cask "audacity"
 # Tool to customise input devices and automate computer systems
@@ -444,10 +452,6 @@ cask "cscreen"
 cask "discord"
 # Developer platform
 cask "dotnet-sdk"
-# This cask follows releases from https://github.com/dotnet/core/tree/master
-cask "isen-ng/dotnet-sdk-versions/dotnet-sdk8"
-# This cask follows releases from https://github.com/dotnet/core/tree/master
-cask "isen-ng/dotnet-sdk-versions/dotnet-sdk8-0-400"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-ubuntu-mono-nerd-font"
 cask "font-ubuntu-nerd-font"
@@ -485,8 +489,6 @@ cask "podman-desktop"
 cask "powershell"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
-# Menu bar dashboard for GitHub repository health
-cask "repobar"
 # .NET IDE
 cask "rider"
 # Store SSH keys in the Secure Enclave
@@ -500,12 +502,8 @@ cask "via"
 # Multiplayer code editor
 cask "zed"
 cargo "shreddit"
-npm "@astrojs/language-server"
 npm "all-the-package-names"
-npm "create-vite-express"
 npm "diff-so-fancy"
 npm "np"
 npm "prettier"
 npm "svelte-language-server"
-npm "typescript-language-server"
-npm "vscode-langservers-extracted"
