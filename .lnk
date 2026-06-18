@@ -5,7 +5,9 @@
 .config/fish
 .config/jj/config.toml
 .config/nvim
+.config/opencode/AGENTS.md
 .config/opencode/commands
+.config/opencode/tui.jsonc
 .config/starship.toml
 .config/uv/uv.toml
 .gemini/GEMINI.md
