@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "name": "jj-preference",
+            "type": "command",
+            "command": "fish ~/.claude/hooks/jj-preference.fish",
+            "statusMessage": "Checking for jj repo..."
+          }
+        ]
+      }
+    ]
+  }
+}

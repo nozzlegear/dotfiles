@@ -1,0 +1,73 @@
+---
+name: describe
+description: Generate a well-structured jj describe message based on staged changes.
+---
+
+# JJ Describe Task
+
+Generate a well-structured `jj` describe message based on staged changes.
+
+## Description
+
+This command analyzes the changes in the current `jj` changeset and creates a clear, concise changeset description. It reviews the changes, categorizes the nature and scope, and then saves the description without asking for confirmation.
+
+## Usage
+`describe`
+
+## Steps
+1. Run `jj status --no-pager` to see modified, added and removed files in the current changeset
+   - Always use the `--no-pager` flag with `jj status`.
+2. Review a full changeset diff with `jj diff --no-pager`, or an individual file diff with `jj diff --no-pager ./path/to/file` if needed.
+   - Always use the `--no-pager` flag with `jj diff`.
+   - Do not ask the user to review the diff.
+3. Analyze the type of changes:
+   - Feature additions (type: feature)
+   - Existing feature enhancement (type: enhancement)
+   - Refactor (type: refactor)
+   - Bug fixes (type: fix)
+   - Documentation (type: docs)
+   - Style changes (type: style)
+   - Refactoring (type: refactor)
+   - Tests (type: test)
+   - Chores (type: chore)
+5. Run `jj describe` to write a description message with:
+   - A subject line (the first line of the description) that uses present tense, imperative mood description
+   - A body (any line beyond the first line) that uses past tense, indicative mood.
+   - The body should explain "why" the change was made and to "what"
+   - The "footer" of the body should contain references, if applicable
+   - The last two lines of the body are the git trailers, which describe the type and scope of the changes (e.g. `type: fix` and `scope: database`)
+
+## Examples
+### Example 1: Simple feature commit
+```
+Add password reset functionality
+
+Implemented the Forgot Password flow with a 24h expiry for the Password Reset tokens.
+Added the Email Notification service.
+
+type: feature
+scope: auth
+```
+
+### Example 2: Bug fix commit
+```
+Resolve null pointer in user validation
+
+Validation was failing when optional fields were undefined.
+Added null checks before accessing nested properties.
+
+Fixes #123
+
+type: fix
+scope: auth
+```
+
+## Notes
+- Keep subject line under 80 characters
+- Reference issues/PRs when relevant
+- Always use American English when writing a commit message.
+- Always use the `--no-pager` flag with `jj status` and `jj diff`.
+- Do NOT ask the user to review diffs, logs or messages – just give them a summary when you're done.
+- Do NOT list the files that were changed in commit messages or bodies.
+- Do NOT add a co-authorship footer to commit messages or bodies.
+- Do NOT prefix description messages with the "conventional commits" standard.

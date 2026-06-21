@@ -1,0 +1,36 @@
+{
+  "enableTelemetry": false,
+  "model": "Gemini 3.5 Flash (High)",
+  "permissions": {
+    "allow": [
+      "command(find)",
+      "command(dotnet)",
+      "command(dotnet build)",
+      "command(dotnet test)",
+      "command(grep)",
+      "command(jj status)",
+      "command(jj split)",
+      "command(jj describe)",
+      "command(jj log)",
+      "command(jj new)",
+      "command(jj diff)",
+      "command(jj show)",
+      "command(rg)",
+      "command(npm run validate)",
+      "command(which)",
+      "command(container)",
+      "command(npm run)",
+      "command(podman machine)",
+      "command(podman --version)",
+      "command(jj git)",
+      "command(\\.specify/scripts/bash/setup-plan\\.sh)",
+      "command(\\.specify/scripts/bash/setup-tasks\\.sh)",
+      "command(\\.specify/scripts/bash/check-prerequisites\\.sh)",
+      "command(lua -v)",
+      "command(luacheck)",
+      "command(stylua)",
+      "command(lua tests/run_tests\\.lua)"
+    ]
+  },
+  "showFeedbackSurvey": false
+}
