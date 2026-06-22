@@ -14,6 +14,7 @@
 .gemini/antigravity-cli/settings.json
 .gemini/antigravity-cli/skills
 .gemini/commands
+.gemini/config/hooks
 .gemini/config/hooks.json
 .gemini/config/mcp_config.json
 .gemini/policies
