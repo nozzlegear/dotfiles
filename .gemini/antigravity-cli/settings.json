@@ -7,7 +7,10 @@
       "command(dotnet)",
       "command(dotnet build)",
       "command(dotnet test)",
+      "command(dotnet restore)",
       "command(grep)",
+      "command(git:*)",
+      "command(jj:*)",
       "command(jj status)",
       "command(jj split)",
       "command(jj describe)",
@@ -29,8 +32,18 @@
       "command(lua -v)",
       "command(luacheck)",
       "command(stylua)",
-      "command(lua tests/run_tests\\.lua)"
+      "command(lua tests/run_tests\\.lua)",
+      "command(jj files)",
+      "command(jj file)",
+      "command(node --version)",
+      "command(node --help)",
+      "command(ls)"
     ]
   },
-  "showFeedbackSurvey": false
+  "showFeedbackSurvey": false,
+  "statusLine": {
+    "type": "",
+    "command": "",
+    "enabled": true
+  }
 }
