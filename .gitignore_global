@@ -341,9 +341,12 @@ token
 .direnv*
 *.secret
 
-# Ignore Claude code files
+# Ignore agent files
 .claude/
+.gemini/
+.opencode/
 CLAUDE.md
+AGENTS.md
 
 # Ignore jj's repo history files (prevents them from being cleaned by git clean)
 .jj/
