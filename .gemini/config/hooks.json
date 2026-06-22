@@ -1,14 +1,13 @@
 {
-  "hooks": {
+  "jj-preference": {
     "PreToolUse": [
       {
         "matcher": "run_command",
         "hooks": [
           {
-            "name": "jj-preference",
             "type": "command",
-            "command": "fish ~/.claude/hooks/jj-preference.fish",
-            "statusMessage": "Checking for jj repo..."
+            "command": "fish ~/.gemini/config/hooks/jj-preference.fish",
+            "timeout": 10
           }
         ]
       }
