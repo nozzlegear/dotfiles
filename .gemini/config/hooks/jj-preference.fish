@@ -55,7 +55,7 @@ set toolCallCwd (resolveHomeDir (echo $input | jq -r '.toolCall.args.Cwd // .wor
 
 # Only act on git commands
 if not test "run_command" = "$toolCallName"
-   and not string match -qr '^git(\s|$)' -- $toolCallCommand
+   or not string match -qr '^git(\s|$)' -- $toolCallCommand
     exit 0
 end
 
