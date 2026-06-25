@@ -1,0 +1,98 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 20000
+  },
+  "model": "high-charity/qwen-mox",
+  "provider": {
+    "high-charity": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "oMLX",
+      "options": {
+        "baseURL": "http://127.0.0.1:8072/v1",
+        "apiKey": "shwing"
+      },
+      "models": {
+        "qwen-mox": {
+          "name": "Qwen MoX",
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 120000,
+            "output": 8192
+          }
+        },
+        "gpt-mini": {
+          "name": "GPT Mini",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 120000,
+            "output": 8192
+          }
+        },
+        "gemma": {
+          "name": "Gemma",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 120000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "command": {
+    "describe": {
+      "model": "high-charity/gpt-mini"
+    },
+    "describe-multi": {
+      "model": "high-charity/gpt-mini"
+    }
+  },
+  "permission": {
+    "external_directory": {
+      "~/Repos/shopifysharp/**": "allow"
+    },
+    "read": {
+      "~/Repos/shopifysharp/graphql-schemas/**": "deny",
+      "~/Repos/shopifysharp/graphql.schema.json": "deny"
+    }
+  },
+  "mcp": {
+    "dijon-github-bot": {
+      "type": "local",
+      "command": [
+        "DijonBotMcp",
+        "--config",
+        "/Users/nozzlegear/Repos/dijon-github-bot/bot-settings.json",
+        "--pem",
+        "{env:DIJONBOTMCP_PEM_KEY_PATH}"
+      ],
+      "enabled": true
+    },
+    "hn_dataset": {
+      "type": "local",
+      "command": ["/usr/local/bin/hn_dataset", "--data-dir", "/Users/nozzlegear/Repos/hn-dataset-mcp/hn"],
+      "enabled": false
+    },
+    "fastmail": {
+      "type": "local",
+      "command": ["npx", "mcp-remote@0.1.38", "https://api.fastmail.com/mcp"],
+      "enabled": false
+    }
+  }
+}
