@@ -3,7 +3,8 @@
   "diff_style": "auto",
   "theme": "dracula",
   "keybinds": {
-    "leader": "ctrl",
-    "editor_open": "<leader>g"
+    "leader": "\\",
+    "editor_open": "ctrl+g",
+    "messages_first": "none"
   }
 }
