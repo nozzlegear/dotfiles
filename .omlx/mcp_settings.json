@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "fastmail": {
+      "command": "npx",
+      "args": ["mcp-remote@0.1.38", "https://api.fastmail.com/mcp"],
+      "enabled": false,
+      "timeout": 60
+    },
+    "hn_dataset": {
+      "command": "/usr/local/bin/hn_dataset",
+      "args": ["--data-dir", "/Users/nozzlegear/Repos/hn-dataset-mcp/hn"],
+      "enabled": true,
+      "timeout": 60
+    }
+  }
+}

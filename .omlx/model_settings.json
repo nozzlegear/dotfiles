@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "models": {
+    "gpt-oss-20b-MXFP4-Q8": {
+      "model_alias": "gpt",
+      "max_context_window": 120000,
+      "max_tokens": 8192,
+      "force_sampling": false,
+      "enable_thinking": true,
+      "thinking_budget_enabled": false,
+      "guided_grammar_enabled": false,
+      "turboquant_kv_enabled": false,
+      "turboquant_kv_bits": 4.0,
+      "turboquant_skip_last": true,
+      "specprefill_enabled": false,
+      "dflash_enabled": false,
+      "dflash_in_memory_cache": true,
+      "dflash_in_memory_cache_max_entries": 4,
+      "dflash_in_memory_cache_max_bytes": 8589934592,
+      "dflash_ssd_cache": false,
+      "dflash_ssd_cache_max_bytes": 21474836480,
+      "mtp_enabled": false,
+      "vlm_mtp_enabled": false,
+      "is_pinned": false,
+      "is_default": false,
+      "trust_remote_code": false
+    },
+    "Qwen3.6-35B-A3B-OptiQ-4bit": {
+      "model_alias": "qwen-mox",
+      "max_context_window": 120000,
+      "max_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.05,
+      "force_sampling": false,
+      "thinking_budget_enabled": false,
+      "guided_grammar_enabled": false,
+      "turboquant_kv_enabled": false,
+      "turboquant_kv_bits": 4.0,
+      "turboquant_skip_last": true,
+      "specprefill_enabled": false,
+      "dflash_enabled": false,
+      "dflash_draft_quant_enabled": false,
+      "dflash_in_memory_cache": true,
+      "dflash_in_memory_cache_max_entries": 4,
+      "dflash_in_memory_cache_max_bytes": 8589934592,
+      "dflash_ssd_cache": false,
+      "dflash_ssd_cache_max_bytes": 21474836480,
+      "mtp_enabled": false,
+      "vlm_mtp_enabled": false,
+      "is_pinned": false,
+      "is_default": true,
+      "trust_remote_code": false
+    },
+    "diffusiongemma-26B-A4B-it-5bit": {
+      "model_alias": "diffusion-gemma",
+      "max_context_window": 254000,
+      "max_tokens": 8192
+    },
+    "GLM-5.2-mxfp4": {
+      "model_alias": "glm-max",
+      "max_context_window": 1020000,
+      "max_tokens": 20000
+    }
+  }
+}
