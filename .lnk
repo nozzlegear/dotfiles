@@ -8,6 +8,7 @@
 .config/opencode/AGENTS.md
 .config/opencode/commands
 .config/opencode/opencode.jsonc
+.config/opencode/skills
 .config/opencode/tui.jsonc
 .config/starship.toml
 .config/uv/uv.toml
