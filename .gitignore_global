@@ -345,6 +345,7 @@ token
 .claude/
 .gemini/
 .opencode/
+.agents/
 CLAUDE.md
 AGENTS.md
 
