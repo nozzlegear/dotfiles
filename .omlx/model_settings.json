@@ -2,7 +2,7 @@
   "version": 1,
   "models": {
     "gpt-oss-20b-MXFP4-Q8": {
-      "model_alias": "gpt",
+      "model_alias": "gpt-mini",
       "max_context_window": 120000,
       "max_tokens": 8192,
       "force_sampling": false,
