@@ -9,9 +9,9 @@
   "provider": {
     "high-charity": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "oMLX",
+      "name": "High Charity",
       "options": {
-        "baseURL": "http://127.0.0.1:8072/v1",
+        "baseURL": "http://high-charity.local:8072/v1",
         "apiKey": "shwing"
       },
       "models": {
