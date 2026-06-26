@@ -53,6 +53,22 @@
           }
         }
       }
+    },
+    "apple": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Apple",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "apple-foundationmodel": {
+          "name": "Apple Foundation Model",
+          "limit": {
+            "context": 4096,
+            "output": 4096
+          }
+        }
+      }
     }
   },
   "command": {
