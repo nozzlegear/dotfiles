@@ -71,14 +71,6 @@
       }
     }
   },
-  "command": {
-    "describe": {
-      "model": "high-charity/gpt-mini"
-    },
-    "describe-multi": {
-      "model": "high-charity/gpt-mini"
-    }
-  },
   "permission": {
     "external_directory": {
       "~/Repos/shopifysharp/**": "allow"
