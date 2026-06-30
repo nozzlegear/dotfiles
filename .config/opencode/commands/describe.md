@@ -2,71 +2,15 @@
 title: JJ Describe Task
 read_only: true
 type: command
+description: Analyze the changes in the current changeset and give it a clear, concise description with type and scope trailers.
+agent: build, commit
 ---
+Use the `jj-describe` skill to analyze the changes in the current changeset (`@`) and write a clear, concise description with type and scope trailers.
 
-Generate a well-structured `jj` describe message based on staged changes.
+Current changeset state:
+!`jj status --no-pager`
 
-## Description
+Files changed in @:
+!`jj diff --stat --no-pager -r @`
 
-This command analyzes the changes in the current `jj` changeset and creates a clear, concise changeset description. It reviews the changes, categorizes the nature and scope, and then saves the description without asking for confirmation.
-
-## Usage
-`describe`
-
-## Steps
-1. Run `jj status` to see modified, added and removed files in the current changeset
-2. Review a full changeset diff with `jj diff`, or an individual file diff with `jj diff ./path/to/file` if needed.
-3. Analyze the type of changes:
-   - Feature additions (type: feature)
-   - Existing feature enhancement (type: enhancement)
-   - Refactor (type: refactor)
-   - Bug fixes (type: fix)
-   - Documentation (type: docs)
-   - Style changes (type: style)
-   - Refactoring (type: refactor)
-   - Tests (type: test)
-   - Chores (type: chore)
-5. Use `jj describe` to write a description message with:
-   - A subject line (the first line of the description) that uses present tense, imperative mood description
-   - A body (any line beyond the first line) that uses past tense, indicative mood.
-   - The body should explain "why" the change was made and to "what"
-   - The "footer" of the body should contain references, if applicable
-   - The last two lines of the body are the git trailers, which describe the type and scope of the changes (e.g. `type: fix` and `scope: database`)
-
-## Examples
-### Example 1: Simple feature commit
-```
-Add password reset functionality
-
-Implemented the Forgot Password flow with a 24h expiry for the Password Reset tokens.
-Added the Email Notification service.
-
-type: feature
-scope: auth
-```
-
-### Example 2: Bug fix commit
-```
-Resolve null pointer in user validation
-
-Validation was failing when optional fields were undefined.
-Added null checks before accessing nested properties.
-
-Fixes #123
-
-type: fix
-scope: auth
-```
-
-## Notes
-- Keep subject line under 80 characters
-- Reference issues/PRs when relevant
-- Always use American English when writing a commit message.
-- Do NOT list the files that were changed in commit messages or bodies.
-- Do NOT add Claude co-authorship footer to commit messages or bodies.
-- Do NOT prefix description messages with the "conventional commits" standard.
-
-## Multi-Commit Describing
-- When describing multiple commits, run `jj describe -r <commit_id> -m "..."` **sequentially**, one at a time.
-- Running multiple `jj describe` commands in parallel causes divergent commit errors because each rewrites and rebases descendants.
-- Use change IDs (e.g., `jj describe -r rlmnumww -m "..."`) to target specific commits regardless of their commit ID changing after rebases.
+Additional instructions (purpose of the changes, wording to use, etc.): $ARGUMENTS
