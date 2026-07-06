@@ -27,6 +27,9 @@ tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 # TODO: make this command automatically take us to the first reviewable commit (jj edit $first)
 'review' = ["log", "-r", 'review()']
 
+# List any commits in the stack that need to be described
+'undescribed' = ["log", "-r", 'undescribed()']
+
 [ui]
 diff-formatter = "difft"
 merge-editor = ":builtin"
@@ -98,6 +101,9 @@ log = 'stack(mine() | @) | trunk() | @'
 
 # Find any commits in the stack that have git's "fixup!" prefix
 'fixup()' = 'stack(@, 1) & description(regex:"^fixup! ")'
+
+# Find any commits in the stack that have the review prefix
+'undescribed()' = 'stack(@, 1) & (subject("") | subject(glob:"describe:*") | subject(glob:"(describe me)*") | subject(glob:"describe me:")) ~ empty()'
 
 # Finds any mutable commit in the stack by the user that haven't been signed
 'unsigned()' = '(stack(@, 1) & mine()) ~ signed()'
