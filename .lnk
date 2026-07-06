@@ -29,6 +29,9 @@
 .omlx/mcp_settings.json
 .omlx/model_settings.json
 .omlx/settings.json
+.omp/agent/config.yml
+.omp/agent/mcp.json
+.omp/agent/models.yml
 .profile
 .tmux.conf
 .yarnrc

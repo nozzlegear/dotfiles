@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
+  "mcpServers": {
+    "dijon-github-bot": {
+      "type": "stdio",
+      "command": "DijonBotMcp",
+      "args": [
+        "--config",
+        "/Users/nozzlegear/Repos/dijon-github-bot/bot-settings.json",
+        "--pem",
+        "${DIJONBOTMCP_PEM_KEY_PATH}"
+      ],
+      "cwd": "/Users/nozzlegear/Repos/dijon-github-bot",
+      "enabled": true
+    },
+    "hn_dataset": {
+      "type": "stdio",
+      "command": "/usr/local/bin/hn_dataset",
+      "args": [
+        "--data-dir",
+        "/Users/nozzlegear/Repos/hn-dataset-mcp/hn"
+      ],
+      "enabled": true
+    },
+    "fastmail": {
+      "url": "https://api.fastmail.com/mcp",
+      "type": "http",
+      "oauth": {},
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,74 @@
+symbolPreset: nerd
+theme: 
+  dark: dark-monokai
+setupVersion: 1
+modelRoles: 
+  default: high-charity/qwen-mox
+  smol: high-charity/humanizer
+  commit: openrouter/deepseek/deepseek-v4-flash
+  advisor: high-charity/gpt-oss
+  tiny: high-charity/humanizer
+statusLine: 
+  preset: compact
+  separator: none
+  sessionAccent: true
+terminal: 
+  showProgress: true
+display: 
+  shimmer: disabled
+personality: default
+loop: 
+  mode: prompt
+tools: 
+  approvalMode: yolo
+  discoveryMode: mcp-only
+completion: 
+  notify: "off"
+recap: 
+  enabled: true
+stt: 
+  modelName: parakeet
+startup: 
+  quiet: false
+  checkUpdate: false
+collapseChangelog: true
+power: 
+  sleepPrevention: "off"
+git: 
+  enabled: false
+memory: 
+  backend: mnemopi
+edit: 
+  mode: hashline
+readLineNumbers: true
+inspect_image: 
+  enabled: true
+todo: 
+  reminders: 
+    max: 5
+providers: 
+  image: auto
+exa: 
+  enabled: true
+secrets: 
+  enabled: true
+commands: 
+  enableClaudeUser: false
+  enableClaudeProject: false
+hideThinkingBlock: false
+defaultThinkingLevel: auto
+omitThinking: false
+serviceTier: none
+advisor: 
+  enabled: true
+  subagents: false
+  syncBacklog: "off"
+serviceTierAdvisor: none
+lsp: 
+  diagnosticsOnEdit: true
+web_search: 
+  enabled: true
+mcp: 
+  notifications: true
+  discoveryMode: true
+  enableProjectConfig: true
