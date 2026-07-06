@@ -18,7 +18,7 @@ write-change-id-header = true
 [aliases]
 remote-ahead = ["log", "-r", "remote_bookmarks(remote=exact:'origin') ~ ::@"]
 
-short-log = ["log", "-T", 'coalesce(description.first_line(), description_placeholder) ++ "\n"']
+short-log = ["log", "-T", 'separate(" ", change_id.shortest(8), coalesce(description.first_line(), description_placeholder)) ++ "\n"']
 
 # Rebase the current bookmark on its upstream (https://oppi.li/posts/configuring_jujutsu/)
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
@@ -71,8 +71,8 @@ log = 'stack(mine() | @) | trunk() | @'
 
 # Private and WIP commits that should never be pushed anywhere. Often part of
 # work-in-progress merge stacks.
-'wip()' = 'description(glob:"wip:*") | description(glob:"wip *") | description(glob:"WIP *")'
-'private()' = 'description(glob:"private:*")'
+'wip()' = 'subject(glob:"wip:*") | subject(glob:"wip *") | subject(glob:"WIP *")'
+'private()' = 'subject(glob:"private:*")'
 'blacklist()' = 'wip() | private()'
 
 # stack(x, n) is the set of mutable commits reachable from 'x', with 'n'
@@ -97,10 +97,10 @@ log = 'stack(mine() | @) | trunk() | @'
 'forkpoint' = 'fork_point(@ | trunk())'
 
 # Find any commits in the stack that have the review prefix
-'review()' = 'stack(@, 1) & (description(glob:"review:*") | description(glob:"(review)*"))'
+'review()' = 'stack(@, 1) & (subject(glob:"review:*") | subject(glob:"(review)*"))'
 
 # Find any commits in the stack that have git's "fixup!" prefix
-'fixup()' = 'stack(@, 1) & description(regex:"^fixup! ")'
+'fixup()' = 'stack(@, 1) & subject(regex:"^fixup! ")'
 
 # Find any commits in the stack that have the review prefix
 'undescribed()' = 'stack(@, 1) & (subject("") | subject(glob:"describe:*") | subject(glob:"(describe me)*") | subject(glob:"describe me:")) ~ empty()'
