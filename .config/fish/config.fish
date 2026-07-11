@@ -136,8 +136,11 @@ set -x DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER 1
 set -x MSBUILDTERMINALLOGGER "off"
 
 # Telemetry opt out
-set -x DOTNET_CLI_TELEMETRY_OPTOUT true
-set -x ASTRO_TELEMETRY_DISABLED 1
+set -gx DO_NOT_TRACK 1
+set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
+set -gx ASTRO_TELEMETRY_DISABLED 1
+# Turn off Shopify CLI analytics: https://shopify.dev/docs/apps/tools/cli#usage-reporting
+set -gx SHOPIFY_CLI_NO_ANALYTICS 1
 
 # Set preferred text editor to vim
 set -gx EDITOR nvim
