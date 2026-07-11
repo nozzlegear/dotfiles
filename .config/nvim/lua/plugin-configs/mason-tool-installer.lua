@@ -8,9 +8,10 @@ return function()
             "taplo",  -- LSP for toml files
             {"astro-language-server", version = "2.16.9"},
             {"svelte-language-server", version = "0.18.0"},
-            "pkl-lsp",
+            -- "pkl-lsp", -- Use the one from brew instead, which installs the deps
             {"typescript-language-server", version = "5.2.0"},
-            "yaml-language-server"
+            "yaml-language-server",
+            "fsautocomplete"
         },
         auto_update = false
         --debounce_hours = 18

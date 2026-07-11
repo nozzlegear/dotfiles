@@ -46,6 +46,10 @@ vim.lsp.config['pkl-lsp'] = {
     filetypes = { "pkl", "pkl.properties" }
 }
 
+vim.lsp.config['svelte'] = {
+    filetypes = { "svelte", "svelte.ts" }
+}
+
 vim.lsp.config['csharp_ls'] = {
     init_options = {
         AutomaticWorkspaceInit = true
@@ -82,5 +86,10 @@ vim.lsp.config['fsautocomplete'] = {
     },
     init_options = {
         AutomaticWorkspaceInit = true
-    }
+    },
+    -- Fix a bug where fsautocomplete freezes neovim
+    -- https://github.com/ionide/FsAutoComplete/issues/1534
+    on_attach = function(client)
+       client.server_capabilities.semanticTokensProvider = nil
+    end,
 }
