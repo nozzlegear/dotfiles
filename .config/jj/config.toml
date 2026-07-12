@@ -23,9 +23,8 @@ short-log = ["log", "-T", 'separate(" ", change_id.shortest(8), coalesce(descrip
 # Rebase the current bookmark on its upstream (https://oppi.li/posts/configuring_jujutsu/)
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
-# List any commits in the stack that have the review prefix
-# TODO: make this command automatically take us to the first reviewable commit (jj edit $first)
-'review' = ["log", "-r", 'review()']
+# Automatically go to the first reviewable commit
+'review' = ["new", "-r", "exactly(roots(review()), 1)"]
 
 # List any commits in the stack that need to be described
 'undescribed' = ["log", "-r", 'undescribed()']
