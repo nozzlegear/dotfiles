@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fish ~/.gemini/config/hooks/jj-preference.fish",
+            "command": "fish $HOME/.gemini/config/hooks/jj-preference.fish",
             "timeout": 10
           }
         ]
