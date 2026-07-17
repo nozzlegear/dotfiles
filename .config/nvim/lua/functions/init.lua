@@ -3,3 +3,5 @@ require("functions.chop")
 require("functions.clip")
 require("functions.skopeo")
 require("functions.buf_picker")
+require("functions.char_search")
+
