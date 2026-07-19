@@ -3,11 +3,11 @@ theme:
   dark: dark-monokai
 setupVersion: 1
 modelRoles: 
-  default: high-charity/qwen-mox
   smol: high-charity/humanizer
   commit: openrouter/deepseek/deepseek-v4-flash
-  advisor: high-charity/gpt-oss
-  tiny: high-charity/humanizer
+  advisor: high-charity/jetbrains-mellum
+  tiny: high-charity/bonsai
+  default: high-charity/ornith-mid
 statusLine: 
   preset: compact
   separator: none
@@ -48,6 +48,8 @@ todo:
     max: 5
 providers: 
   image: auto
+  tinyModel: lfm2-350m
+  tinyModelDevice: default
 exa: 
   enabled: true
 secrets: 
@@ -60,7 +62,7 @@ defaultThinkingLevel: auto
 omitThinking: false
 serviceTier: none
 advisor: 
-  enabled: true
+  enabled: false
   subagents: false
   syncBacklog: "off"
 serviceTierAdvisor: none
@@ -71,4 +73,5 @@ web_search:
 mcp: 
   notifications: true
   discoveryMode: true
-  enableProjectConfig: true
+  enableProjectConfig: truetier: 
+  advisor: none
