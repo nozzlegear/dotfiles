@@ -6,3 +6,7 @@ providers:
     api: openai-completions
     discovery:
       type: openai-models-list
+    # Disable the stream timeouts for slow model response/compaction events
+    # https://github.com/can1357/oh-my-pi/blob/ff1fe5ffdd5da19201e3740a36d3d9b3190b7306/docs/environment-variables.md
+    streamIdleTimeoutMs: 0
+    streamFirstEventTimeoutSeconds: 0
