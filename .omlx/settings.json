@@ -73,7 +73,7 @@
     "max_context_window": 120000,
     "max_context_window_policy": null,
     "max_tokens": 8192,
-    "temperature": 1.0,
+    "temperature": 0.7,
     "top_p": 0.95,
     "top_k": 0,
     "repetition_penalty": 1.05
