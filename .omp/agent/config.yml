@@ -21,7 +21,7 @@ loop:
   mode: prompt
 tools: 
   approvalMode: yolo
-  discoveryMode: mcp-only
+  discoveryMode: auto
 completion: 
   notify: "off"
 recap: 
@@ -48,8 +48,13 @@ todo:
     max: 5
 providers: 
   image: auto
+  autoThinkingModel: online
+  webSearch: auto
+  fetch: auto
   tinyModel: lfm2-350m
   tinyModelDevice: default
+  unexpectedStopModel: online
+  openrouterVariant: default
 exa: 
   enabled: true
 secrets: 
@@ -59,19 +64,45 @@ commands:
   enableClaudeProject: false
 hideThinkingBlock: false
 defaultThinkingLevel: auto
-omitThinking: false
-serviceTier: none
+omitThinking: true
 advisor: 
   enabled: false
   subagents: false
   syncBacklog: "off"
-serviceTierAdvisor: none
 lsp: 
   diagnosticsOnEdit: true
 web_search: 
   enabled: true
 mcp: 
-  notifications: true
-  discoveryMode: true
-  enableProjectConfig: truetier: 
+  notifications: false
+  discoveryMode: false
+  enableProjectConfig: true
+disabledExtensions: 
+  - context-file:user:GEMINI.md
+skills: 
+  enableSkillCommands: false
+steeringMode: one-at-a-time
+followUpMode: one-at-a-time
+doubleEscapeAction: tree
+emojiAutocomplete: false
+compaction: 
+  handoffSaveToDisk: true
+bashInterceptor: 
+  enabled: true
+eval: 
+  jl: true
+browser: 
+  enabled: false
+tasks: 
+  todoClearDelay: 60
+tts: 
+  localModel: kokoro
+  localVoice: af_heart
+speech: 
+  mode: yield
+  enabled: false
+  voice: af_heart
+provider: 
+  appendOnlyContext: auto
+tier: 
   advisor: none
