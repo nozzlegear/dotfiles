@@ -36,6 +36,16 @@ jj log -G -r 'review()' | wc -l | xargs
 # List any commits in the stack that need to be described
 'undescribed' = ["log", "-r", 'undescribed()']
 
+# List the commit's descendants
+'descendants' = ["log", "-r", 'descendants(@, 10) | descendants(@-, 9)']
+'descendants(n)' = ["log", "-r", 'descendants(@, n) | descendants(@-, n)']
+'descendants(c, n)' = ["log", "-r", 'descendants(c, n)']
+
+# List the commit's ancestors
+'ancestors' = ["log", "-r", 'ancestors(@, 10)']
+'ancestors(n)' = ["log", "-r", 'ancestors(@, n)']
+'ancestors(c, n)' = ["log", "-r", 'ancestors(c, n)']
+
 [ui]
 diff-formatter = "difft"
 merge-editor = ":builtin"
