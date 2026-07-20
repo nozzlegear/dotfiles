@@ -4,4 +4,5 @@ require("functions.clip")
 require("functions.skopeo")
 require("functions.buf_picker")
 require("functions.char_search")
+require("functions.apfel")
 
