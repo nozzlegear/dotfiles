@@ -15,7 +15,7 @@
     ],
     "sse_keepalive_mode": "chunk",
     "auto_start_on_launch": true,
-    "burst_decode_mode": "balanced",
+    "burst_decode_mode": "aggressive",
     "preserve_mid_system_cache": true
   },
   "model": {
@@ -23,7 +23,8 @@
       "/Users/nozzlegear/.omlx/models"
     ],
     "model_dir": "/Users/nozzlegear/.omlx/models",
-    "model_fallback": false
+    "model_fallback": false,
+    "hide_helper_models": false
   },
   "memory": {
     "prefill_memory_guard": false,
@@ -43,7 +44,7 @@
     "enabled": true,
     "hot_cache_only": false,
     "ssd_cache_dir": "/Volumes/Not Wanted On Voyage/Omlx Cache",
-    "ssd_cache_max_size": "150GB",
+    "ssd_cache_max_size": "200GB",
     "hot_cache_max_size": "0",
     "initial_cache_blocks": 256
   },
