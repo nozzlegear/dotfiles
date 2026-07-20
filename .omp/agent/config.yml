@@ -4,10 +4,13 @@ theme:
 setupVersion: 1
 modelRoles: 
   smol: high-charity/humanizer
-  commit: openrouter/deepseek/deepseek-v4-flash
-  advisor: high-charity/jetbrains-mellum
-  tiny: high-charity/bonsai
-  default: high-charity/ornith-mid
+  advisor: high-charity/qwen-qwythos
+  task: high-charity/qwen-instruct:off
+  plan: openrouter/google/gemini-3.6-flash
+  default: openrouter/deepseek/deepseek-v4-flash
+  slow: high-charity/qwen-mox
+  vision: openrouter/google/gemma-4-26b-a4b-it
+  tiny: high-charity/qwen-smol:off
 statusLine: 
   preset: compact
   separator: none
@@ -21,7 +24,6 @@ loop:
   mode: prompt
 tools: 
   approvalMode: yolo
-  discoveryMode: auto
 completion: 
   notify: "off"
 recap: 
@@ -39,22 +41,22 @@ git:
 memory: 
   backend: mnemopi
 edit: 
-  mode: hashline
+  mode: replace
 readLineNumbers: true
 inspect_image: 
   enabled: true
 todo: 
-  reminders: 
-    max: 5
+  remindersMax: 5
 providers: 
   image: auto
-  autoThinkingModel: online
+  autoThinkingModel: lfm2-1.2b
   webSearch: auto
   fetch: auto
   tinyModel: lfm2-350m
   tinyModelDevice: default
   unexpectedStopModel: online
   openrouterVariant: default
+  memoryModel: lfm2-1.2b
 exa: 
   enabled: true
 secrets: 
@@ -64,7 +66,7 @@ commands:
   enableClaudeProject: false
 hideThinkingBlock: false
 defaultThinkingLevel: auto
-omitThinking: true
+omitThinking: false
 advisor: 
   enabled: false
   subagents: false
@@ -75,7 +77,6 @@ web_search:
   enabled: true
 mcp: 
   notifications: false
-  discoveryMode: false
   enableProjectConfig: true
 disabledExtensions: 
   - context-file:user:GEMINI.md
@@ -106,3 +107,32 @@ provider:
   appendOnlyContext: auto
 tier: 
   advisor: none
+task: 
+  agentModelOverrides: 
+    {}
+  disabledAgents: 
+    []
+cycleOrder: 
+  - default
+  - slow
+  - smol
+  - tiny
+retry: 
+  fallbackChains: 
+    plan: 
+      - high-charity/qwen-mox
+    default: 
+      - high-charity/qwen-mox
+model: 
+  loopGuard: 
+    checkAssistantContent: true
+modelRoleStorage: global
+prewalk: 
+  enabled: false
+treeFilterMode: default
+features: 
+  unexpectedStopDetection: true
+mnemopi: 
+  llmMode: smol
+astGrep: 
+  enabled: true
