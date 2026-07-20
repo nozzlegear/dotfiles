@@ -15,7 +15,7 @@ If you're unsure of which changeset you should describe, you should stop and ask
 
 ## Workflow
 
-1. Run `jj status --no-pager -r changeset_id` to get the changeset state.
+1. Run `jj status --no-pager` to get the changeset state.
     - Skip this step if the user has already given you the changeset state.
 2. Run `jj diff --git --stat --no-pager -r changeset_id` to list the files changed in the changeset.
     - Skip this step too if the user has already given you a list of the files changed.
