@@ -27,6 +27,16 @@
       "type": "http",
       "oauth": {},
       "enabled": false
+    },
+    "nushell": {
+      "type": "stdio",
+      "command": "/opt/homebrew/bin/nu",
+      "args": [
+        "--mcp",
+        "--mcp-transport",
+        "stdio"
+      ],
+      "enabled": true
     }
   }
 }

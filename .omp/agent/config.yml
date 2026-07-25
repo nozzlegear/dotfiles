@@ -3,14 +3,19 @@ theme:
   dark: dark-monokai
 setupVersion: 1
 modelRoles: 
-  smol: high-charity/humanizer
-  advisor: high-charity/qwen-qwythos
-  task: high-charity/qwen-instruct:off
-  plan: openrouter/google/gemini-3.6-flash
-  default: openrouter/deepseek/deepseek-v4-flash
-  slow: high-charity/qwen-mox
-  vision: openrouter/google/gemma-4-26b-a4b-it
-  tiny: high-charity/qwen-smol:off
+  default: mistral/mistral-small-latest
+  slow: mistral/mistral-medium-latest
+  vision: mistral/mistral-small-latest
+  designer: mistral/magistral-medium-latest
+  smol: mistral/codestral-latest
+  tiny: mistral/codestral-latest
+  task: mistral/devstral-latest:off
+  advisor: mistral/magistral-small-latest:high
+  plan: mistral/magistral-medium-latest:high
+  local: high-charity/qwen-mox
+  local-slow: high-charity/laguna
+  paid-fast: openrouter/deepseek/deepseek-v4-flash
+  paid-slow: openrouter/moonshotai/kimi-k3
 statusLine: 
   preset: compact
   separator: none
@@ -48,9 +53,7 @@ inspect_image:
 todo: 
   remindersMax: 5
 providers: 
-  image: auto
   autoThinkingModel: lfm2-1.2b
-  webSearch: auto
   fetch: auto
   tinyModel: lfm2-350m
   tinyModelDevice: default
@@ -80,6 +83,9 @@ mcp:
   enableProjectConfig: true
 disabledExtensions: 
   - context-file:user:GEMINI.md
+  - context-file:project:GEMINI.md
+  - slash-command:commit-multi
+  - slash-command:commit
 skills: 
   enableSkillCommands: false
 steeringMode: one-at-a-time
@@ -116,13 +122,13 @@ cycleOrder:
   - default
   - slow
   - smol
-  - tiny
+  - local
+  - local-slow
+  - paid-fast
+  - paid-slow
 retry: 
   fallbackChains: 
-    plan: 
-      - high-charity/qwen-mox
-    default: 
-      - high-charity/qwen-mox
+    {}
 model: 
   loopGuard: 
     checkAssistantContent: true
@@ -131,7 +137,7 @@ prewalk:
   enabled: false
 treeFilterMode: default
 features: 
-  unexpectedStopDetection: true
+  unexpectedStopDetection: false
 mnemopi: 
   llmMode: smol
 astGrep: 
