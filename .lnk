@@ -17,9 +17,6 @@
 .local/share/nvim-jump/scripts/quickfix.sh
 .npmrc
 .nvimrc
-.omlx/mcp_settings.json
-.omlx/model_settings.json
-.omlx/settings.json
 .omp/agent/config.yml
 .omp/agent/extensions
 .omp/agent/mcp.json
