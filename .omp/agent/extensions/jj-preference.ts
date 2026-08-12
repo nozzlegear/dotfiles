@@ -5,7 +5,7 @@ export default function jjPreference(pi: ExtensionAPI): void {
     if (event.toolName !== "bash") return;
 
     const command = String(event.input.command ?? "");
-    if (!/^git(\s|$)/.test(command)) return;
+    if (!/\bgit(\s|$)/.test(command)) return;
 
     const result = await pi.exec("jj", ["root"], { cwd: ctx.cwd });
     if (result.code !== 0) return;
