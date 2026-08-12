@@ -1,0 +1,9 @@
+creation_rules:
+  - path_regex: .omp/agent/models.yml
+    # Only encrypt keys that end with "_encrypted"
+    encrypted_suffix: "_encrypted"
+    # Note: the age keys need to be comma-separated
+    age: >-
+      age1se1q2ssxjay4p7vkmjkk6qn6s3ksw634ce5ffpfvm8f2qth6elpx2yjx25feu3,
+      age1se1qthc77mg4hf7002htcy0ykhaqzhzsws7f9fhr5w6vrg64hgkks29x0mm23j,
+      age1dpz37wzxs2f46spey83hsv8ra9xkqr9c45gkhv6pjh43mtwp8ywqyv33hs
