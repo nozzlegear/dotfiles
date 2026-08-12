@@ -15,20 +15,28 @@ local function copy_to_clipboard(opts)
   end
 
   local text = table.concat(lines, "\n")
-
-  -- Check if we're in an SSH session. If so, we'll use it2copy, else we'll use vim's own system clipboard
   local in_ssh = vim.env.SSH_CLIENT ~= nil or vim.env.SSH_TTY ~= nil
+  local it2copy = vim.fn.exepath("it2copy")
 
-  if in_ssh and vim.fn.executable("it2copy") == 1 then
-    vim.fn.system("it2copy", text)
+  if in_ssh and it2copy ~= "" then
+    local obj = vim.system({ it2copy }, { stdin = text }):wait()
+
+    if obj.code ~= 0 then
+      vim.notify("it2copy failed: " .. obj.stderr, vim.log.levels.ERROR)
+    else
+      vim.notify("copied: " .. obj.code)
+    end
   else
+    vim.notify("no it2copy found", vim.log.levels.ERROR)
     vim.fn.setreg("+", text)
   end
 end
 
 -- Add :Copy and :Clip commands
-vim.api.nvim_create_user_command("Copy", copy_to_clipboard, { range = "%" })
-vim.api.nvim_create_user_command("Clip", copy_to_clipboard, { range = "%" })
+vim.api.nvim_create_user_command("Copy", copy_to_clipboard, { range = true })
+vim.api.nvim_create_user_command("Clip", copy_to_clipboard, { range = true })
 
 -- Also bind this to <leader>y
-vim.keymap.set("v", "<leader>y", ":Copy<CR>", { desc = "Copy selection to clipboard" })
+-- "x" means visual mode only, without some of the quirks of "v" means "select mode" (slightly different and
+-- not what most people think of when they want visual mode)
+vim.keymap.set("x", "<leader>y", ":Copy<CR>", { desc = "Copy selection to clipboard" })
