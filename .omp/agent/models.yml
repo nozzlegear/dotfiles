@@ -1,7 +1,8 @@
 providers:
-    baseUrl: "http://high-charity.local:8072/v1"
-    apiKey: "shwing"
     high-charity:
+        baseUrl: http://high-charity.local:8072/v1
+        apiKey: '!sops --config ~/.config/lnk/.sops.yaml decrypt --extract ''["providers"]["high-charity"]["apiKey_encrypted"]'' ~/.omp/agent/models.yml'
+        apiKey_encrypted: ENC[AES256_GCM,data:Io89Ryk/Cr5UXokW8Ga5xpU8EXACTOQNliJ1tFgMCgpzhQYESHL2RYSULwIJacJ5EzWG,iv:iKjdv/u2iWZah/bL2/ZiVJURjUODEfm9nbY6yUvNlR4=,tag:VCxIG/IMC0CQ78vQLZCd8A==,type:str]
         auth: apiKey
         api: openai-completions
         discovery:
@@ -45,6 +46,6 @@ sops:
             -----END AGE ENCRYPTED FILE-----
           recipient: age1dpz37wzxs2f46spey83hsv8ra9xkqr9c45gkhv6pjh43mtwp8ywqyv33hs
     encrypted_suffix: _encrypted
-    lastmodified: "2026-07-29T01:54:58Z"
-    mac: ENC[AES256_GCM,data:oo0XXkDkwOYgAXB3L2WGqw9x9CxlOK3AWoM6rOLWEcmtNGDVSftYAx49LBrjNROOzm7+YhrzaKGna9anYc+0tzM0dg7f1u++yvipk6sftcl7tIGxClObMOSQl5F6t2mAWVsda4TUg/KPaMDkrwWol48saJYwHtJG01bVIwlFjS4=,iv:BdNIg77JFHlgiRcSf/Mu+zlpZCrvWlIO/aQSRul6aDU=,tag:NZ/KMv+yV3urUqLnVmqbQQ==,type:str]
-    version: 3.13.2
+    lastmodified: "2026-08-30T18:48:58Z"
+    mac: ENC[AES256_GCM,data:tbTTVmM2qQm7hAGzrvcrZ3HNHn/eXipM/Pm5JXB879dE7IJOTUoWUzKk3DGnaKC0kXEJcvTE6nmD84YRvteo16BVpDPPdcG7+KdjVmgJPpZc97eA+kMwq8n7Zmm6afB7YhQyDzMmDbOuqVRb6wR7hMQe60GUNtc8CulJtura7Xw=,iv:23uaVtNhwo/jI4Bj414kR0DCHc4wY4NlVOzNzYKBHXU=,tag:MXbG3dZhv0P1i+mOuuiQ3Q==,type:str]
+    version: 3.13.3
