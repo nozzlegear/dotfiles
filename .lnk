@@ -8,6 +8,7 @@
 .config/opencode/opencode.jsonc
 .config/opencode/skills
 .config/opencode/tui.jsonc
+.config/pnpm/config.yaml
 .config/starship.toml
 .config/uv/uv.toml
 .gitconfig

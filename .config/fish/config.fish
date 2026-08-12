@@ -190,3 +190,10 @@ test -e {$HOME}/.swiftly/env.fish ; and source {$HOME}/.swiftly/env.fish
 set -gx PATH $PATH /Users/nozzlegear/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/nozzlegear/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
