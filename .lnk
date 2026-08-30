@@ -25,3 +25,4 @@
 .profile
 .tmux.conf
 .yarnrc
+Library/LaunchAgents/com.nozzlegear.clock-prefs.plist
