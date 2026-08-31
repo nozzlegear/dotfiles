@@ -67,8 +67,6 @@ require("lazy").setup({
     {'akinsho/git-conflict.nvim', version = "*", config = true},
     -- Prettier quickfix/location list windows for NeoVim
     {'yorickpeterse/nvim-pqf'},
-    -- Plugin to decompile .NET source code with GoToDefinition in csharp-ls
-    --{ 'Decodetalkers/csharpls-extended-lsp.nvim' },
     { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
     { 'nvim-neo-tree/neo-tree.nvim', branch = "v3.x",
       dependencies = {

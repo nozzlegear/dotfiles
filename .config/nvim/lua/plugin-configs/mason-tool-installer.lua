@@ -10,8 +10,7 @@ return function()
             {"svelte-language-server", version = "0.18.0"},
             -- "pkl-lsp", -- Use the one from brew instead, which installs the deps
             {"typescript-language-server", version = "5.2.0"},
-            "yaml-language-server",
-            "fsautocomplete"
+            "yaml-language-server"
         },
         auto_update = false
         --debounce_hours = 18
