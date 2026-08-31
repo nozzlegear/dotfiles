@@ -5,6 +5,19 @@ return function()
           ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
           ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
           ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
+          ['O'] = function(state) -- Open with `open` for directories and image files, otherwise Neo-tree default
+            local node = state.tree:get_node()
+            if not node then return end
+            local path = node.path or node:get_id()
+            local ext = vim.fn.fnamemodify(path, ':e'):lower()
+            local is_dir = node.type == 'directory'
+            local image_exts = { 'png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg', 'tiff', 'tif', 'ico', 'heic', 'heif', 'avif' }
+            if is_dir or vim.tbl_contains(image_exts, ext) then
+              vim.fn.system('open ' .. vim.fn.shellescape(path))
+            else
+              vim.cmd('e ' .. vim.fn.fnameescape(path))
+            end
+          end,
         },
       },
       filesystem = {
