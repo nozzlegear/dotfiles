@@ -36,7 +36,7 @@ end
 vim.api.nvim_create_user_command("Copy", copy_to_clipboard, { range = true })
 vim.api.nvim_create_user_command("Clip", copy_to_clipboard, { range = true })
 
--- Also bind this to <leader>y
+-- Also bind this to <leader>c
 -- "x" means visual mode only, without some of the quirks of "v" means "select mode" (slightly different and
 -- not what most people think of when they want visual mode)
-vim.keymap.set("x", "<leader>y", ":Copy<CR>", { desc = "Copy selection to clipboard" })
+vim.keymap.set("x", "<leader>c", ":Copy<CR>", { desc = "Copy selection to clipboard" })
