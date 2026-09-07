@@ -1,4 +1,5 @@
 tap "bgreenwell/lstr", trusted: true
+tap "can1357/tap"
 tap "dart-lang/dart", trusted: true
 tap "dnsimple/tap"
 tap "homebrew/cask"
@@ -6,8 +7,7 @@ tap "homebrew/core"
 tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "microsoft/mssql-release", "https://github.com/Microsoft/homebrew-mssql-release", trusted: true
 tap "mint-lang/mint-lang", trusted: true
-tap "mpryor/tap"
-tap "shopify/shopify", trusted: true
+tap "mpryor/tap", trusted: true
 tap "xguot/difi", "https://github.com/xguot/homebrew-difi.git", trusted: true
 tap "yarlson/lnk", trusted: true
 tap "ynqa/tap", trusted: true
@@ -19,6 +19,12 @@ brew "age"
 brew "age-plugin-se"
 # Plugin for encrypting files with age and PIV tokens such as YubiKeys
 brew "age-plugin-yubikey"
+# C library SSHv1/SSHv2 client and server protocols
+brew "libssh"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Apple Intelligence from the command-line, with OpenAi-compatible API server
@@ -27,14 +33,14 @@ brew "apfel"
 brew "apngasm"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
+# Automatically exclude development dependencies from Time Machine backups
+brew "asimov", restart_service: :changed
 # Spell checker with better logic than ispell
 brew "aspell"
 # Core application library for C
 brew "glib"
 # Protocol definitions and daemon for D-Bus at-spi
 brew "at-spi2-core"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # C library implementing the SSH2 protocol
@@ -63,8 +69,6 @@ brew "cairo"
 brew "cloc"
 # Cross-platform make
 brew "cmake"
-# Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Suite of command-line tools for converting to and working with CSV
@@ -75,6 +79,8 @@ brew "curl"
 brew "dasel"
 # Tools to manipulate dates with a focus on financial data
 brew "dateutils"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
 # Secure runtime for JavaScript and TypeScript
@@ -133,8 +139,6 @@ brew "gdk-pixbuf"
 brew "gh"
 # OpenType text shaping engine
 brew "harfbuzz"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Image processing and image analysis library
 brew "leptonica"
 # Framework for layout and rendering of i18n text
@@ -239,12 +243,8 @@ brew "librist"
 brew "librtlsdr"
 # General purpose TCP-IP emulator
 brew "libslirp"
-# C library SSHv1/SSHv2 client and server protocols
-brew "libssh"
 # LLM inference in C/C++
 brew "llama.cpp"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Tool for linting and static analysis of Lua code
 brew "luacheck"
 # Package manager for the Lua programming language
@@ -259,8 +259,12 @@ brew "markdownlint-cli2"
 brew "miller"
 # Sign files & verify signatures. Works with signify in OpenBSD
 brew "minisign"
+# Minimal CLI coding agent
+brew "mistral-vibe"
 # Run LLMs with MLX
 brew "mlx-lm"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Cross platform, open source .NET development framework
 brew "mono"
 # Remote terminal application
@@ -287,14 +291,12 @@ brew "nushell"
 brew "ollama"
 # General-purpose speech recognition model
 brew "openai-whisper"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# AI coding agent, built for the terminal
-brew "opencode"
 # Open Visual Inference And Optimization toolkit for AI inference
 brew "openvino"
 # Shell command parallelization utility
 brew "parallel"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Pins GitHub Actions to full hashes and versions
 brew "pinact"
 # Pinentry for GPG on Mac
@@ -309,12 +311,14 @@ brew "pkl-lsp"
 brew "pngpaste"
 # PNG image optimizing utility
 brew "pngquant"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Tool for managing OCI containers and pods
 brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Command-line shell and scripting language
-brew "powershell", link: false
+brew "powershell"
 # Simple, powerful, pipelined SQL replacement
 brew "prqlc"
 # Interpreted, interactive, object-oriented programming language
@@ -337,6 +341,10 @@ brew "rclone"
 brew "rename"
 # Tools for file renaming
 brew "renameutils"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Utility that provides fast incremental file transfer
+brew "rsync"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
 # Safe, concurrent, practical language
@@ -348,7 +356,7 @@ brew "scdoc"
 # Interactive find and replace in the terminal
 brew "scooter"
 # Command-line utility to interact with Sentry
-brew "sentry-cli"
+brew "sentry-cli", link: false
 # Static http server anywhere you need one
 brew "serve"
 # Cryptographically sign and verify files
@@ -361,6 +369,8 @@ brew "skopeo"
 brew "sops"
 # Sparklines for the shell
 brew "spark"
+# Toolkit to help you get started with Spec-Driven Development
+brew "specify"
 # Soak up standard input and write to a file
 brew "sponge"
 # Secure Reliable Transport
@@ -383,8 +393,6 @@ brew "tig"
 brew "tmux"
 # Microsoft MS-TNEF attachment unpacker
 brew "tnef"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Command-line tool for URL parsing and manipulation
@@ -395,16 +403,18 @@ brew "ttyplot"
 brew "tuc"
 # Language for application scale JavaScript development
 brew "typescript"
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Command-line tool for Vapor (Server-side Swift web framework)
 brew "vapor"
 # Why is this running?
 brew "witr"
+# Utilities to create and convert Web Open Font File (WOFF) files
+brew "woff2"
 # Linter for YAML files
 brew "yamllint"
-# JavaScript package manager
-brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
@@ -417,19 +427,20 @@ brew "zizmor"
 brew "zls"
 # A fast, minimalist directory tree viewer
 brew "bgreenwell/lstr/lstr"
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
 # SDK
 brew "dart-lang/dart/dart"
 # DNSimple command-line tool.
 brew "dnsimple/tap/dnsimple", trusted: true
 # LLM inference server optimized for Apple Silicon
-brew "jundot/omlx/omlx", trusted: true
+brew "jundot/omlx/omlx", args: ["with-grammar"], trusted: true
 # Sqlcmd and Bcp for Microsoft(R) SQL Server(R)
 brew "microsoft/mssql-release/mssql-tools"
 # Refreshing programming language for the front-end web
 brew "mint-lang/mint-lang/mint-lang"
-# A CLI tool to build for the Shopify platform
-brew "shopify/shopify/shopify-cli"
-brew "shopify/shopify/theme-check"
+# Nothing Less - A TUI for parsing and arranging tabular data
+brew "mpryor/tap/nless"
 # Git-native dotfiles management that doesn't suck
 brew "yarlson/lnk/lnk"
 # JSON navigator and interactive filter leveraging jq
@@ -442,11 +453,6 @@ cask "audacity"
 cask "bettertouchtool"
 # E-books management software
 cask "calibre"
-# Anthropic's official Claude AI desktop app
-cask "claude"
-# Create and run Linux containers using lightweight virtual machines
-cask "container"
-# Command-line display management utility
 cask "cscreen"
 # Voice and text chat software
 cask "discord"
@@ -459,16 +465,10 @@ cask "font-ubuntu-nerd-font"
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
-# Vector graphics editor
-cask "inkscape"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Discover, download, and run local LLMs
-cask "lm-studio"
-# Native chat application for all major LLM APIs
-cask "macai"
 # Speech recognition tool
 cask "macwhisper"
 # Run Stable Diffusion natively
@@ -481,11 +481,8 @@ cask "ngrok"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Free and open-source productivity suite
-cask "openoffice"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
-# Command-line shell and scripting language
 cask "powershell"
 # Toolbox companion for QMK Firmware
 cask "qmk-toolbox"
@@ -493,15 +490,18 @@ cask "qmk-toolbox"
 cask "rider"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
+# Command-line utility to interact with Sentry
+cask "sentry-cli"
 # Interactive log viewer for MSBuild structured logs (*.binlog)
 cask "structuredlogviewer"
 # Web browser focusing on security
 cask "tor-browser"
-# Keyboard configurator
-cask "via"
+# Virtual machines UI using QEMU
+cask "utm"
 # Multiplayer code editor
 cask "zed"
 cargo "shreddit"
+uv "trafilatura"
 npm "all-the-package-names"
 npm "diff-so-fancy"
 npm "np"
