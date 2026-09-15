@@ -3,9 +3,6 @@
 .config/fish
 .config/jj/config.toml
 .config/nvim
-.config/opencode/AGENTS.md
-.config/opencode/opencode.jsonc
-.config/opencode/tui.jsonc
 .config/pnpm/config.yaml
 .config/starship.toml
 .config/uv/uv.toml
