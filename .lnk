@@ -4,9 +4,7 @@
 .config/jj/config.toml
 .config/nvim
 .config/opencode/AGENTS.md
-.config/opencode/commands
 .config/opencode/opencode.jsonc
-.config/opencode/skills
 .config/opencode/tui.jsonc
 .config/pnpm/config.yaml
 .config/starship.toml
@@ -18,10 +16,12 @@
 .local/share/nvim-jump/scripts/quickfix.sh
 .npmrc
 .nvimrc
+.omp/agent/commands
 .omp/agent/config.yml
 .omp/agent/extensions
 .omp/agent/mcp.json
 .omp/agent/models.yml
+.omp/agent/skills
 .profile
 .tmux.conf
 .yarnrc
