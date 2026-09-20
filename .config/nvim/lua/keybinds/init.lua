@@ -35,5 +35,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+vim.keymap.set('n', '<M-f>', function() require("functions.buf_picker").open_relative() end, { desc = "Insert relative file path" })
 -- Export the module so it can be used in other Lua files
 return M;

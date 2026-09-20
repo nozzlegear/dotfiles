@@ -97,6 +97,9 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- https://stackoverflow.com/a/4766304
 map("i", "<S-Tab>", "<C-d>")
 
+-- Bind Option+f to the functions.buf_picker's open_relative function
+vim.keymap.set('n', '<M-f>', function() require("functions.buf_picker").open_relative() end, { desc = "Insert relative file path" })
+
 -- Define a function to toggle the terminal buffer
 local function toggle_terminal()
   local term_buf = nil
@@ -161,7 +164,7 @@ map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
 -- Insert relative/full path to current file
-map("n", "<leader>yr", "<cmd>let @+ = expand('%:~:.')<cr>", { desc = "Relative Path", silent = true })
+map("n", "<leader>yr", function() require("functions.buf_picker").open_relative() end, { desc = "Insert relative file path" })
 map("n", "<leader>yf", "<cmd>let @+ = expand('%:p')<cr>", { desc = "Full Path", silent = true })
 
 -- Diagnostic keymaps
