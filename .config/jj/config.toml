@@ -16,6 +16,9 @@ sign-on-push = true
 write-change-id-header = true
 
 [aliases]
+# Because I keep typing "jj logs" instead of "jj log"
+logs = ["log", "@"]
+
 remote-ahead = ["log", "-r", "remote_bookmarks(remote=exact:'origin') ~ ::@"]
 
 short-log = ["log", "-T", 'separate(" ", change_id.shortest(8), coalesce(description.first_line(), description_placeholder)) ++ "\n"']
