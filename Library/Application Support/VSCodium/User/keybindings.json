@@ -1,0 +1,101 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+.",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && editorReadonly"
+    },
+    {
+        "key": "cmd+.",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-fsi.SendSelection",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-workbench.action.terminal.chat.insertCommand",
+        "when": "chatIsEnabled && terminalChatResponseContainsCodeBlock && terminalHasBeenCreated && !terminalChatActiveRequest && !terminalChatResponseContainsMultipleCodeBlocks || chatIsEnabled && terminalChatResponseContainsCodeBlock && terminalProcessSupported && !terminalChatActiveRequest && !terminalChatResponseContainsMultipleCodeBlocks"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-workbench.action.terminal.chat.insertFirstCommand",
+        "when": "chatIsEnabled && terminalChatResponseContainsMultipleCodeBlocks && terminalHasBeenCreated && !terminalChatActiveRequest || chatIsEnabled && terminalChatResponseContainsMultipleCodeBlocks && terminalProcessSupported && !terminalChatActiveRequest"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-notebook.cell.executeAndInsertBelow",
+        "when": "notebookCellListFocused && notebookCellType == 'markup' || notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-debug.openBreakpointToSide",
+        "when": "breakpointsFocused"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-editor.action.selectAllMatches",
+        "when": "editorFocus && findWidgetVisible"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-quickInput.accept",
+        "when": "inQuickInput && quickInputType != 'quickWidget'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-testing.editFocusedTest",
+        "when": "focusedView == 'workbench.view.testing'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-workbench.action.chat.queueMessage",
+        "when": "chatInputHasText && inChatInput && chatEditingSentRequest == 'st' || chatInputHasText && inChatInput && config.chat.requestQueuing.defaultAction == 'steer' && chatEditingSentRequest != 'q' && chatEditingSentRequest != 'st'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-workbench.action.chat.steerWithMessage",
+        "when": "chatInputHasText && inChatInput && chatEditingSentRequest == 'q' || chatInputHasText && inChatInput && chatEditingSentRequest != 'q' && chatEditingSentRequest != 'st' && config.chat.requestQueuing.defaultAction != 'steer'"
+    },
+    {
+        "key": "shift+k",
+        "command": "editor.action.showDefinitionPreviewHover",
+        "when": "editorReadonly"
+    },
+    {
+        "key": "alt+f12",
+        "command": "-editor.action.peekDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "cmd+k cmd+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "-resharper.solutionExplorer.reveal",
+        "when": "resharper.activated && resharper.solution.openState == 'opened'"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpen"
+    }
+]

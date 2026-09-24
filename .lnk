@@ -22,4 +22,6 @@
 .profile
 .tmux.conf
 .yarnrc
+Library/Application Support/VSCodium/User/keybindings.json
+Library/Application Support/VSCodium/User/settings.json
 Library/LaunchAgents/com.nozzlegear.clock-prefs.plist

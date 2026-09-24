@@ -1,0 +1,54 @@
+{
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "resharper.region.region": "Americas",
+    "resharper.dataSharing.allowDataSharing": false,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.initialHint": false,
+    "FSharp.abstractClassStubGenerationObjectIdentifier": "self",
+    "vim.highlightedyank.enable": true,
+    "vim.neovimUseConfigFile": false,
+    "vim.insertModeKeyBindings": [
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<enter>", "<enter>"],
+            "commands": ["editor.action.quickFix"]
+        },
+        {
+            "before": ["<space>", "e"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["-", "-"],
+            "commands": ["resharper.solutionExplorer.reveal"],
+        },
+        {
+            "before": ["g", "n", "e"],
+            "commands": ["editor.action.marker.next"]
+        },
+        {
+            "before": ["g", "p", "e"],
+            "commands": ["editor.action.marker.previous"]
+        },
+        {
+            "before": ["g", "b"],
+            "commands": ["workbench.action.navigateBackInEditLocations"]
+        },
+        {
+            "before": ["g", "B"],
+            "commands": ["workbench.action.navigateBack"]
+        },
+        {
+            "before": ["g", "f"],
+            "commands": ["workbench.action.navigateForwardInEditLocations"]
+        },
+        {
+            "before": ["g", "F"],
+            "commands": ["workbench.action.navigateForward"]
+        },
+        {
+            "before": ["<leader>", "r", "r"],
+            "commands": ["editor.action.rename"]
+        }
+    ]
+}
