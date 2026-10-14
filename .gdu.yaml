@@ -1,0 +1,91 @@
+style:
+    footer:
+        text-color: '#000000'
+        background-color: '#2479D0'
+        number-color: '#FFFFFF'
+    selected-row:
+        text-color: ""
+        background-color: ""
+    marked:
+        text-color: ""
+        background-color: ""
+    result-row:
+        number-color: '#e67100'
+        directory-color: '#3498db'
+    header:
+        text-color: '#000000'
+        background-color: '#2479D0'
+        hidden: false
+    progress-modal:
+        current-item-path-max-len: 0
+        show-disk-progress-bar: true
+    use-old-size-bar: false
+    show-bar-percentage: false
+    show-item-count-bar: false
+sorting:
+    by: ""
+    order: ""
+log-file: /dev/null
+input-file: ""
+output-file: ""
+output-attrs: ""
+ignore-from-file: ""
+ignore-from-gitignore: ""
+ignore-dirs:
+    - /proc
+    - /dev
+    - /sys
+    - /run
+    - /Volumes
+    - "/Users/nozzlegear/Library/Mobile Documents/com~apple~CloudDocs"
+    - /System
+ignore-dir-patterns: []
+type: []
+exclude-type: []
+max-cores: 20
+top: 0
+depth: 0
+sequential-scanning: false
+show-apparent-size: false
+show-relative-size: false
+show-annexed-size: false
+show-item-count: false
+show-mtime: false
+no-color: false
+mouse: false
+non-interactive: false
+interactive: false
+no-progress: false
+no-unicode: false
+no-cross: false
+no-hidden: false
+no-delete: false
+no-view-file: false
+no-spawn-shell: false
+no-confirm-quit: false
+follow-symlinks: false
+profiling: false
+read-from-storage: false
+db: ""
+summarize: false
+use-si-prefix: false
+no-prefix: false
+show-in-kib: false
+reverse-sort: false
+change-cwd: false
+delete-in-background: false
+delete-in-parallel: false
+trash-command: ""
+since: ""
+until: ""
+max-age: ""
+min-age: ""
+archive-browsing: false
+collapse-path: false
+show-symlink-target: false
+ctrl-c-quits: false
+browse-parent-dirs: false
+web:
+    listen: ""
+    open-browser: true
+    browser: ""

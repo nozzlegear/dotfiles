@@ -6,6 +6,7 @@
 .config/pnpm/config.yaml
 .config/starship.toml
 .config/uv/uv.toml
+.gdu.yaml
 .gitconfig
 .gitignore_global
 .ideavimrc
