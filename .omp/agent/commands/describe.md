@@ -17,3 +17,7 @@ Additional instructions (purpose of the changes, wording to use, etc.): $ARGUMEN
 
 > ![NOTE]
 > You need to read the skill named "jj-describe" ("skill://jj-describe"), then follow its instructions. To execute jj commands, you must use the bash tool – there is no jj tool, only the jj cli which must be executed via bash.
+
+You can read the description of the current jj changeset, and confirm that your description was applied, with this command:
+
+`jj log -G -r @ -T 'description'`
