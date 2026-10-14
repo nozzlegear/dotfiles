@@ -118,6 +118,13 @@ if not test -f ~/.config/fish/env.fish
 end
 source ~/.config/fish/env.fish
 
+# Load all abbreviations
+if test -d ~/.config/fish/abbreviations/
+    for file in ~/.config/fish/abbreviations/*.fish
+        source $file
+    end
+end
+
 # Point CurseBreaker to the wow retail directory
 # https://github.com/AcidWeb/CurseBreaker
 if isWindows
@@ -189,7 +196,6 @@ test -e {$HOME}/.swiftly/env.fish ; and source {$HOME}/.swiftly/env.fish
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/nozzlegear/.lmstudio/bin
 # End of LM Studio CLI section
-
 
 # pnpm
 set -gx PNPM_HOME "/Users/nozzlegear/Library/pnpm"
