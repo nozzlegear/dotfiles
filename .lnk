@@ -17,6 +17,7 @@
 .omp/agent/commands
 .omp/agent/config.yml
 .omp/agent/extensions
+.omp/agent/managed-skills/jj-hunk-split-driver
 .omp/agent/mcp.json
 .omp/agent/models.yml
 .omp/agent/skills
