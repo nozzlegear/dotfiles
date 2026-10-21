@@ -114,6 +114,6 @@ vim.api.nvim_create_user_command("YankToFile", yank_to_file, { range = true })
 vim.api.nvim_create_user_command("PasteFromFile", paste_from_file, { range = true })
 
 -- Keybindings
-vim.keymap.set("x", "<leader>y", ":YankToFile<CR>", { desc = "Yank selection to file" })
+vim.keymap.set("x", "<leader>Y", ":YankToFile<CR>", { desc = "Yank selection to file" })
 vim.keymap.set("n", "<leader>p", ":PasteFromFile<CR>", { desc = "Paste from file" })
 vim.keymap.set("x", "<leader>p", ":PasteFromFile<CR>", { desc = "Replace selection from file" })
