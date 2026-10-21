@@ -31,7 +31,8 @@ vim.lsp.enable({
     "svelte",
     "astro",
     "ts_ls",
-    "yamlls"
+    "yamlls",
+    "sourcekit"
 })
 
 -- Some filetypes (e.g. lua) get their FileType event during init, before this
@@ -84,4 +85,13 @@ vim.lsp.config['julials'] = {
 }
 
 vim.lsp.config['theme_check'] = {
+}
+
+-- sourcekit-lsp ships with nvim-lspconfig's new-style root_dir(bufnr, on_dir)
+-- so vim.lsp.enable attaches correctly without wrapping. Override cmd to use
+-- the Swiftly-managed toolchain (currently Swift 6.2.1) so LSP features match
+-- the swiftc invoked from the shell, not whatever Apple ships in /usr/bin.
+vim.lsp.config['sourcekit'] = {
+    cmd = { "/Users/nozzlegear/.swiftly/bin/sourcekit-lsp" },
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
