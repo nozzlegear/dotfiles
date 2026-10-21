@@ -29,6 +29,9 @@ tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 # Automatically go to the first reviewable commit
 'review' = ["new", "-r", "exactly(roots(review()), 1)"]
 
+# Automatically go to the first undescribed commit
+'describe-next' = ["describe", "-r", "exactly(roots(undescribed()), 1)"]
+
 # Count the number of commits are available to review
 'count-reviews' = ["util", "exec", "--", "bash", "-c", """
 set -euo pipefail
@@ -48,6 +51,11 @@ jj log -G -r 'review()' | wc -l | xargs
 'ancestors' = ["log", "-r", 'ancestors(@, 10)']
 'ancestors(n)' = ["log", "-r", 'ancestors(@, n)']
 'ancestors(c, n)' = ["log", "-r", 'ancestors(c, n)']
+
+# Summarize the changes in a commit
+'summarize' = ["log", "--summary", "-r"]
+'summary' = ["summarize"]
+'sum' = ["summarize"]
 
 [ui]
 diff-formatter = "difft"
