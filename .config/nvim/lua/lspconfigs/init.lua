@@ -99,10 +99,60 @@ vim.lsp.config['theme_check'] = {
 }
 
 -- sourcekit-lsp ships with nvim-lspconfig's new-style root_dir(bufnr, on_dir)
--- so vim.lsp.enable attaches correctly without wrapping. Override cmd to use
--- the Swiftly-managed toolchain (currently Swift 6.2.1) so LSP features match
--- the swiftc invoked from the shell, not whatever Apple ships in /usr/bin.
+-- so vim.lsp.enable attaches correctly without wrapping. The binary is the
+-- swiftly proxy, which resolves to the Swiftly-managed toolchain (currently
+-- Swift 6.4.1) so LSP features match the swiftc invoked from the shell, not
+-- whatever Apple ships in /usr/bin.
+--
+-- SwiftPM binary-target dependencies (e.g. iroh-ffi's Iroh.xcframework) don't
+-- get their module search paths wired into the editor's build settings: the
+-- Swift wrapper module (IrohLib.swiftmodule) resolves only with an explicit
+-- -I at the .build products dirs, and its underlying Clang module (Iroh) needs
+-- the xcframework slice's Headers dir. Both flags are required together, or
+-- hovers/completions fall back to "No such module" for those packages while
+-- pure-Swift dependencies keep working. `cmd` must be a function here: by the
+-- time it runs, the enable flow has already resolved config.root_dir, and
+-- plain-table cmd/before_init can't depend on the root (before_init runs after
+-- the process has already spawned).
 vim.lsp.config['sourcekit'] = {
-    cmd = { "/Users/nozzlegear/.swiftly/bin/sourcekit-lsp" },
+    cmd = function(dispatchers, config)
+        local root = config.root_dir
+        local argv = { "/Users/nozzlegear/.swiftly/bin/sourcekit-lsp" }
+        if root then
+            local build_dirs = {
+                vim.fs.joinpath(root, ".build", "debug"),
+                vim.fs.joinpath(root, ".build", "index-build", "debug"),
+            }
+            local artifact_dirs = vim.fs.find("Headers", {
+                path = vim.fs.joinpath(root, ".build"),
+                limit = math.huge,
+                type = "directory",
+            })
+            for _, dir in ipairs(artifact_dirs) do
+                -- only the host platform slice; other slices' module maps
+                -- shadow the macOS one and break the Clang module import
+                if dir:find("xcframework", 1, true) and dir:find("/macos%-", 1) then
+                    table.insert(argv, "-Xcc")
+                    table.insert(argv, "-I" .. dir)
+                end
+            end
+            for _, dir in ipairs(build_dirs) do
+                local include = vim.fs.joinpath(dir, "include")
+                if vim.fn.isdirectory(include) == 1 then
+                    table.insert(argv, "-Xcc")
+                    table.insert(argv, "-I" .. include)
+                end
+                if vim.fn.isdirectory(dir) == 1 then
+                    table.insert(argv, "-Xswiftc")
+                    table.insert(argv, "-I" .. dir)
+                end
+            end
+        end
+        return vim.lsp.rpc.start(argv, dispatchers, {
+            cwd = config.cmd_cwd,
+            env = config.cmd_env,
+            detached = config.detached,
+        })
+    end,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
