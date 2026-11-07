@@ -32,7 +32,8 @@ vim.lsp.enable({
     "astro",
     "ts_ls",
     "yamlls",
-    "sourcekit"
+    "sourcekit",
+    "docker_language_server"
 })
 
 -- Some filetypes (e.g. lua) get their FileType event during init, before this
@@ -60,6 +61,16 @@ vim.lsp.config['pkl-lsp'] = {
 -- "svelte.ts" is not in nvim-lspconfig's default svelte filetypes
 vim.lsp.config['svelte'] = {
     filetypes = { "svelte", "svelte.ts" }
+}
+
+-- docker_language_server: attached to the `dockerfile` filetype, which Neovim's
+-- built-in detection assigns to both Dockerfile and Containerfile (including
+-- suffixed variants like Containerfile.prod). OCI-style markers are checked
+-- before Docker-style ones so plain-Containerfile projects aren't misdetected
+-- as needing a Docker context.
+vim.lsp.config['docker_language_server'] = {
+    root_dir = root_dir_from("Containerfile", "Containerfile.*", "Dockerfile", "Dockerfile.*"),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
 vim.lsp.config['sharplsp'] = {
