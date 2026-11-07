@@ -15,9 +15,12 @@ Files changed in @:
 
 Additional instructions (purpose of the changes, wording to use, etc.): $ARGUMENTS
 
-> ![NOTE]
-> You need to read the skill named "jj-describe" ("skill://jj-describe"), then follow its instructions. To execute jj commands, you must use the bash tool – there is no jj tool, only the jj cli which must be executed via bash.
-
 You can read the description of the current jj changeset, and confirm that your description was applied, with this command:
 
 `jj log -G -r @ -T 'description'`
+
+> ![IMPORTANT]
+> You **must** use the jj changeset id to reference , not the commit id. Commit ids are ephemeral in jj and will change after each operation, whereas changeset ids are stable. Furthermore, using commit ids can cause the stack to diverge, which is *not* what the user wants.
+
+> ![NOTE]
+> You need to read the skill named "jj-describe" ("skill://jj-describe"), then follow its instructions. To execute jj commands, you must use the bash tool – there is no jj tool, only the jj cli which must be executed via bash.

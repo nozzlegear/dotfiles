@@ -17,11 +17,11 @@ If you're unsure of which changeset you should describe, you should stop and ask
 
 1. Run `jj status --no-pager` to get the changeset state.
     - Skip this step if the user has already given you the changeset state.
-2. Run `jj diff --git --stat --no-pager -r changeset_id` to list the files changed in the changeset.
+2. Run `jj diff --git --stat --no-pager -r $changeset_id` to list the files changed in the changeset.
     - Skip this step too if the user has already given you a list of the files changed.
 3. Decide whether you should review a full diff of all files in the changeset at once, or a diff of individual files.
-    - Use `jj diff --git --no-pager -r changeset_id` to review a diff of all files at once.
-    - Use `jj diff --git --no-pager -r changeset_id file_1.txt [file_2.txt ...]` to review a diff of one or more files.
+    - Use `jj diff --git --no-pager -r $changeset_id` to review a diff of all files at once.
+    - Use `jj diff --git --no-pager -r $changeset_id file_1.txt [file_2.txt ...]` to review a diff of one or more files.
 3. Once you've diffed the entire changeset, analyze the type of changes:
    - Feature additions (type: feature)
    - Existing feature enhancement (type: enhancement)
@@ -32,13 +32,15 @@ If you're unsure of which changeset you should describe, you should stop and ask
    - Refactoring (type: refactor)
    - Tests (type: test)
    - Chores (type: chore)
-5. Use `jj describe -r changeset_id -m "message_here"` to write a description message with:
+5. Use `jj describe -r $changeset_id -m "message_here"` to write a description message with:
    - A subject line (the first line of the description) that uses present tense, imperative mood description
    - A body (any line beyond the first line) that uses past tense, indicative mood.
    - The body should explain "why" the change was made and to "what"
    - The "footer" of the body should contain references, if applicable
    - The last two lines of the body are the git trailers, which describe the type and scope of the changes (e.g. `type: fix` and `scope: database`)
    - You can also use `--stdin` instead of `-m "message here"` to pass the description message via stdin.
+
+Note: using `jj describe` will cause commits further up the stack to rebase. This is expected and normal jj behavior.
 
 ## Example description messages
 ### Example 1: Simple feature commit
